@@ -3,12 +3,14 @@ package com.br.avaliacoes.ec.telas;
 import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Label;
 import java.awt.ScrollPane;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -29,6 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class PrincipalTela {
 
@@ -61,7 +64,7 @@ public class PrincipalTela {
 	 * Create the application.
 	 */
 	public PrincipalTela() {
-		//HibernateUtil.getSessionFactory();
+		HibernateUtil.getSessionFactory();
 		initialize();
 	}
 
@@ -70,11 +73,12 @@ public class PrincipalTela {
 	 */
 	private void initialize() {
 		frmTorneioVirtualDe = new JFrame();
+		frmTorneioVirtualDe.getContentPane().setBackground(Color.WHITE);
 		frmTorneioVirtualDe.getContentPane().setEnabled(false);
 		frmTorneioVirtualDe.setResizable(false);
 		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
-		frmTorneioVirtualDe.setBounds(100, 100, 1073, 717);
+		frmTorneioVirtualDe.setBounds(100, 100, 1073, 758);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTorneioVirtualDe.getContentPane().setLayout(null);
 		
@@ -86,7 +90,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		label = new Label("Menu");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
 		label.setAlignment(Label.CENTER);
-		label.setBounds(33, 20, 264, 35);
+		label.setBounds(33, 20, 258, 35);
 		frmTorneioVirtualDe.getContentPane().add(label);
 		
 		ScrollPane1.setBounds(21, 10, 276, 55);
@@ -95,6 +99,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		
 		Button button_3;
 		btnCadastroAvaliador = new Button("Cadastro Avaliador");
+		btnCadastroAvaliador.setBackground(Color.WHITE);
 		btnCadastroAvaliador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -111,6 +116,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		
 		Button button_1;
 		btnLogin = new Button("Login");
+		btnLogin.setBackground(Color.WHITE);
 		btnLogin.addActionListener(new ActionListener() {
 			
 			
@@ -130,6 +136,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		frmTorneioVirtualDe.getContentPane().add(scrollPane);
 		
 		internalFrame = new JInternalFrame("");
+		internalFrame.getContentPane().setBackground(Color.WHITE);
 		internalFrame.setFrameIcon(null);
 		internalFrame.setEnabled(false);
 		internalFrame.getContentPane().setEnabled(false);
@@ -152,7 +159,23 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		
 		
 		
+		JLabel Imagem3 = new JLabel("New label");
+		ImageIcon icone3 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/LogoTVC.png");
+		Imagem3.setBounds(10, 336, 300, 300);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		frmTorneioVirtualDe.getContentPane().add(Imagem3);
+		
+		
+		
+		JLabel Imagem1 = new JLabel("New label");
+		ImageIcon icone2 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Rodape.png");
+		Imagem1.setBounds(0, 689, 1067, 44);
+		Image imagi2 = icone2.getImage().getScaledInstance(Imagem1.getWidth(),Imagem1.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem1.setIcon(new ImageIcon(imagi2));
+		frmTorneioVirtualDe.getContentPane().add(Imagem1);
 		
 		
 	

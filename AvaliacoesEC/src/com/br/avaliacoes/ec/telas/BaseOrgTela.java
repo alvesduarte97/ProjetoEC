@@ -3,13 +3,16 @@ package com.br.avaliacoes.ec.telas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Panel;
 
 public class BaseOrgTela extends JPanel {
@@ -107,8 +110,16 @@ public class BaseOrgTela extends JPanel {
 			}
 		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSair.setBounds(651, 601, 80, 56);
+		btnSair.setBounds(10, 601, 80, 56);
 		add(btnSair);
+		
+		JLabel Imagem3 = new JLabel("New label");
+		ImageIcon icone3 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem3.setBounds(0, 22, 741, 646);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		add(Imagem3);
 
 	}
 }
