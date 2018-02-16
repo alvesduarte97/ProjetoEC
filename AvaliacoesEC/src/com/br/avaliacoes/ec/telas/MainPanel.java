@@ -125,6 +125,7 @@ public class MainPanel {
 		
 		internalFrame = new JInternalFrame("");
 		internalFrame.setEnabled(false);
+		internalFrame.getContentPane().setEnabled(false);
 		internalFrame.setBorder(null);
 		internalFrame.setBounds(316, 10, 741, 668);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);

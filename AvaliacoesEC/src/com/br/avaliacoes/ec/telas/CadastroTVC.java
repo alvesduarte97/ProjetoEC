@@ -113,26 +113,23 @@ public class CadastroTVC extends JPanel {
 					avaliador.setTipo(TipoPessoa.AVALIADOR);
 					switch (indexArea) {
 					case 0:
-						avaliador.setArea(AreaAtuacao);
 						break;
 						
 					case 1:
-						avaliador.setArea(AreaAtuacao);
+						avaliador.setArea(AreaAtuacao.BIOLOGIA);
 						break;
 					case 2:
-						avaliador.setArea(AreaAtuacao);
 						break;
 					case 3:
-						avaliador.setArea(AreaAtuacao);
 						break;
 					case 4:
-						avaliador.setArea(AreaAtuacao);
 						break;
 					default:
 						break;
 					}
 					
 					limparCampos();
+					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 					try {
 						FachadaImp.getInstanciaFachada().inserirPessoa(avaliador);
 					} catch (BancoException e1) {
@@ -159,6 +156,14 @@ public class CadastroTVC extends JPanel {
 		cbArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		cbArea.setBounds(7, 291, 129, 20);
 		cbArea.addItem("Selecionar area");
+		cbArea.addItem("Coordenação");
+		cbArea.addItem("Biologia");
+		cbArea.addItem("Historia");
+		cbArea.addItem("Geografia");
+		cbArea.addItem("Quimica");
+		cbArea.addItem("Fisica");
+		cbArea.addItem("Robotica");
+		cbArea.addItem("Apoio Cord");
 		add(cbArea);
 		
 		JSeparator separator_1 = new JSeparator();
