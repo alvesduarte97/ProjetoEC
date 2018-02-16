@@ -32,13 +32,13 @@ public class LoginTVC extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Entrar");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(85, 11, 100, 50);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 25));
+		lblNewLabel.setBounds(322, 204, 100, 50);
 		add(lblNewLabel);
 		
 		NomeUsuarioField = new JTextField();
 		NomeUsuarioField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		NomeUsuarioField.setBounds(10, 97, 154, 26);
+		NomeUsuarioField.setBounds(247, 290, 154, 26);
 		add(NomeUsuarioField);
 		NomeUsuarioField.setColumns(10);
 		
@@ -46,34 +46,34 @@ public class LoginTVC extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Us\u00FAario:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(10, 72, 86, 14);
+		lblNewLabel_1.setBounds(247, 265, 86, 14);
 		add(lblNewLabel_1);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		passwordField.setBounds(10, 172, 154, 26);
+		passwordField.setBounds(247, 365, 154, 26);
 		add(passwordField);
 		
 		JLabel lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_2.setBounds(10, 147, 86, 14);
+		lblNewLabel_2.setBounds(247, 340, 86, 14);
 		add(lblNewLabel_2);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(-26, 134, 309, 2);
+		separator.setBounds(211, 327, 309, 2);
 		add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(-26, 209, 309, 2);
+		separator_1.setBounds(211, 402, 309, 2);
 		add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(-26, 59, 309, 2);
+		separator_2.setBounds(211, 252, 309, 2);
 		add(separator_2);
 		
 		JLabel Imagem2 = new JLabel("New label");
 		ImageIcon icone1 =new ImageIcon("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\login.png");
-		Imagem2.setBounds(174, 72, 63, 51);
+		Imagem2.setBounds(411, 265, 63, 51);
 		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
 		
 		Imagem2.setIcon(new ImageIcon(imagi));
@@ -83,16 +83,20 @@ public class LoginTVC extends JPanel {
 		
 		JButton btnConfirmarLogin = new JButton("Confirmar");
 		btnConfirmarLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnConfirmarLogin.setBounds(7, 218, 230, 46);
+		btnConfirmarLogin.setBounds(244, 411, 230, 46);
 		add(btnConfirmarLogin);
 		
 		JLabel Imagem1 = new JLabel("New label");
 		ImageIcon icone2 =new ImageIcon("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\key.png");
-		Imagem1.setBounds(174, 147, 63, 51);
+		Imagem1.setBounds(411, 340, 63, 51);
 		Image imagi2 = icone2.getImage().getScaledInstance(Imagem1.getWidth(),Imagem1.getHeight(), Image.SCALE_SMOOTH);
 		
 		Imagem1.setIcon(new ImageIcon(imagi2));
 		add(Imagem1);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(211, 466, 309, 2);
+		add(separator_3);
 		
 		
 		

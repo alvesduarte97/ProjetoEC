@@ -11,6 +11,8 @@ import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Label;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -21,6 +23,10 @@ import javax.swing.JSeparator;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.ScrollPane;
+import java.awt.Button;
+import java.awt.Panel;
+import java.awt.TextField;
 
 public class CadastroTVC extends JPanel {
 	private JTextField txtNome;
@@ -28,6 +34,7 @@ public class CadastroTVC extends JPanel {
 	private JPasswordField txtSenha;
 	private JPasswordField txtConfirmaçãoSenha;
 	private JComboBox cbArea;
+	private JLabel lblQualquermerda;
 
 	/**
 	 * Create the panel.
@@ -37,64 +44,60 @@ public class CadastroTVC extends JPanel {
 		setLayout(null);
 		
 		JLabel label = new JLabel("\u00C1rea de atua\u00E7\u00E3o:");
+		label.setBounds(229, 367, 126, 14);
 		label.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label.setBounds(10, 266, 126, 14);
 		add(label);
 		
 		JLabel label_1 = new JLabel("Cadastro");
+		label_1.setBounds(285, 125, 182, 37);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 25));
-		label_1.setBounds(64, 11, 182, 37);
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("Nome e sobrenome:");
+		label_2.setBounds(229, 173, 160, 14);
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label_2.setBounds(10, 72, 160, 14);
 		add(label_2);
 		
 		txtNome = new JTextField();
+		txtNome.setBounds(229, 198, 299, 20);
 		txtNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtNome.setColumns(10);
-		txtNome.setBounds(10, 97, 299, 20);
 		add(txtNome);
 		
 		JLabel label_3 = new JLabel("Nome do usu\u00E1rio:");
+		label_3.setBounds(229, 229, 144, 14);
 		label_3.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label_3.setBounds(10, 128, 144, 14);
 		add(label_3);
 		
 		txtLogin = new JTextField();
+		txtLogin.setBounds(229, 254, 299, 20);
 		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtLogin.setColumns(10);
-		txtLogin.setBounds(10, 153, 299, 20);
 		add(txtLogin);
 		
 		JLabel label_4 = new JLabel("Senha:");
+		label_4.setBounds(229, 298, 70, 14);
 		label_4.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label_4.setBounds(10, 197, 70, 14);
 		add(label_4);
 		
 		txtSenha = new JPasswordField();
+		txtSenha.setBounds(229, 323, 126, 20);
 		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtSenha.setBounds(10, 222, 126, 20);
 		add(txtSenha);
 		
 		JLabel label_5 = new JLabel("Confirmar senha:");
+		label_5.setBounds(384, 298, 144, 14);
 		label_5.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label_5.setBounds(165, 197, 144, 14);
 		add(label_5);
 		
 		txtConfirmaçãoSenha = new JPasswordField();
+		txtConfirmaçãoSenha.setBounds(384, 323, 144, 20);
 		txtConfirmaçãoSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtConfirmaçãoSenha.setBounds(165, 222, 144, 20);
 		add(txtConfirmaçãoSenha);
 		
-		JLabel label_6 = new JLabel("Serie a ser avalida:");
-		label_6.setFont(new Font("Tahoma", Font.BOLD, 15));
-		label_6.setBounds(165, 266, 153, 14);
-		add(label_6);
-		
 		JButton button_1 = new JButton("Confirmar");
+		button_1.setBounds(229, 520, 299, 41);
 		button_1.addActionListener(new ActionListener() {
 			
 			
@@ -114,15 +117,29 @@ public class CadastroTVC extends JPanel {
 					switch (indexArea) {
 					case 0:
 						break;
-						
 					case 1:
-						avaliador.setArea(AreaAtuacao.BIOLOGIA);
+						avaliador.setArea(AreaAtuacao.COORDENACAO);
 						break;
 					case 2:
+						avaliador.setArea(AreaAtuacao.BIOLOGIA);
 						break;
 					case 3:
+						avaliador.setArea(AreaAtuacao.HISTORIA);
 						break;
 					case 4:
+						avaliador.setArea(AreaAtuacao.GEOGRAFIA);
+						break;
+					case 5:
+						avaliador.setArea(AreaAtuacao.QUIMICA);
+						break;
+					case 6:
+						avaliador.setArea(AreaAtuacao.FISICA);
+						break;
+					case 7:
+						avaliador.setArea(AreaAtuacao.ROBOTICA);
+						break;
+					case 8:
+						avaliador.setArea(AreaAtuacao.APOIOCORDENACAO);
 						break;
 					default:
 						break;
@@ -143,18 +160,16 @@ public class CadastroTVC extends JPanel {
 				}
 
 				
-				//avaliador.setArea();
 			}
 		});
 		button_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button_1.setBounds(10, 419, 299, 41);
 		add(button_1);
 		
 		cbArea = new JComboBox();
+		cbArea.setBounds(229, 392, 299, 20);
 		//cbArea.setModel(new DefaultComboBoxModel(new String[] {"Biologia", "Cordena\u00E7\u00E3o", "F\u00EDsica", "Geografia", "Histor\u00EDa", "Matem\u00E1tica", "Qu\u00EDmica", "Recep\u00E7\u00E3o", "Rob\u00F3tica"}));
 		cbArea.setMaximumRowCount(5);
 		cbArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cbArea.setBounds(7, 291, 129, 20);
 		cbArea.addItem("Selecionar area");
 		cbArea.addItem("Coordenação");
 		cbArea.addItem("Biologia");
@@ -166,28 +181,28 @@ public class CadastroTVC extends JPanel {
 		cbArea.addItem("Apoio Cord");
 		add(cbArea);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(-20, 253, 600, 2);
-		add(separator_1);
-		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(-89, 184, 600, 2);
-		add(separator_2);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"3\u00BA ano", "2\u00BA ano", "1\u00BA ano", "9\u00BA ano", "8\u00BA ano", "7\u00BA ano"}));
-		comboBox.setMaximumRowCount(5);
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		comboBox.setBounds(165, 291, 129, 20);
-		add(comboBox);
-		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(-20, 59, 600, 2);
+		separator.setBounds(229, 160, 299, 2);
 		add(separator);
 		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(229, 285, 299, 2);
+		add(separator_2);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(229, 354, 299, 2);
+		add(separator_1);
+		
 		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(-20, 406, 600, 2);
+		separator_3.setBounds(229, 507, 299, 2);
 		add(separator_3);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(229, 572, 299, 2);
+		add(separator_4);
+		
+
+		
 
 	}
 	private void limparCampos() {
@@ -197,5 +212,4 @@ public class CadastroTVC extends JPanel {
 		txtSenha.setText("");
 		cbArea.setSelectedIndex(0);
 	}
-
 }

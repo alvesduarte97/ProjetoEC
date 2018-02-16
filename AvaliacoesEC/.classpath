@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="C:/Users/CliCidadão/Desktop/Hibernate/required/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/CliCidadão/Desktop/Hibernate/required/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/CliCidadão/Desktop/postgresql-42.2.0.jar"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
