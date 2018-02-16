@@ -1,0 +1,114 @@
+package com.br.avaliacoes.ec.modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="avaliacoes")
+public class Avaliacoes extends BancoEntity<Integer>{
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int idAvaliacao;
+	
+	@ManyToOne
+	@JoinColumn(name = "login")
+	private Pessoa avaliador;
+	
+	@ManyToOne
+	@JoinColumn(name = "idGrupo")
+	private Grupo grupoAvaliado;
+	
+	@ManyToOne
+	@JoinColumn(name = "nome")
+	private Desafios Desafio;
+	
+	private int nota1;
+	private int nota2;
+	private int nota3;
+	private int nota4;
+	private int nota5;
+	
+	private String comentario;
+	
+	public int getIdavaliacao() {
+		return idAvaliacao;
+	}
+	public void setIdavaliacao(int idavaliacao) {
+		this.idAvaliacao = idavaliacao;
+	}
+
+	public int getNota1() {
+		return nota1;
+	}
+	public void setNota1(int nota1) {
+		this.nota1 = nota1;
+	}
+	public int getNota2() {
+		return nota2;
+	}
+	public void setNota2(int nota2) {
+		this.nota2 = nota2;
+	}
+	public int getNota3() {
+		return nota3;
+	}
+	public void setNota3(int nota3) {
+		this.nota3 = nota3;
+	}
+	public int getNota4() {
+		return nota4;
+	}
+	public void setNota4(int nota4) {
+		this.nota4 = nota4;
+	}
+	public int getNota5() {
+		return nota5;
+	}
+	public void setNota5(int nota5) {
+		this.nota5 = nota5;
+	}
+	@Override
+	public Integer getChave() {
+		return this.idAvaliacao;
+	}
+	public int getIdAvaliacao() {
+		return idAvaliacao;
+	}
+	public void setIdAvaliacao(int idAvaliacao) {
+		this.idAvaliacao = idAvaliacao;
+	}
+
+	public Desafios getDesafio() {
+		return Desafio;
+	}
+	public void setDesafio(Desafios desafio) {
+		Desafio = desafio;
+	}
+	public Pessoa getAvaliador() {
+		return avaliador;
+	}
+	public void setAvaliador(Pessoa avaliador) {
+		this.avaliador = avaliador;
+	}
+	public Grupo getGrupoAvaliado() {
+		return grupoAvaliado;
+	}
+	public void setGrupoAvaliado(Grupo grupoAvaliado) {
+		this.grupoAvaliado = grupoAvaliado;
+	}
+	public String getComentario() {
+		return comentario;
+	}
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+
+	
+}
