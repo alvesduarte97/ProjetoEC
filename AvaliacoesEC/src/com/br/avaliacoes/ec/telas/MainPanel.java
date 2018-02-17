@@ -25,6 +25,8 @@ import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 import javax.swing.JScrollPane;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
 
 public class MainPanel {
 
@@ -32,11 +34,9 @@ public class MainPanel {
 	private Button btnLogin;
 	private Button btnCadastroAvaliador;
 	private Label label;
-	private Button btnAdministração;
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private JInternalFrame internalFrame;
-	private JPanel panel_1;
 
 	/**
 	 * Launch the application.
@@ -77,27 +77,18 @@ public class MainPanel {
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setFont(null);
 		
+ScrollPane aquiiiiii = new ScrollPane();
+		
 		label = new Label("Menu");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
 		label.setAlignment(Label.CENTER);
-		label.setBounds(21, 45, 270, 35);
+		label.setBounds(27, 32, 264, 35);
 		frmTorneioVirtualDe.getContentPane().add(label);
 		
-		btnAdministração = new Button("Administra\u00E7\u00E3o");
-		btnAdministração.addActionListener(new ActionListener() {
-			
-			
-			public void actionPerformed(ActionEvent arg0) {
-				CadastroTVC tuabunda = new CadastroTVC();
-			
-				internalFrame.setContentPane(tuabunda);
-				internalFrame.revalidate();
-				
-			}
-		});
-		btnAdministração.setFont(new Font("Dialog", Font.BOLD, 20));
-		btnAdministração.setBounds(21, 602, 276, 55);
-		frmTorneioVirtualDe.getContentPane().add(btnAdministração);
+		aquiiiiii.setBounds(21, 23, 276, 55);
+		frmTorneioVirtualDe.getContentPane().add(aquiiiiii);
+		internalFrame.setVisible(true);
+		
 		
 		Button button_3;
 		btnCadastroAvaliador = new Button("Cadastro Avaliador");
@@ -109,7 +100,7 @@ public class MainPanel {
 			}
 		});
 		btnCadastroAvaliador.setFont(new Font("Dialog", Font.BOLD, 20));
-		btnCadastroAvaliador.setBounds(22, 257, 276, 55);
+		btnCadastroAvaliador.setBounds(21, 237, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(btnCadastroAvaliador);
 		
 		Button button_2;
@@ -128,27 +119,21 @@ public class MainPanel {
 			}
 		});
 		btnLogin.setFont(new Font("Dialog", Font.BOLD, 20));
-		btnLogin.setBounds(21, 156, 276, 55);
+		btnLogin.setBounds(21, 155, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(btnLogin);
 		
-		scrollPane.setBounds(10, 10, 300, 659);
+		scrollPane.setBounds(10, 10, 300, 306);
 		frmTorneioVirtualDe.getContentPane().add(scrollPane);
 		
 		internalFrame = new JInternalFrame("");
 		internalFrame.setEnabled(false);
 		internalFrame.getContentPane().setEnabled(false);
-		
-		panel_1 = new JPanel();
-		internalFrame.getContentPane().add(panel_1, BorderLayout.CENTER);
-		panel_1.setLayout(null);
-		
-		JDesktopPane desktopPane = new JDesktopPane();
-		desktopPane.setBounds(331, 11, 1, 1);
-		panel_1.add(desktopPane);
+		internalFrame.getContentPane().setLayout(null);
 		internalFrame.setBorder(null);
 		internalFrame.setBounds(316, 10, 741, 668);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);
-		internalFrame.setVisible(true);
+		
+		
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), null));

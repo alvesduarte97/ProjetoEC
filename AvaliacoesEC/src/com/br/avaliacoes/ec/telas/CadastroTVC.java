@@ -49,7 +49,7 @@ public class CadastroTVC extends JPanel {
 		add(label);
 		
 		JLabel label_1 = new JLabel("Cadastro");
-		label_1.setBounds(285, 125, 182, 37);
+		label_1.setBounds(286, 106, 182, 37);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 25));
 		add(label_1);
@@ -182,23 +182,23 @@ public class CadastroTVC extends JPanel {
 		add(cbArea);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(229, 160, 299, 2);
+		separator.setBounds(-15, 154, 796, 8);
 		add(separator);
 		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(229, 285, 299, 2);
+		separator_2.setBounds(-15, 285, 796, 8);
 		add(separator_2);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(229, 354, 299, 2);
+		separator_1.setBounds(-15, 358, 796, 8);
 		add(separator_1);
 		
 		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(229, 507, 299, 2);
+		separator_3.setBounds(-15, 508, 796, 8);
 		add(separator_3);
 		
 		JSeparator separator_4 = new JSeparator();
-		separator_4.setBounds(229, 572, 299, 2);
+		separator_4.setBounds(-15, 572, 796, 8);
 		add(separator_4);
 		
 
