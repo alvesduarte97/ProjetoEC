@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
@@ -16,17 +17,26 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+
+import com.br.avaliacoes.ec.excecoes.BancoException;
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.TipoPessoa;
+import com.br.avaliacoes.ec.negocio.PessoaBOImp;
+
 import java.awt.FlowLayout;
 import java.awt.ScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class LoginTVC extends JPanel {
-	private JTextField NomeUsuarioField;
-	private JPasswordField passwordField;
+public class LoginTela extends JPanel {
+	private JTextField txtLogin;
+	private JPasswordField txtSenha;
 	
 	/**
 	 * Create the panel.
 	 */
-	public LoginTVC() {
+	public LoginTela() {
 		
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
@@ -36,11 +46,11 @@ public class LoginTVC extends JPanel {
 		lblNewLabel.setBounds(322, 204, 100, 50);
 		add(lblNewLabel);
 		
-		NomeUsuarioField = new JTextField();
-		NomeUsuarioField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		NomeUsuarioField.setBounds(247, 290, 154, 26);
-		add(NomeUsuarioField);
-		NomeUsuarioField.setColumns(10);
+		txtLogin = new JTextField();
+		txtLogin.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtLogin.setBounds(247, 290, 154, 26);
+		add(txtLogin);
+		txtLogin.setColumns(10);
 		
 		
 		
@@ -49,10 +59,10 @@ public class LoginTVC extends JPanel {
 		lblNewLabel_1.setBounds(247, 265, 86, 14);
 		add(lblNewLabel_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		passwordField.setBounds(247, 365, 154, 26);
-		add(passwordField);
+		txtSenha = new JPasswordField();
+		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		txtSenha.setBounds(247, 365, 154, 26);
+		add(txtSenha);
 		
 		JLabel lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -82,6 +92,38 @@ public class LoginTVC extends JPanel {
 		
 		
 		JButton btnConfirmarLogin = new JButton("Confirmar");
+		btnConfirmarLogin.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				String login = txtLogin.getText();
+				String senha = new String(txtSenha.getPassword());
+				String senhaCrip = PessoaBOImp.criptografar(senha);
+				try {
+					Pessoa pessoa = FachadaImp.getInstanciaFachada().procurarPessoa(login);
+					if(!pessoa.getSenha().equals(senhaCrip)) {
+						txtSenha.setText("");
+						JOptionPane.showMessageDialog(null, "Senha incorreta");
+					}else {
+						PrincipalTela.pessoa = pessoa;
+						if(pessoa.getTipo().equals(TipoPessoa.ORGANIZACAO)) {
+							OrganizadorTela telaOrg = new OrganizadorTela();
+							PrincipalTela.internalFrame.setContentPane(telaOrg);
+							PrincipalTela.internalFrame.revalidate();
+						}else {
+							AvaliacaoTela telaAva = new AvaliacaoTela();
+							PrincipalTela.internalFrame.setContentPane(telaAva);
+							PrincipalTela.internalFrame.revalidate();
+							
+						}
+					}
+				} catch (BancoException e) {
+					txtLogin.setText("");
+					txtSenha.setText("");
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}
+			}
+		});
 		btnConfirmarLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnConfirmarLogin.setBounds(244, 411, 230, 46);
 		add(btnConfirmarLogin);

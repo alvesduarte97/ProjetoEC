@@ -16,8 +16,8 @@ public class Desafios extends BancoEntity<String> {
 	@Id
 	private String nome;
 	
-	private Date dataInicio;
-	private Date dataFim;
+	private String dataInicio;
+	private String dataFim;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy = "Desafio")
 	Set<Avaliacoes> listaAvaliacoes;
@@ -32,19 +32,24 @@ public class Desafios extends BancoEntity<String> {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getDataInicio() {
+	public String getDataInicio() {
 		return dataInicio;
 	}
-	public void setDataInicio(Date dataInicio) {
+	public void setDataInicio(String dataInicio) {
 		this.dataInicio = dataInicio;
 	}
-	public Date getDataFim() {
+	public String getDataFim() {
 		return dataFim;
 	}
-	public void setDataFim(Date dataFim) {
+	public void setDataFim(String dataFim) {
 		this.dataFim = dataFim;
 	}
-
+	public Set<Avaliacoes> getListaAvaliacoes() {
+		return listaAvaliacoes;
+	}
+	public void setListaAvaliacoes(Set<Avaliacoes> listaAvaliacoes) {
+		this.listaAvaliacoes = listaAvaliacoes;
+	}
 	@Override
 	public String getChave() {
 		// TODO Auto-generated method stub

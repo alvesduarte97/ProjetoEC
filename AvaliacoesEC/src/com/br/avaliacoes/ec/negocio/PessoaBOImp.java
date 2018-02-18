@@ -19,26 +19,8 @@ public class PessoaBOImp implements IPessoaBO {
 		if(entity == null) {
 			throw new BancoException("É preciso preencher os campos");
 		}
-		//Metodo para criptografar senha
-		String texto = entity.getSenha();
-		String alfabeto = " <ab@#$%&*(cdefÍÚÃÕ1234ghijklmnopqrstuvwx]}§[{ª!)yzçéáíúóãõABCDEFGHIJKLMNOPQRSTUVWXYZÇÁÉÓ567890.;:?,º_+-=\\/|\'\">";   
-	       char[] t = texto.toCharArray();  
-	        String palavra="";  
-	        
-	        for (int i = 0; i < t.length; i++) {  
-	        	int chave = t.length;
-	            int posicao = alfabeto.indexOf(t[i]) + chave;  
-	  
-	            if (alfabeto.length() <= posicao) {  
-	  
-	                posicao = posicao - alfabeto.length();  
-	  
-	            }
-	  
-	            palavra = palavra + alfabeto.charAt(posicao);  
-	        }//Fim do for
-	      //Setando a senha criptografada no objeto
-		entity.setSenha(palavra);
+
+		entity.setSenha(criptografar(entity.getSenha()));
 		
 		Pessoa pessoaBusca = procurar(entity.getLogin());
 		if(pessoaBusca == null) {
@@ -51,7 +33,12 @@ public class PessoaBOImp implements IPessoaBO {
 
 	@Override
 	public Pessoa procurar(String chave) throws BancoException {
-		return repositorio.procurar(chave);
+		Pessoa pessoaBusca = repositorio.procurar(chave);
+		if(pessoaBusca == null) {
+			throw new BancoException("Login não cadastrado");
+		}else {
+		return pessoaBusca;
+		}
 	}
 
 	@Override
@@ -96,6 +83,26 @@ public class PessoaBOImp implements IPessoaBO {
 		
 		
 		
+	}
+	public static String criptografar(String senha) {
+		String texto = senha;
+		String alfabeto = " <ab@#$%&*(cdefÍÚÃÕ1234ghijklmnopqrstuvwx]}§[{ª!)yzçéáíúóãõABCDEFGHIJKLMNOPQRSTUVWXYZÇÁÉÓ567890.;:?,º_+-=\\/|\'\">";   
+	       char[] t = texto.toCharArray();  
+	        String palavra="";  
+	        
+	        for (int i = 0; i < t.length; i++) {  
+	        	int chave = t.length;
+	            int posicao = alfabeto.indexOf(t[i]) + chave;  
+	  
+	            if (alfabeto.length() <= posicao) {  
+	  
+	                posicao = posicao - alfabeto.length();  
+	  
+	            }
+	  
+	            palavra = palavra + alfabeto.charAt(posicao);  
+	        }
+	        return palavra;
 	}
 
 }

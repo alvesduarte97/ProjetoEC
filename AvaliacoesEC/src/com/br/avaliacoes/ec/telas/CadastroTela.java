@@ -28,7 +28,7 @@ import java.awt.Button;
 import java.awt.Panel;
 import java.awt.TextField;
 
-public class CadastroTVC extends JPanel {
+public class CadastroTela extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
@@ -39,7 +39,7 @@ public class CadastroTVC extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroTVC() {
+	public CadastroTela() {
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
 		

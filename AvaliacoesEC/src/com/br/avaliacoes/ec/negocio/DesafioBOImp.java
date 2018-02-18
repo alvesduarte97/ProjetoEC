@@ -15,7 +15,7 @@ public class DesafioBOImp implements IDesafioBO {
 	
 	@Override
 	public void inserir(Desafios entity) throws BancoException {
-		Desafios desafio = procurar(entity.getChave());
+		Desafios desafio = repositorio.procurar(entity.getChave());
 		if(desafio != null) {
 			throw new BancoException("Desafio ja existe");
 		}
@@ -25,7 +25,7 @@ public class DesafioBOImp implements IDesafioBO {
 
 	@Override
 	public Desafios procurar(String chave) throws BancoException {
-		Desafios desafio = procurar(chave);
+		Desafios desafio = repositorio.procurar(chave);
 		if(desafio == null) {
 			throw new BancoException("Desafio não encontrado");
 		}

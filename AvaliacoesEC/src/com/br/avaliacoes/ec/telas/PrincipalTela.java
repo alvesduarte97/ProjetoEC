@@ -19,6 +19,7 @@ import javax.swing.plaf.InternalFrameUI;
 import org.hibernate.Hibernate;
 
 import com.br.avaliacoes.ec.DAO.HibernateUtil;
+import com.br.avaliacoes.ec.modelo.Pessoa;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,7 +29,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 
-public class MainPanel {
+public class PrincipalTela {
 
 	private JFrame frmTorneioVirtualDe;
 	private Button btnLogin;
@@ -36,7 +37,8 @@ public class MainPanel {
 	private Label label;
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private JInternalFrame internalFrame;
+	static JInternalFrame internalFrame;
+	static Pessoa pessoa;
 
 	/**
 	 * Launch the application.
@@ -45,7 +47,7 @@ public class MainPanel {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainPanel window = new MainPanel();
+					PrincipalTela window = new PrincipalTela();
 					window.frmTorneioVirtualDe.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +59,7 @@ public class MainPanel {
 	/**
 	 * Create the application.
 	 */
-	public MainPanel() {
+	public PrincipalTela() {
 		HibernateUtil.getSessionFactory();
 		initialize();
 	}
@@ -87,14 +89,14 @@ ScrollPane aquiiiiii = new ScrollPane();
 		
 		aquiiiiii.setBounds(21, 23, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(aquiiiiii);
-		internalFrame.setVisible(true);
 		
 		
 		Button button_3;
 		btnCadastroAvaliador = new Button("Cadastro Avaliador");
 		btnCadastroAvaliador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CadastroTVC telaCadastro = new CadastroTVC();
+				
+				CadastroTela telaCadastro = new CadastroTela();
 				internalFrame.setContentPane(telaCadastro);
 				internalFrame.revalidate();
 			}
@@ -111,7 +113,7 @@ ScrollPane aquiiiiii = new ScrollPane();
 			
 			
 			public void actionPerformed(ActionEvent arg0) {
-				LoginTVC telaLogin = new LoginTVC();
+				LoginTela telaLogin = new LoginTela();
 				internalFrame.setContentPane(telaLogin);
 				internalFrame.revalidate();
 				
@@ -131,6 +133,7 @@ ScrollPane aquiiiiii = new ScrollPane();
 		internalFrame.getContentPane().setLayout(null);
 		internalFrame.setBorder(null);
 		internalFrame.setBounds(316, 10, 741, 668);
+		internalFrame.setVisible(true);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);
 		
 		

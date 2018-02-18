@@ -15,7 +15,7 @@ public class GrupoBOImp implements IGrupoBO {
 	
 	@Override
 	public void inserir(Grupo entity) throws BancoException {
-		Grupo grupo = procurar(entity.getChave());
+		Grupo grupo = repositorio.procurar(entity.getChave());
 		if(grupo != null) {
 			throw new BancoException("Grupo ja cadastrado");
 		}
@@ -25,7 +25,7 @@ public class GrupoBOImp implements IGrupoBO {
 
 	@Override
 	public Grupo procurar(Integer chave) throws BancoException {
-		Grupo grupo = procurar(chave);
+		Grupo grupo = repositorio.procurar(chave);
 		if(grupo == null) {
 			throw new BancoException("Grupo não encontrado");
 		}
