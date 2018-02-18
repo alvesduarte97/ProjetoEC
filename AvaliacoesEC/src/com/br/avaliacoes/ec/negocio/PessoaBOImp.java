@@ -22,7 +22,7 @@ public class PessoaBOImp implements IPessoaBO {
 
 		entity.setSenha(criptografar(entity.getSenha()));
 		
-		Pessoa pessoaBusca = procurar(entity.getLogin());
+		Pessoa pessoaBusca = repositorio.procurar(entity.getChave());
 		if(pessoaBusca == null) {
 			repositorio.inserir(entity);
 		}else {
@@ -36,6 +36,7 @@ public class PessoaBOImp implements IPessoaBO {
 		Pessoa pessoaBusca = repositorio.procurar(chave);
 		if(pessoaBusca == null) {
 			throw new BancoException("Login não cadastrado");
+			
 		}else {
 		return pessoaBusca;
 		}
