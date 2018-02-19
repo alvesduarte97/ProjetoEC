@@ -113,7 +113,7 @@ public class CadastroTela extends JPanel {
 					avaliador.setLogin(login);
 					avaliador.setNome(nome);
 					avaliador.setSenha(senha);
-					avaliador.setTipo(TipoPessoa.AVALIADOR);
+					avaliador.setTipo(TipoPessoa.ORGANIZACAO);
 					switch (indexArea) {
 					case 0:
 						break;

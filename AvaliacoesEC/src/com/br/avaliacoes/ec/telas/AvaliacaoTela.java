@@ -111,46 +111,39 @@ public class AvaliacaoTela extends JPanel {
 		add(separator_2);
 		
 		JLabel lblEscola = new JLabel("Escola:");
-		lblEscola.setBounds(267, 25, 36, 14);
+		lblEscola.setBounds(294, 33, 36, 14);
 		add(lblEscola);
 		
 		txtEscola = new TextField();
-		txtEscola.setBounds(306, 25, 198, 22);
+		txtEscola.setBounds(340, 30, 198, 22);
 		add(txtEscola);
 		txtEscola.setEditable(false);
 		txtEscola.setEnabled(false);
 		
 		JLabel lblSerie = new JLabel("Serie:");
-		lblSerie.setBounds(523, 28, 36, 14);
+		lblSerie.setBounds(565, 33, 36, 14);
 		add(lblSerie);
 		
 		txtSerie = new TextField();
-		txtSerie.setBounds(564, 25, 63, 22);
+		txtSerie.setBounds(607, 30, 63, 22);
 		add(txtSerie);
 		txtSerie.setEditable(false);
 		txtSerie.setEnabled(false);
 		
 		JLabel lblDesafio = new JLabel("Desafio:");
-		lblDesafio.setBounds(23, 26, 46, 14);
+		lblDesafio.setBounds(36, 33, 46, 14);
 		add(lblDesafio);
 		
 		txtDesafio = new TextField();
 		txtDesafio.setEnabled(false);
 		txtDesafio.setEditable(false);
-		txtDesafio.setBounds(75, 25, 186, 22);
+		txtDesafio.setBounds(88, 30, 186, 22);
 		add(txtDesafio);
 		
-		JButton btnSair = new JButton("Sair");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PrincipalTela.pessoa = null;
-				LoginTela telaLogin = new LoginTela();
-				PrincipalTela.internalFrame.setContentPane(telaLogin);
-				PrincipalTela.internalFrame.revalidate();
-			}
-		});
-		btnSair.setBounds(633, 21, 89, 23);
-		add(btnSair);
+		JButton button = new JButton("Sair");
+		button.setFont(new Font("Tahoma", Font.BOLD, 15));
+		button.setBounds(650, 601, 80, 56);
+		add(button);
 		frameVideo.setVisible(true);
 
 	}

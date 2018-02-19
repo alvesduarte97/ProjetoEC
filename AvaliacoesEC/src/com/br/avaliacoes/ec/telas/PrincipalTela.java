@@ -69,6 +69,7 @@ public class PrincipalTela {
 	 */
 	private void initialize() {
 		frmTorneioVirtualDe = new JFrame();
+		frmTorneioVirtualDe.getContentPane().setEnabled(false);
 		frmTorneioVirtualDe.setResizable(false);
 		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\tvc.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
@@ -79,7 +80,7 @@ public class PrincipalTela {
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setFont(null);
 		
-ScrollPane aquiiiiii = new ScrollPane();
+ScrollPane ScrollPane1 = new ScrollPane();
 		
 		label = new Label("Menu");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
@@ -87,8 +88,8 @@ ScrollPane aquiiiiii = new ScrollPane();
 		label.setBounds(27, 32, 264, 35);
 		frmTorneioVirtualDe.getContentPane().add(label);
 		
-		aquiiiiii.setBounds(21, 23, 276, 55);
-		frmTorneioVirtualDe.getContentPane().add(aquiiiiii);
+		ScrollPane1.setBounds(21, 23, 276, 55);
+		frmTorneioVirtualDe.getContentPane().add(ScrollPane1);
 		
 		
 		Button button_3;

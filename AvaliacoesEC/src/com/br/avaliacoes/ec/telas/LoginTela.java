@@ -106,7 +106,7 @@ public class LoginTela extends JPanel {
 					}else {
 						PrincipalTela.pessoa = pessoa;
 						if(pessoa.getTipo().equals(TipoPessoa.ORGANIZACAO)) {
-							OrganizadorTela telaOrg = new OrganizadorTela();
+							CadastroEscolaTela telaOrg = new CadastroEscolaTela();
 							PrincipalTela.internalFrame.setContentPane(telaOrg);
 							PrincipalTela.internalFrame.revalidate();
 						}else {
