@@ -27,7 +27,7 @@ public class AvaOrganizadorTela extends AvaliacaoTela{
 		mntmTelaPrincipal.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				OrganizadorTela telaOrg = new OrganizadorTela();
+				CadastroEscolaTela telaOrg = new CadastroEscolaTela();
 				PrincipalTela.internalFrame.setContentPane(telaOrg);
 				PrincipalTela.internalFrame.revalidate();
 			}

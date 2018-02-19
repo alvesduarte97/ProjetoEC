@@ -8,14 +8,19 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import java.awt.Font;
+import java.awt.Panel;
 
 public class BaseOrgTela extends JPanel {
 
 	private JMenuBar menuBar;
-	private JMenuItem mntmAdicionarOrganizador;
+	private JMenuItem mntmAddRemovOrg;
 	private JMenuItem mntmTelaPrincipal;
 	public BaseOrgTela() {
 		setLayout(null);
+		setSize(741,668);
+		
 		
 		menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 790, 21);
@@ -24,8 +29,8 @@ public class BaseOrgTela extends JPanel {
 		JMenu mnOrganizador = new JMenu("Organizador");
 		menuBar.add(mnOrganizador);
 		
-		mntmAdicionarOrganizador = new JMenuItem("Adicionar Organizador");
-		mntmAdicionarOrganizador.addActionListener(new ActionListener() {
+		mntmAddRemovOrg = new JMenuItem("Adicionar/Remover");
+		mntmAddRemovOrg.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				AddOrgTela addOrg = new AddOrgTela();
@@ -38,37 +43,25 @@ public class BaseOrgTela extends JPanel {
 		mntmTelaPrincipal.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				OrganizadorTela telaOrg = new OrganizadorTela();
+				CadastroEscolaTela telaOrg = new CadastroEscolaTela();
 				PrincipalTela.internalFrame.setContentPane(telaOrg);
 				PrincipalTela.internalFrame.revalidate();
 			}
 		});
 		mnOrganizador.add(mntmTelaPrincipal);
-		mnOrganizador.add(mntmAdicionarOrganizador);
-		
-		JMenuItem mntmRemoverOrganizador = new JMenuItem("Remover Organizador");
-		mnOrganizador.add(mntmRemoverOrganizador);
+		mnOrganizador.add(mntmAddRemovOrg);
 		
 		JMenu mnGrupos = new JMenu("Grupos");
 		menuBar.add(mnGrupos);
 		
-		JMenuItem mntmCadastrarGrupo = new JMenuItem("Cadastrar Grupo");
-		mnGrupos.add(mntmCadastrarGrupo);
-		
-		JMenuItem mntmRemoverGrupo = new JMenuItem("Remover Grupo");
-		mnGrupos.add(mntmRemoverGrupo);
+		JMenuItem mntmCadastRemovGrup = new JMenuItem("Cadastrar/Remover");
+		mnGrupos.add(mntmCadastRemovGrup);
 		
 		JMenu mnDesafios = new JMenu("Desafios");
 		menuBar.add(mnDesafios);
 		
-		JMenuItem mntmAtivardesativarDesafio = new JMenuItem("Ativar/Desativar Desafio");
-		mnDesafios.add(mntmAtivardesativarDesafio);
-		
-		JMenuItem mntmCadastrarDesafio = new JMenuItem("Cadastrar Desafio");
-		mnDesafios.add(mntmCadastrarDesafio);
-		
-		JMenuItem mntmRemoverDesafio = new JMenuItem("Remover Desafio");
-		mnDesafios.add(mntmRemoverDesafio);
+		JMenuItem mntmCadastRemovDesafios = new JMenuItem("Cadastrar/Remover");
+		mnDesafios.add(mntmCadastRemovDesafios);
 		
 		JMenu mnAvaliao = new JMenu("Avalia\u00E7\u00E3o");
 		menuBar.add(mnAvaliao);
@@ -87,18 +80,14 @@ public class BaseOrgTela extends JPanel {
 		JMenuItem mntmGerarPdf = new JMenuItem("Gerar PDF");
 		mnAvaliao.add(mntmGerarPdf);
 		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(-19, 588, 796, 2);
+		add(separator);
+		
 		JButton btnSair = new JButton("Sair");
-		btnSair.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				PrincipalTela.pessoa = null;
-				LoginTela telaLogin = new LoginTela();
-				PrincipalTela.internalFrame.setContentPane(telaLogin);
-				PrincipalTela.internalFrame.revalidate();
-			}
-		});
-		btnSair.setBounds(619, 39, 89, 23);
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnSair.setBounds(651, 601, 80, 56);
 		add(btnSair);
 
 	}
-
 }
