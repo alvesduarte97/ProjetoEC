@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import java.awt.TextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollBar;
 
 public class AvaliacaoTela extends JPanel {
 	private JTextArea txtComentario;
@@ -36,6 +37,11 @@ public class AvaliacaoTela extends JPanel {
 		setLayout(null);
 		
 		txtComentario = new JTextArea();
+		txtComentario.setLineWrap(true);
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(553, 527, 17, 63);
+		add(scrollBar);
+		frameVideo.setVisible(true);
 		txtComentario.setBounds(178, 527, 376, 63);
 		add(txtComentario);
 		

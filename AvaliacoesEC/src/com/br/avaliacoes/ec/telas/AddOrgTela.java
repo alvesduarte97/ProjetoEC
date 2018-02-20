@@ -15,6 +15,7 @@ import javax.swing.JMenuItem;
 import javax.swing.AbstractListModel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
 
 public class AddOrgTela extends BaseOrgTela {
 	public AddOrgTela() {
@@ -22,8 +23,15 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JList listOrganizadores = new JList();
 		listOrganizadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JScrollBar scrollBar_1 = new JScrollBar();
+		scrollBar_1.setBounds(635, 268, 17, 104);
+		add(scrollBar_1);
+		
+		
 		listOrganizadores.setBounds(440, 268, 191, 104);
 		add(listOrganizadores);
+		
+		
 		
 		JLabel label = new JLabel("Organizadores");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -33,6 +41,9 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JList listAvaliadores = new JList();
 		listAvaliadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(309, 268, 17, 104);
+		add(scrollBar);
 		listAvaliadores.setModel(new AbstractListModel() {
 			String[] values = new String[] {};
 			public int getSize() {
@@ -44,6 +55,8 @@ public class AddOrgTela extends BaseOrgTela {
 		});
 		listAvaliadores.setBounds(116, 268, 191, 104);
 		add(listAvaliadores);
+		
+		
 		
 		JLabel label_1 = new JLabel("Avaliadores");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);

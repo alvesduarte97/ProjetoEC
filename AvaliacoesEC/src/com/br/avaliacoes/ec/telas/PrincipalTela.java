@@ -61,7 +61,7 @@ public class PrincipalTela {
 	 * Create the application.
 	 */
 	public PrincipalTela() {
-		HibernateUtil.getSessionFactory();
+		//HibernateUtil.getSessionFactory();
 		initialize();
 	}
 

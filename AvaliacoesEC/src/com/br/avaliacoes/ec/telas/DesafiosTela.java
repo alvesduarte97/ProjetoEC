@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JList;
+import javax.swing.JScrollBar;
 
 public class DesafiosTela extends BaseOrgTela {
 	private JTextField textField;
@@ -68,6 +69,9 @@ public class DesafiosTela extends BaseOrgTela {
 		
 		JList listDesafios = new JList();
 		listDesafios.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(518, 348, 17, 108);
+		add(scrollBar);
 		listDesafios.setBounds(209, 347, 310, 109);
 		add(listDesafios);
 		
@@ -84,5 +88,7 @@ public class DesafiosTela extends BaseOrgTela {
 		btnRenomear.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRenomear.setBounds(209, 534, 310, 25);
 		add(btnRenomear);
+		
+		
 	}
 }
