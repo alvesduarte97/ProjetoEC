@@ -37,7 +37,7 @@ public class LoginTela extends JPanel {
 	 * Create the panel.
 	 */
 	public LoginTela() {
-		
+		setSize(741, 668);
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
 		
@@ -69,16 +69,8 @@ public class LoginTela extends JPanel {
 		lblNewLabel_2.setBounds(247, 340, 86, 14);
 		add(lblNewLabel_2);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(211, 327, 309, 2);
-		add(separator);
-		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(211, 402, 309, 2);
-		add(separator_1);
-		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(211, 252, 309, 2);
+		separator_2.setBounds(-24, 252, 877, 2);
 		add(separator_2);
 		
 		JLabel Imagem2 = new JLabel("New label");
@@ -136,9 +128,13 @@ public class LoginTela extends JPanel {
 		Imagem1.setIcon(new ImageIcon(imagi2));
 		add(Imagem1);
 		
-		JSeparator separator_3 = new JSeparator();
-		separator_3.setBounds(211, 466, 309, 2);
-		add(separator_3);
+		JSeparator separator = new JSeparator();
+		separator.setBounds(-74, 402, 877, 2);
+		add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(-74, 468, 877, 2);
+		add(separator_1);
 		
 		
 		

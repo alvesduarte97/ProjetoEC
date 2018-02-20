@@ -28,6 +28,7 @@ import javax.swing.JDesktopPane;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 
 public class PrincipalTela {
 
@@ -71,7 +72,7 @@ public class PrincipalTela {
 		frmTorneioVirtualDe = new JFrame();
 		frmTorneioVirtualDe.getContentPane().setEnabled(false);
 		frmTorneioVirtualDe.setResizable(false);
-		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\tvc.png"));
+		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
 		frmTorneioVirtualDe.setBounds(100, 100, 1073, 717);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -85,10 +86,10 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		label = new Label("Menu");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
 		label.setAlignment(Label.CENTER);
-		label.setBounds(27, 32, 264, 35);
+		label.setBounds(33, 20, 264, 35);
 		frmTorneioVirtualDe.getContentPane().add(label);
 		
-		ScrollPane1.setBounds(21, 23, 276, 55);
+		ScrollPane1.setBounds(21, 10, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(ScrollPane1);
 		
 		
@@ -103,7 +104,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 			}
 		});
 		btnCadastroAvaliador.setFont(new Font("Dialog", Font.BOLD, 20));
-		btnCadastroAvaliador.setBounds(21, 237, 276, 55);
+		btnCadastroAvaliador.setBounds(21, 189, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(btnCadastroAvaliador);
 		
 		Button button_2;
@@ -122,18 +123,19 @@ ScrollPane ScrollPane1 = new ScrollPane();
 			}
 		});
 		btnLogin.setFont(new Font("Dialog", Font.BOLD, 20));
-		btnLogin.setBounds(21, 155, 276, 55);
+		btnLogin.setBounds(21, 105, 276, 55);
 		frmTorneioVirtualDe.getContentPane().add(btnLogin);
 		
-		scrollPane.setBounds(10, 10, 300, 306);
+		scrollPane.setBounds(10, 0, 300, 257);
 		frmTorneioVirtualDe.getContentPane().add(scrollPane);
 		
 		internalFrame = new JInternalFrame("");
+		internalFrame.setFrameIcon(null);
 		internalFrame.setEnabled(false);
 		internalFrame.getContentPane().setEnabled(false);
 		internalFrame.getContentPane().setLayout(null);
 		internalFrame.setBorder(null);
-		internalFrame.setBounds(316, 10, 741, 668);
+		internalFrame.setBounds(316, -24, 741, 713);
 		internalFrame.setVisible(true);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);
 		
