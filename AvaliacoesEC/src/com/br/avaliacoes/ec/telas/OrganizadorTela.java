@@ -25,10 +25,6 @@ public class OrganizadorTela extends BaseOrgTela {
 		lblStatus.setBounds(0, 52, 741, 24);
 		add(lblStatus);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(-25, 588, 796, 2);
-		add(separator);
-		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(-25, 107, 796, 2);
 		add(separator_1);

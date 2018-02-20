@@ -11,13 +11,13 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JList;
 
-public class CadastroDesafio extends BaseOrgTela {
+public class DesafiosTela extends BaseOrgTela {
 	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
-	public CadastroDesafio() {
+	public DesafiosTela() {
 		setSize(741, 668);
 		
 		JSeparator separator = new JSeparator();

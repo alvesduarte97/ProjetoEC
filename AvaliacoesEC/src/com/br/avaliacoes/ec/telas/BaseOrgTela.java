@@ -43,7 +43,7 @@ public class BaseOrgTela extends JPanel {
 		mntmTelaPrincipal.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				CadastroEscolaTela telaOrg = new CadastroEscolaTela();
+				OrganizadorTela telaOrg = new OrganizadorTela();
 				PrincipalTela.internalFrame.setContentPane(telaOrg);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -55,12 +55,26 @@ public class BaseOrgTela extends JPanel {
 		menuBar.add(mnGrupos);
 		
 		JMenuItem mntmCadastRemovGrup = new JMenuItem("Cadastrar/Remover");
+		mntmCadastRemovGrup.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadastroGrupoTela cadGru  = new CadastroGrupoTela();
+				PrincipalTela.internalFrame.setContentPane(cadGru);
+				PrincipalTela.internalFrame.revalidate();
+			}
+		});
 		mnGrupos.add(mntmCadastRemovGrup);
 		
 		JMenu mnDesafios = new JMenu("Desafios");
 		menuBar.add(mnDesafios);
 		
 		JMenuItem mntmCadastRemovDesafios = new JMenuItem("Cadastrar/Remover");
+		mntmCadastRemovDesafios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DesafiosTela desTela = new DesafiosTela();
+				PrincipalTela.internalFrame.setContentPane(desTela);
+				PrincipalTela.internalFrame.revalidate();
+			}
+		});
 		mnDesafios.add(mntmCadastRemovDesafios);
 		
 		JMenu mnAvaliao = new JMenu("Avalia\u00E7\u00E3o");
@@ -81,10 +95,17 @@ public class BaseOrgTela extends JPanel {
 		mnAvaliao.add(mntmGerarPdf);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(-19, 588, 796, 2);
+		separator.setBounds(-3, 593, 790, 2);
 		add(separator);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginTela logTela = new LoginTela();
+				PrincipalTela.internalFrame.setContentPane(logTela);
+				PrincipalTela.internalFrame.revalidate();
+			}
+		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnSair.setBounds(651, 601, 80, 56);
 		add(btnSair);

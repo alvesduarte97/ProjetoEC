@@ -22,13 +22,13 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JList listOrganizadores = new JList();
 		listOrganizadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		listOrganizadores.setBounds(415, 268, 168, 104);
+		listOrganizadores.setBounds(440, 268, 191, 104);
 		add(listOrganizadores);
 		
 		JLabel label = new JLabel("Organizadores");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(415, 233, 168, 24);
+		label.setBounds(440, 233, 168, 24);
 		add(label);
 		
 		JList listAvaliadores = new JList();
@@ -42,13 +42,13 @@ public class AddOrgTela extends BaseOrgTela {
 				return values[index];
 			}
 		});
-		listAvaliadores.setBounds(162, 268, 168, 104);
+		listAvaliadores.setBounds(116, 268, 191, 104);
 		add(listAvaliadores);
 		
 		JLabel label_1 = new JLabel("Avaliadores");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_1.setBounds(162, 233, 168, 24);
+		label_1.setBounds(139, 233, 168, 24);
 		add(label_1);
 		
 		JLabel lblConfigurao = new JLabel("Reger Organizador");
@@ -58,12 +58,12 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JButton btnConfirmarAvali = new JButton(">>>");
 		btnConfirmarAvali.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnConfirmarAvali.setBounds(340, 268, 65, 45);
+		btnConfirmarAvali.setBounds(336, 268, 76, 45);
 		add(btnConfirmarAvali);
 		
 		JButton btnRemoverOrg = new JButton("<<<");
 		btnRemoverOrg.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnRemoverOrg.setBounds(340, 327, 65, 45);
+		btnRemoverOrg.setBounds(336, 327, 76, 45);
 		add(btnRemoverOrg);
 		
 		JSeparator separator_1 = new JSeparator();

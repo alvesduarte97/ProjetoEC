@@ -29,7 +29,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 
-public class CadastroEscolaTela extends BaseOrgTela {
+public class CadastroGrupoTela extends BaseOrgTela {
 	private JTextField txtNomeGrupo;
 	private JTextField txtProfOrient;
 	private JComboBox cbRegiao;
@@ -38,7 +38,7 @@ public class CadastroEscolaTela extends BaseOrgTela {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroEscolaTela() {
+	public CadastroGrupoTela() {
 		setLayout(null);
 		
 		JLabel label = new JLabel("");

@@ -141,6 +141,13 @@ public class AvaliacaoTela extends JPanel {
 		add(txtDesafio);
 		
 		JButton button = new JButton("Sair");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginTela logTela = new LoginTela();
+				PrincipalTela.internalFrame.setContentPane(logTela);
+				PrincipalTela.internalFrame.revalidate();
+			}
+		});
 		button.setFont(new Font("Tahoma", Font.BOLD, 15));
 		button.setBounds(650, 601, 80, 56);
 		add(button);
