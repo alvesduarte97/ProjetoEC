@@ -3,13 +3,16 @@ package com.br.avaliacoes.ec.telas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Panel;
 
 public class BaseOrgTela extends JPanel {
@@ -107,8 +110,9 @@ public class BaseOrgTela extends JPanel {
 			}
 		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSair.setBounds(651, 601, 80, 56);
+		btnSair.setBounds(7, 601, 80, 56);
 		add(btnSair);
-
+		
+		
 	}
 }

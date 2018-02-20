@@ -5,6 +5,7 @@ import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,15 +14,18 @@ import javax.swing.JSeparator;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
+import javax.swing.border.BevelBorder;
 
 public class AddOrgTela extends BaseOrgTela {
 	public AddOrgTela() {
 		setLayout(null);
 		
 		JList listOrganizadores = new JList();
+		listOrganizadores.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listOrganizadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JScrollBar scrollBar_1 = new JScrollBar();
 		scrollBar_1.setBounds(635, 268, 17, 104);
@@ -40,6 +44,7 @@ public class AddOrgTela extends BaseOrgTela {
 		add(label);
 		
 		JList listAvaliadores = new JList();
+		listAvaliadores.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listAvaliadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(309, 268, 17, 104);
@@ -87,6 +92,18 @@ public class AddOrgTela extends BaseOrgTela {
 		separator.setBounds(-17, 383, 796, 2);
 		add(separator);
 
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
+		
+		
+		
+		
+		
 	}
 
 }

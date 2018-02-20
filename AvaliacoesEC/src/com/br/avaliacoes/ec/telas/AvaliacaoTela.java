@@ -4,9 +4,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JInternalFrame;
@@ -158,6 +161,14 @@ public class AvaliacaoTela extends JPanel {
 		button.setBounds(650, 601, 80, 56);
 		add(button);
 		frameVideo.setVisible(true);
+		
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
 
 	}
 }
