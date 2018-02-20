@@ -1,10 +1,13 @@
 package com.br.avaliacoes.ec.fachada;
 
+import java.util.List;
+
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 public interface IFachada {
 
@@ -12,6 +15,7 @@ public interface IFachada {
 	Pessoa procurarPessoa(String login) throws BancoException;
     void atualizarPessoa(Pessoa pessoa) throws BancoException;
 	void removerPessoa(String login) throws BancoException;
+	List<Pessoa> listaPessoas(TipoPessoa tipoPessoa);
 	
 	void inserirDesafios(Desafios desafio) throws BancoException;
     Desafios procurarDesafios(String nome) throws BancoException;

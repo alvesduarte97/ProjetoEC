@@ -7,29 +7,45 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JSeparator;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
+import javax.swing.DefaultListModel;
 import javax.swing.SwingConstants;
+
+import com.br.avaliacoes.ec.excecoes.BancoException;
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.TipoPessoa;
+
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class AddOrgTela extends BaseOrgTela {
+	private JButton btnAvaToOrg;
+	private JButton btnOrgToAva;
 	public AddOrgTela() {
 		setLayout(null);
 		
-		JList listOrganizadores = new JList();
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(440, 268, 191, 104);
+		add(scrollPane_1);
+		
+		DefaultListModel modelOrg =  new DefaultListModel();
+		List<Pessoa> listaOrg = FachadaImp.getInstanciaFachada().listaPessoas(TipoPessoa.ORGANIZACAO);
+		for(Pessoa pessoa : listaOrg) {
+			modelOrg.addElement(pessoa.getNome());
+		}
+		
+		JList listOrganizadores = new JList(modelOrg);
+		scrollPane_1.setViewportView(listOrganizadores);
 		listOrganizadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		JScrollBar scrollBar_1 = new JScrollBar();
-		scrollBar_1.setBounds(635, 268, 17, 104);
-		add(scrollBar_1);
-		
-		
-		listOrganizadores.setBounds(440, 268, 191, 104);
-		add(listOrganizadores);
 		
 		
 		
@@ -39,22 +55,20 @@ public class AddOrgTela extends BaseOrgTela {
 		label.setBounds(440, 233, 168, 24);
 		add(label);
 		
-		JList listAvaliadores = new JList();
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(116, 268, 191, 104);
+		add(scrollPane);
+		
+		DefaultListModel modelAva = new DefaultListModel();
+		List<Pessoa> listAva = FachadaImp.getInstanciaFachada().listaPessoas(TipoPessoa.AVALIADOR);
+		for(Pessoa pessoa : listAva) {
+			modelAva.addElement(pessoa.getNome());
+		}
+		
+		JList listAvaliadores = new JList(modelAva);
+		scrollPane.setViewportView(listAvaliadores);
 		listAvaliadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(309, 268, 17, 104);
-		add(scrollBar);
-		listAvaliadores.setModel(new AbstractListModel() {
-			String[] values = new String[] {};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		listAvaliadores.setBounds(116, 268, 191, 104);
-		add(listAvaliadores);
+		
 		
 		
 		
@@ -69,15 +83,58 @@ public class AddOrgTela extends BaseOrgTela {
 		lblConfigurao.setBounds(279, 185, 197, 24);
 		add(lblConfigurao);
 		
-		JButton btnConfirmarAvali = new JButton(">>>");
-		btnConfirmarAvali.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnConfirmarAvali.setBounds(336, 268, 76, 45);
-		add(btnConfirmarAvali);
+		btnAvaToOrg = new JButton(">>>");
+		btnAvaToOrg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String nomeAva = (String) listAvaliadores.getSelectedValue();
+				for(Pessoa pessoa : listAva) {
+					if(pessoa.getNome().equals(nomeAva)) {
+						pessoa.setTipo(TipoPessoa.ORGANIZACAO);
+						try {
+							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+							modelAva.removeElement(pessoa.getNome());
+							modelOrg.addElement(pessoa.getNome());
+							listAva.remove(pessoa);
+							listaOrg.add(pessoa);
+							break;
+						} catch (BancoException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+						}
+					}
+				}
+			}
+		});
+		btnAvaToOrg.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAvaToOrg.setBounds(336, 268, 76, 45);
+		add(btnAvaToOrg);
 		
-		JButton btnRemoverOrg = new JButton("<<<");
-		btnRemoverOrg.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnRemoverOrg.setBounds(336, 327, 76, 45);
-		add(btnRemoverOrg);
+		btnOrgToAva = new JButton("<<<");
+		btnOrgToAva.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				String nomeOrg = (String) listOrganizadores.getSelectedValue();
+				for(Pessoa pessoa: listaOrg) {
+					if(pessoa.getNome().equals(nomeOrg)) {
+						pessoa.setTipo(TipoPessoa.AVALIADOR);
+						try {
+							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+							modelOrg.removeElement(pessoa.getNome());
+							modelAva.addElement(pessoa.getNome());
+							listaOrg.remove(pessoa);
+							listAva.add(pessoa);
+							break;
+						} catch (BancoException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+						}
+					}
+				}
+			}
+		});
+		btnOrgToAva.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnOrgToAva.setBounds(336, 327, 76, 45);
+		add(btnOrgToAva);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(-55, 220, 796, 2);
@@ -88,5 +145,4 @@ public class AddOrgTela extends BaseOrgTela {
 		add(separator);
 
 	}
-
 }

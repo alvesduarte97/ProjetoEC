@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 
 public class CadastroGrupoTela extends BaseOrgTela {
 	private JTextField txtNomeGrupo;
@@ -45,7 +46,7 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		label.setBounds(322, 5, 0, 0);
 		add(label);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nome da grupo:");
+		JLabel lblNewLabel_1 = new JLabel("Nome da Escola:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(223, 83, 127, 24);
 		add(lblNewLabel_1);
@@ -170,10 +171,13 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		lblEscolasCadastradas.setBounds(0, 350, 741, 24);
 		add(lblEscolasCadastradas);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(223, 385, 293, 133);
+		add(scrollPane);
+		
 		JList listGrupoCadastrada = new JList();
+		scrollPane.setViewportView(listGrupoCadastrada);
 		listGrupoCadastrada.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		listGrupoCadastrada.setBounds(223, 385, 293, 133);
-		add(listGrupoCadastrada);
 		
 		JButton btnRemovEscola = new JButton("Remover");
 		btnRemovEscola.setFont(new Font("Tahoma", Font.PLAIN, 15));

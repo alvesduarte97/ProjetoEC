@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.negocio;
 
+import java.util.List;
+
 import com.br.avaliacoes.ec.DAO.IPessoaDAO;
 import com.br.avaliacoes.ec.DAO.PessoaDAOImp;
 import com.br.avaliacoes.ec.excecoes.BancoException;
@@ -46,10 +48,6 @@ public class PessoaBOImp implements IPessoaBO {
 	public void atualizar(Pessoa entity) throws BancoException {
 		if(entity == null) {
 			throw new BancoException("Preencha ao menos um campo para ser atualizado");
-		}
-		
-		if(procurar(entity.getLogin()) != null) {
-			throw new BancoException("Login escolhido ja existe");
 		}
 		
 		repositorio.atualizar(entity);
@@ -104,6 +102,11 @@ public class PessoaBOImp implements IPessoaBO {
 	            palavra = palavra + alfabeto.charAt(posicao);  
 	        }
 	        return palavra;
+	}
+
+	@Override
+	public List<Pessoa> listaPessoa(TipoPessoa tipoPessoa) {
+		return repositorio.listaPessoas(tipoPessoa);
 	}
 
 }

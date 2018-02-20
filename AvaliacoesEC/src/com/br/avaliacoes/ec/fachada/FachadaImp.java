@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.fachada;
 
+import java.util.List;
+
 import com.br.avaliacoes.ec.DAO.AvaliacoesDAOImp;
 import com.br.avaliacoes.ec.DAO.DesafiosDAOImp;
 import com.br.avaliacoes.ec.DAO.GrupoDAOImp;
@@ -13,6 +15,7 @@ import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.AvaliacoesBOImp;
 import com.br.avaliacoes.ec.negocio.DesafioBOImp;
 import com.br.avaliacoes.ec.negocio.GrupoBOImp;
@@ -129,6 +132,11 @@ public class FachadaImp implements IFachada{
 	@Override
 	public void removerAvaliacoes(Integer idAvaliacao) throws BancoException {
 		negocioAvaliacao.remover(idAvaliacao);
+	}
+
+	@Override
+	public List<Pessoa> listaPessoas(TipoPessoa tipoPessoa) {
+		return negocioPessoa.listaPessoa(tipoPessoa);
 	}
 
 }

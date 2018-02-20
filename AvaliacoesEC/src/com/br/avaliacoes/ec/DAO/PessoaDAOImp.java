@@ -1,10 +1,18 @@
 package com.br.avaliacoes.ec.DAO;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 public class PessoaDAOImp implements IPessoaDAO {
 
@@ -64,24 +72,30 @@ public class PessoaDAOImp implements IPessoaDAO {
 		session.close();
 	}
 
-	public static void main(String[] args) {
-		PessoaDAOImp busca = new PessoaDAOImp();
-		Pessoa pessoa = new Pessoa();
-//		pessoa.setArea(AreaAtuacao.CORDENACAO);
-//		pessoa.setLogin("ADM");
-//		pessoa.setNome("Admnistrador");
-//		pessoa.setSenha("adm123");
-//		pessoa.setTipo(TipoPessoa.ORGANIZACAO);
-
-		try {
-			pessoa = busca.procurar("ADM");
-			//busca.remover("ADM");
-		} catch (BancoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(pessoa.getArea());
-		System.out.println(pessoa.getNome());
+	public List<Pessoa> listaPessoas(TipoPessoa tipoPessoa){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Pessoa.class);
+		criteria.add(Restrictions.eq("tipo", tipoPessoa));
+		criteria.addOrder(Order.asc("nome"));
+		List<Pessoa> lista = criteria.list();
+		session.close();
+		return lista;
 	}
+	
+	public static void main(String[] args) {
+		PessoaDAOImp dao = new PessoaDAOImp();
+			List<Pessoa> lista = dao.listaPessoas(TipoPessoa.ORGANIZACAO);
+			String finalStr = "";
+			for (Pessoa str : lista) {
+				if (finalStr.trim().isEmpty()) {
+					finalStr = str.getNome();
+				} else {
+					finalStr = finalStr + "," + str.getNome();
+				}
+			}
+			System.out.println (finalStr);
+	}
+	
+	
 
 }
