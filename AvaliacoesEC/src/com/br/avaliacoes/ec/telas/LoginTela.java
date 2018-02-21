@@ -2,32 +2,24 @@ package com.br.avaliacoes.ec.telas;
 
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
-
-import java.awt.FlowLayout;
-import java.awt.ScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class LoginTela extends JPanel {
 	private JTextField txtLogin;
@@ -138,7 +130,13 @@ public class LoginTela extends JPanel {
 		
 		
 		
-		
+//		JLabel Imagem2 = new JLabel("New label");
+//		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+//		Imagem2.setBounds(0, 21, 741, 647);
+//		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+//		
+//		Imagem2.setIcon(new ImageIcon(imagi));
+//		add(Imagem2);
 		
 		
 		

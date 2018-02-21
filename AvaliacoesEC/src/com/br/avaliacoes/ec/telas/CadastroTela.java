@@ -11,6 +11,7 @@ import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Label;
 
 import javax.swing.JLabel;
@@ -21,6 +22,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.ScrollPane;
@@ -42,6 +45,7 @@ public class CadastroTela extends JPanel {
 	public CadastroTela() {
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
+		setSize(741, 668);
 		
 		JLabel label = new JLabel("\u00C1rea de atua\u00E7\u00E3o:");
 		label.setBounds(229, 367, 126, 14);
@@ -113,7 +117,7 @@ public class CadastroTela extends JPanel {
 					avaliador.setLogin(login);
 					avaliador.setNome(nome);
 					avaliador.setSenha(senha);
-					avaliador.setTipo(TipoPessoa.ORGANIZACAO);
+					avaliador.setTipo(TipoPessoa.AVALIADOR);
 					switch (indexArea) {
 					case 0:
 						break;
@@ -201,6 +205,13 @@ public class CadastroTela extends JPanel {
 		separator_4.setBounds(-15, 572, 796, 8);
 		add(separator_4);
 		
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
 
 		
 

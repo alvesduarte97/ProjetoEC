@@ -5,6 +5,7 @@ import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
@@ -26,6 +28,7 @@ import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.border.BevelBorder;
 
 public class AddOrgTela extends BaseOrgTela {
 	private JButton btnAvaToOrg;
@@ -67,6 +70,7 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JList listAvaliadores = new JList(modelAva);
 		scrollPane.setViewportView(listAvaliadores);
+		listAvaliadores.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listAvaliadores.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		
@@ -144,5 +148,17 @@ public class AddOrgTela extends BaseOrgTela {
 		separator.setBounds(-17, 383, 796, 2);
 		add(separator);
 
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
+		
+		
+		
+		
+		
 	}
 }

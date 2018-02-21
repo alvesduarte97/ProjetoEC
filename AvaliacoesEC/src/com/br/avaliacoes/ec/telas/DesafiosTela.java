@@ -4,13 +4,17 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JTextPane;
 import javax.swing.JList;
 import javax.swing.JScrollBar;
+import javax.swing.border.BevelBorder;
 
 public class DesafiosTela extends BaseOrgTela {
 	private JTextField textField;
@@ -68,6 +72,7 @@ public class DesafiosTela extends BaseOrgTela {
 		add(txtRenomear);
 		
 		JList listDesafios = new JList();
+		listDesafios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listDesafios.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JScrollBar scrollBar = new JScrollBar();
 		scrollBar.setBounds(518, 348, 17, 108);
@@ -88,6 +93,14 @@ public class DesafiosTela extends BaseOrgTela {
 		btnRenomear.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnRenomear.setBounds(209, 534, 310, 25);
 		add(btnRenomear);
+		
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
 		
 		
 	}

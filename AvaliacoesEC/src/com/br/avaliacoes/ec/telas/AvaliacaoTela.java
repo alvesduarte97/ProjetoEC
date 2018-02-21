@@ -1,23 +1,22 @@
 package com.br.avaliacoes.ec.telas;
 
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JEditorPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JSeparator;
-import javax.swing.JTextPane;
-import javax.swing.JTextField;
+import java.awt.Image;
+import java.awt.Panel;
 import java.awt.TextField;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JScrollBar;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
 
 public class AvaliacaoTela extends JPanel {
 	private JTextArea txtComentario;
@@ -95,15 +94,7 @@ public class AvaliacaoTela extends JPanel {
 		btnConfirmar.setBounds(178, 601, 376, 56);
 		add(btnConfirmar);
 		
-		frameVideo = new JInternalFrame("                                                                                                            Video");
-		frameVideo.setBorder(null);
-		frameVideo.setEnabled(false);
-		frameVideo.setBounds(36, 58, 675, 325);
-		frameVideo.getContentPane().setLayout(null);
-		frameVideo.getContentPane().setEnabled(false);
-		frameVideo.setVisible(true);
-		add(frameVideo);
-		
+
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(-27, 594, 796, 8);
@@ -158,7 +149,22 @@ public class AvaliacaoTela extends JPanel {
 		button.setFont(new Font("Tahoma", Font.BOLD, 15));
 		button.setBounds(650, 601, 80, 56);
 		add(button);
-		frameVideo.setVisible(true);
+		//frameVideo.setVisible(true);
+
+		
+		JLabel Imagem2 = new JLabel("New label");
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem2.setBounds(0, 21, 741, 647);
+		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		
+		Imagem2.setIcon(new ImageIcon(imagi));
+		add(Imagem2);
+		
+		Panel panel = new Panel();
+		panel.setBounds(83, 45, 589, 340);
+		add(panel);
 
 	}
-}
+
+	}
+
