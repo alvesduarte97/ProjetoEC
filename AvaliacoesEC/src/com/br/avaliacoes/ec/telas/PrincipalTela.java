@@ -155,39 +155,30 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		ScrollPane scrollPane_2 = new ScrollPane();
 		
 		scrollPane_2.setBounds(136, 435, 100, 100);
-		panel.add(scrollPane_2);
+		panel.add(scrollPane_2);					
+	
 		
 		
-		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/LOGOTVC.png");
-		Imagem2.setBounds(10, 342, 300, 300);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
-		
-		Imagem2.setIcon(new ImageIcon(imagi));
-		frmTorneioVirtualDe.getContentPane().add(Imagem2);
 		
 		
-		JLabel Imagem1 = new JLabel("New label");
-		ImageIcon icone2 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Rodape.png");
-		Imagem1.setBounds(0, 691, 1067, 35);
-		Image imagi2 = icone2.getImage().getScaledInstance(Imagem1.getWidth(),Imagem1.getHeight(), Image.SCALE_SMOOTH);
 		
-		Imagem1.setIcon(new ImageIcon(imagi2));
-		frmTorneioVirtualDe.getContentPane().add(Imagem1);
 		
-		JLabel Imagem3 = new JLabel("New label");
-		ImageIcon icone3 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/LogoTVC.png");
-		Imagem3.setBounds(10, 336, 300, 300);
+		
+		JLabel Imagem3 = new JLabel("");
+		ImageIcon icone3 =new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png"));
+		Imagem3.setBounds(0, 324, 177, 99);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
-		
 		Imagem3.setIcon(new ImageIcon(imagi3));
+		//Imagem3.setIcon(new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png")));
 		frmTorneioVirtualDe.getContentPane().add(Imagem3);
 		
-		Imagem1.setIcon(new ImageIcon(imagi2));
-		frmTorneioVirtualDe.getContentPane().add(Imagem1);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png")));
+		lblNewLabel.setBounds(44, 456, 143, 179);
+		frmTorneioVirtualDe.getContentPane().add(lblNewLabel);
 		
 		
-	
+		
 		
 		
 	}
