@@ -64,7 +64,7 @@ public class PrincipalTela {
 	 * Create the application.
 	 */
 	public PrincipalTela() {
-		//HibernateUtil.getSessionFactory();
+		HibernateUtil.getSessionFactory();
 		initialize();
 	}
 
@@ -78,7 +78,7 @@ public class PrincipalTela {
 		frmTorneioVirtualDe.setResizable(false);
 		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
-		frmTorneioVirtualDe.setBounds(100, 100, 1073, 754);
+		frmTorneioVirtualDe.setBounds(100, 100, 1073, 758);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTorneioVirtualDe.getContentPane().setLayout(null);
 		
@@ -90,7 +90,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		label = new Label("Menu");
 		label.setFont(new Font("Dialog", Font.BOLD, 30));
 		label.setAlignment(Label.CENTER);
-		label.setBounds(33, 20, 257, 35);
+		label.setBounds(33, 20, 258, 35);
 		frmTorneioVirtualDe.getContentPane().add(label);
 		
 		ScrollPane1.setBounds(21, 10, 276, 55);
@@ -175,7 +175,16 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		Imagem1.setIcon(new ImageIcon(imagi2));
 		frmTorneioVirtualDe.getContentPane().add(Imagem1);
 		
+		JLabel Imagem3 = new JLabel("New label");
+		ImageIcon icone3 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/LogoTVC.png");
+		Imagem3.setBounds(10, 336, 300, 300);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		frmTorneioVirtualDe.getContentPane().add(Imagem3);
+		
+		Imagem1.setIcon(new ImageIcon(imagi2));
+		frmTorneioVirtualDe.getContentPane().add(Imagem1);
 		
 		
 	

@@ -110,7 +110,8 @@ public class BaseOrgTela extends JPanel {
 			}
 		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnSair.setBounds(7, 601, 80, 56);
+		//btnSair.setBounds(7, 601, 80, 56);
+		btnSair.setBounds(10, 601, 80, 56);
 		add(btnSair);
 		
 		

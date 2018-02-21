@@ -205,13 +205,16 @@ public class CadastroTela extends JPanel {
 		separator_4.setBounds(-15, 572, 796, 8);
 		add(separator_4);
 		
-		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
-		Imagem2.setBounds(0, 21, 741, 647);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+
+
+		JLabel Imagem3 = new JLabel("New label");
+		ImageIcon icone3 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		Imagem3.setBounds(0, 0, 741, 668);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		
-		Imagem2.setIcon(new ImageIcon(imagi));
-		add(Imagem2);
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		add(Imagem3);
+		
 
 		
 

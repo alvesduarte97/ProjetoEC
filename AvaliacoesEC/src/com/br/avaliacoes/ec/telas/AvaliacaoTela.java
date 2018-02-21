@@ -152,17 +152,17 @@ public class AvaliacaoTela extends JPanel {
 		//frameVideo.setVisible(true);
 
 		
-		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
-		Imagem2.setBounds(0, 21, 741, 647);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		//JLabel Imagem2 = new JLabel("New label");
+		//ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
+		//Imagem2.setBounds(0, 21, 741, 647);
+		//Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
 		
-		Imagem2.setIcon(new ImageIcon(imagi));
-		add(Imagem2);
+		//Imagem2.setIcon(new ImageIcon(imagi));
+		//add(Imagem2);
 		
-		Panel panel = new Panel();
-		panel.setBounds(83, 45, 589, 340);
-		add(panel);
+		//Panel panel = new Panel();
+		//panel.setBounds(83, 45, 589, 340);
+		//add(panel);
 
 	}
 
