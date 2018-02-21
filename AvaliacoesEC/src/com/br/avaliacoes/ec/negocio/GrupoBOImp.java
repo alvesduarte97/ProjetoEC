@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.negocio;
 
+import java.util.List;
+
 import com.br.avaliacoes.ec.DAO.IGrupoDAO;
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Grupo;
@@ -50,6 +52,11 @@ public class GrupoBOImp implements IGrupoBO {
 		}
 		repositorio.remover(chave);
 		
+	}
+
+	@Override
+	public List<Grupo> listaGrupos() {
+		return repositorio.listaGrupos();
 	}
 
 }

@@ -1,38 +1,29 @@
 package com.br.avaliacoes.ec.telas;
 
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
-import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Regiao;
-import com.br.avaliacoes.ec.modelo.StatusDesafio;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.SwingConstants;
-import javax.swing.JList;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-
-public class CadastroGrupoTela extends BaseOrgTela {
+public class GrupoTela extends BaseOrgTela {
 	private JTextField txtNomeGrupo;
 	private JTextField txtProfOrient;
 	private JComboBox cbRegiao;
@@ -41,7 +32,7 @@ public class CadastroGrupoTela extends BaseOrgTela {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroGrupoTela() {
+	public GrupoTela() {
 		setLayout(null);
 		
 		JLabel label = new JLabel("");
@@ -49,29 +40,29 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(label);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nome da Escola:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_1.setBounds(219, 107, 127, 24);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Serie:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_2.setBounds(219, 214, 46, 24);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Regi\u00E3o:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_3.setBounds(219, 179, 73, 24);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_3);
 		
 		txtNomeGrupo = new JTextField();
-		txtNomeGrupo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtNomeGrupo.setBounds(380, 107, 132, 24);
+		txtNomeGrupo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(txtNomeGrupo);
 		txtNomeGrupo.setColumns(10);
 		
 		cbSerie = new JComboBox();
-		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		cbSerie.setBounds(380, 216, 132, 24);
+		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		cbSerie.addItem("Selecione");
 		cbSerie.addItem("1ª Serie");
 		cbSerie.addItem("2ª Serie");
@@ -81,13 +72,13 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(cbSerie);
 		
 		JLabel lblNewLabel_4 = new JLabel("Professor orientador:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel_4.setBounds(219, 142, 136, 24);
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_4);
 		
 		cbRegiao = new JComboBox();
-		cbRegiao.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		cbRegiao.setBounds(380, 179, 132, 24);
+		cbRegiao.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		cbRegiao.addItem("Selecione");
 		cbRegiao.addItem("Agreste");
 		cbRegiao.addItem("Sertão");
@@ -96,12 +87,13 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(cbRegiao);
 		
 		txtProfOrient = new JTextField();
+		txtProfOrient.setBounds(380, 142, 132, 24);
 		txtProfOrient.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtProfOrient.setColumns(10);
-		txtProfOrient.setBounds(380, 142, 132, 24);
 		add(txtProfOrient);
 		
 		JButton btnCadastroGrupo = new JButton("Confirmar");
+		btnCadastroGrupo.setBounds(219, 277, 293, 25);
 		btnCadastroGrupo.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -144,7 +136,6 @@ public class CadastroGrupoTela extends BaseOrgTela {
 			}
 		});
 		btnCadastroGrupo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCadastroGrupo.setBounds(219, 277, 293, 25);
 		add(btnCadastroGrupo);
 		
 		JSeparator separator_1 = new JSeparator();
@@ -152,9 +143,9 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(separator_1);
 		
 		JLabel lblNewLabel_6 = new JLabel("Cadastro Grupo");
+		lblNewLabel_6.setBounds(-4, 67, 751, 24);
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel_6.setBounds(-4, 67, 751, 24);
 		add(lblNewLabel_6);
 		
 		JSeparator separator = new JSeparator();
@@ -162,28 +153,57 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(separator);
 		
 		JLabel lblRemoverEscola = new JLabel("Remover Grupo");
+		lblRemoverEscola.setBounds(-4, 326, 751, 24);
 		lblRemoverEscola.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRemoverEscola.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblRemoverEscola.setBounds(-4, 326, 751, 24);
 		add(lblRemoverEscola);
 		
 		JLabel lblEscolasCadastradas = new JLabel("Grupos cadastradas");
+		lblEscolasCadastradas.setBounds(-4, 361, 741, 24);
 		lblEscolasCadastradas.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEscolasCadastradas.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEscolasCadastradas.setBounds(-4, 374, 741, 24);
 		add(lblEscolasCadastradas);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(223, 385, 293, 133);
 		add(scrollPane);
 		
-		JList listGrupoCadastrada = new JList();
+		DefaultListModel modelGrupos = new DefaultListModel();
+		List<Grupo> listaGrupos = FachadaImp.getInstanciaFachada().listaGrupos();
+		for(Grupo grupo : listaGrupos) {
+			modelGrupos.addElement(grupo.getEscola() +"   |   "+ grupo.getSerie());
+		}
+		JList listGrupoCadastrada = new JList(modelGrupos);
 		scrollPane.setViewportView(listGrupoCadastrada);
 		listGrupoCadastrada.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnRemovEscola = new JButton("Remover");
-		btnRemovEscola.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnRemovEscola.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+				String selecao = (String) listGrupoCadastrada.getSelectedValue();
+				
+				//Para pegar apenas o nome da escola que esta na string de selecao
+				String escola = selecao.substring(0, selecao.indexOf("|")-3);
+				String serie = selecao.substring(selecao.indexOf("|")+4, selecao.length());
+				
+				for(Grupo grupo : listaGrupos) {
+					if(grupo.getEscola().equals(escola) && grupo.getSerie().equals(serie)) {
+						try {
+							FachadaImp.getInstanciaFachada().removerGrupo(grupo.getIdGrupo());
+							listaGrupos.remove(grupo);
+							modelGrupos.removeElement(selecao);
+						} catch (BancoException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+						}
+					}
+				}
+				
+			}
+		});
 		btnRemovEscola.setBounds(219, 553, 293, 25);
+		btnRemovEscola.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnRemovEscola);
 		
 		JSeparator separator_2 = new JSeparator();
@@ -191,8 +211,8 @@ public class CadastroGrupoTela extends BaseOrgTela {
 		add(separator_2);
 		
 		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
 		Imagem2.setBounds(0, 21, 741, 647);
+		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
 		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
 		
 		Imagem2.setIcon(new ImageIcon(imagi));

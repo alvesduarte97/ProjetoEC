@@ -26,6 +26,7 @@ public interface IFachada {
 	Grupo procurarGrupo(Integer idGrupo) throws BancoException;
     void atualizarGrupo(Grupo grupo) throws BancoException;
 	void removerGrupo(Integer idGrupo) throws BancoException;
+	List<Grupo> listaGrupos();
 	
 	void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException;

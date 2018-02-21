@@ -1,10 +1,15 @@
 package com.br.avaliacoes.ec.DAO;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Grupo;
+import com.br.avaliacoes.ec.modelo.Pessoa;
 
 public class GrupoDAOImp implements IGrupoDAO {
 
@@ -56,6 +61,28 @@ public class GrupoDAOImp implements IGrupoDAO {
 		tx.commit();
 		session.flush();
 		session.close();
+	}
+
+	@Override
+	public List<Grupo> listaGrupos() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Grupo.class);
+		List<Grupo> lista = criteria.list();
+		session.close();
+		return lista;
+	}
+	 public static void main(String[] args) {
+		GrupoDAOImp dao = new GrupoDAOImp();
+		List<Grupo> lista = dao.listaGrupos();
+		String finalStr = "";
+		for (Grupo str : lista) {
+			if (finalStr.trim().isEmpty()) {
+				finalStr = str.getEscola();
+			} else {
+				finalStr = finalStr + "," + str.getEscola();
+			}
+		}
+		System.out.println (finalStr);
 	}
 
 }

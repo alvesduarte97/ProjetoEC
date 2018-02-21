@@ -60,7 +60,7 @@ public class BaseOrgTela extends JPanel {
 		JMenuItem mntmCadastRemovGrup = new JMenuItem("Cadastrar/Remover");
 		mntmCadastRemovGrup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CadastroGrupoTela cadGru  = new CadastroGrupoTela();
+				GrupoTela cadGru  = new GrupoTela();
 				PrincipalTela.internalFrame.setContentPane(cadGru);
 				PrincipalTela.internalFrame.revalidate();
 			}

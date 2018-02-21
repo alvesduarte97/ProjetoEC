@@ -139,4 +139,9 @@ public class FachadaImp implements IFachada{
 		return negocioPessoa.listaPessoa(tipoPessoa);
 	}
 
+	@Override
+	public List<Grupo> listaGrupos() {
+		return negocioGrupo.listaGrupos();
+	}
+
 }
