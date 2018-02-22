@@ -35,6 +35,7 @@ public class AvaliacaoTela extends JPanel {
 	 */
 	public AvaliacaoTela() {
 		setLayout(null);
+		setSize(741, 668);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(178, 527, 376, 63);
@@ -163,6 +164,13 @@ public class AvaliacaoTela extends JPanel {
 		//Panel panel = new Panel();
 		//panel.setBounds(83, 45, 589, 340);
 		//add(panel);
+		
+		JLabel Imagem3 = new JLabel("");
+		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
+		Imagem3.setBounds(0, 0, 741, 668);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		add(Imagem3);
 
 	}
 
