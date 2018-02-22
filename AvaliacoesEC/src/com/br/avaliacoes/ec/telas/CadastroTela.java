@@ -35,7 +35,7 @@ public class CadastroTela extends JPanel {
 	private JTextField txtNome;
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
-	private JPasswordField txtConfirmaçãoSenha;
+	private JPasswordField txtConfirmacaoSenha;
 	private JComboBox cbArea;
 	private JLabel lblQualquermerda;
 
@@ -59,7 +59,7 @@ public class CadastroTela extends JPanel {
 		add(label_1);
 		
 		JLabel label_2 = new JLabel("Nome e sobrenome:");
-		label_2.setBounds(229, 173, 160, 14);
+		label_2.setBounds(229, 173, 182, 14);
 		label_2.setFont(new Font("Tahoma", Font.BOLD, 15));
 		add(label_2);
 		
@@ -95,10 +95,10 @@ public class CadastroTela extends JPanel {
 		label_5.setFont(new Font("Tahoma", Font.BOLD, 15));
 		add(label_5);
 		
-		txtConfirmaçãoSenha = new JPasswordField();
-		txtConfirmaçãoSenha.setBounds(384, 323, 144, 20);
-		txtConfirmaçãoSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(txtConfirmaçãoSenha);
+		txtConfirmacaoSenha = new JPasswordField();
+		txtConfirmacaoSenha.setBounds(384, 323, 144, 20);
+		txtConfirmacaoSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		add(txtConfirmacaoSenha);
 		
 		JButton button_1 = new JButton("Confirmar");
 		button_1.setBounds(229, 520, 299, 41);
@@ -111,7 +111,7 @@ public class CadastroTela extends JPanel {
 				int indexArea = cbArea.getSelectedIndex();
 				String senha;
 				
-				if(new String(txtSenha.getPassword()).equals(new String(txtConfirmaçãoSenha.getPassword()))) {
+				if(new String(txtSenha.getPassword()).equals(new String(txtConfirmacaoSenha.getPassword()))) {
 					senha = new String(txtSenha.getPassword());
 					Pessoa avaliador = new Pessoa();
 					avaliador.setLogin(login);
@@ -159,7 +159,7 @@ public class CadastroTela extends JPanel {
 					}
 				}else {
 					txtSenha.setText("");
-					txtConfirmaçãoSenha.setText("");
+					txtConfirmacaoSenha.setText("");
 					JOptionPane.showMessageDialog(null, "Senhas diferentes");
 				}
 
@@ -175,7 +175,7 @@ public class CadastroTela extends JPanel {
 		cbArea.setMaximumRowCount(5);
 		cbArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		cbArea.addItem("Selecionar area");
-		cbArea.addItem("Coordenação");
+		cbArea.addItem("Coordenaï¿½ï¿½o");
 		cbArea.addItem("Biologia");
 		cbArea.addItem("Historia");
 		cbArea.addItem("Geografia");
@@ -205,7 +205,23 @@ public class CadastroTela extends JPanel {
 		separator_4.setBounds(-15, 572, 796, 8);
 		add(separator_4);
 		
-
+		JLabel Imagem2 = new JLabel("");
+		ImageIcon icone2 =new ImageIcon(CadastroTela.class.getResource("/img/cadastro.png"));
+		Imagem2.setBounds(562, 0, 156, 156);
+		Image imagi2 = icone2.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
+		Imagem2.setIcon(new ImageIcon(imagi2));
+		add(Imagem2);
+		ImageIcon icone4 =new ImageIcon(CadastroTela.class.getResource("/img/cadastro2.png"));
+		
+		
+		
+		JLabel Imagem5 = new JLabel("");
+		ImageIcon icone5 =new ImageIcon(CadastroTela.class.getResource("/img/cadastro3.gif"));
+		Imagem5.setBounds(540, 285, 81, 70);
+		Image imagi5 = icone5.getImage().getScaledInstance(Imagem5.getWidth(),Imagem5.getHeight(), Image.SCALE_SMOOTH);
+		Imagem5.setIcon(new ImageIcon(imagi5));
+		add(Imagem5);
+		
 
 		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
@@ -219,7 +235,7 @@ public class CadastroTela extends JPanel {
 
 	}
 	private void limparCampos() {
-		txtConfirmaçãoSenha.setText("");
+		txtConfirmacaoSenha.setText("");
 		txtLogin.setText("");
 		txtNome.setText("");
 		txtSenha.setText("");

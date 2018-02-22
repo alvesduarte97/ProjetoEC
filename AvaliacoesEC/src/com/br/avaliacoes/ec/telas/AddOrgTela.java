@@ -55,7 +55,7 @@ public class AddOrgTela extends BaseOrgTela {
 		JLabel label = new JLabel("Organizadores");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(440, 233, 168, 24);
+		label.setBounds(442, 233, 168, 24);
 		add(label);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -84,7 +84,7 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JLabel lblConfigurao = new JLabel("Reger Organizador");
 		lblConfigurao.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblConfigurao.setBounds(279, 185, 197, 24);
+		lblConfigurao.setBounds(279, 185, 226, 24);
 		add(lblConfigurao);
 		
 		btnAvaToOrg = new JButton(">>>");

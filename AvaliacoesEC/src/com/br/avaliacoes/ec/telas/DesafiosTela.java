@@ -216,26 +216,30 @@ public class DesafiosTela extends BaseOrgTela {
 				PrincipalTela.internalFrame.revalidate();
 			}
 		});
-		btnAtualizar.setBounds(642, 315, 89, 23);
+		btnAtualizar.setBounds(640, 28, 89, 23);
 		add(btnAtualizar);
 		
 		JLabel lblDesafioDoMomento = new JLabel("Desafio do momento:");
-		lblDesafioDoMomento.setBounds(529, 344, 124, 14);
+		lblDesafioDoMomento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDesafioDoMomento.setBounds(209, 49, 321, 14);
 		add(lblDesafioDoMomento);
 		
 		txtDesafioDoMomento = new JTextField();
+		txtDesafioDoMomento.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDesafioDoMomento.setFont(new Font("Dialog", Font.PLAIN, 13));
 		txtDesafioDoMomento.setEditable(false);
-		txtDesafioDoMomento.setBounds(525, 364, 206, 22);
+		txtDesafioDoMomento.setBounds(209, 75, 321, 22);
 		txtDesafioDoMomento.setText(desafioAtivo);
 		add(txtDesafioDoMomento);
 		
 		btnRemover = new JButton("Remover");
+		btnRemover.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String desafio = (String) listDesafios.getSelectedValue();
 				try {
 					int resposta = JOptionPane.showConfirmDialog
-						(null, "Tem certeza que deseja remover?", "Confirmação", JOptionPane.YES_NO_OPTION);
+						(null, "Tem certeza que deseja remover?", "Confirmaï¿½ï¿½o", JOptionPane.YES_NO_OPTION);
 					if(resposta == JOptionPane.YES_OPTION) {
 						FachadaImp.getInstanciaFachada().removerDesafios(desafio);
 						JOptionPane.showMessageDialog(null, "Desafio removido");

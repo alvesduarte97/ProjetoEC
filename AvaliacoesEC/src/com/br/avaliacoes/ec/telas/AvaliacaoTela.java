@@ -52,7 +52,7 @@ public class AvaliacaoTela extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("Nota 1");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(178, 411, 46, 14);
+		lblNewLabel_1.setBounds(178, 424, 46, 14);
 		add(lblNewLabel_1);
 		
 		cbNota1 = new JComboBox();
@@ -77,17 +77,17 @@ public class AvaliacaoTela extends JPanel {
 		
 		JLabel label = new JLabel("Nota 2");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(294, 411, 46, 14);
+		label.setBounds(294, 424, 46, 14);
 		add(label);
 		
 		JLabel label_1 = new JLabel("Nota 3");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_1.setBounds(406, 411, 46, 14);
+		label_1.setBounds(406, 424, 46, 14);
 		add(label_1);
 		
 		JLabel label_3 = new JLabel("Nota 4");
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_3.setBounds(508, 411, 46, 14);
+		label_3.setBounds(508, 424, 46, 14);
 		add(label_3);
 		
 		btnConfirmar = new JButton("Confirmar");
@@ -106,37 +106,37 @@ public class AvaliacaoTela extends JPanel {
 		add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(-27, 392, 796, 8);
+		separator_2.setBounds(-27, 410, 796, 2);
 		add(separator_2);
 		
 		JLabel lblEscola = new JLabel("Escola:");
-		lblEscola.setBounds(294, 33, 36, 14);
+		lblEscola.setBounds(308, 385, 36, 14);
 		add(lblEscola);
 		
 		txtEscola = new TextField();
-		txtEscola.setBounds(340, 30, 198, 22);
+		txtEscola.setBounds(354, 382, 198, 22);
 		add(txtEscola);
 		txtEscola.setEditable(false);
 		txtEscola.setEnabled(false);
 		
 		JLabel lblSerie = new JLabel("Serie:");
-		lblSerie.setBounds(565, 33, 36, 14);
+		lblSerie.setBounds(579, 385, 36, 14);
 		add(lblSerie);
 		
 		txtSerie = new TextField();
-		txtSerie.setBounds(607, 30, 63, 22);
+		txtSerie.setBounds(621, 382, 63, 22);
 		add(txtSerie);
 		txtSerie.setEditable(false);
 		txtSerie.setEnabled(false);
 		
 		JLabel lblDesafio = new JLabel("Desafio:");
-		lblDesafio.setBounds(36, 33, 46, 14);
+		lblDesafio.setBounds(50, 385, 46, 14);
 		add(lblDesafio);
 		
 		txtDesafio = new TextField();
 		txtDesafio.setEnabled(false);
 		txtDesafio.setEditable(false);
-		txtDesafio.setBounds(88, 30, 186, 22);
+		txtDesafio.setBounds(102, 382, 186, 22);
 		add(txtDesafio);
 		
 		JButton button = new JButton("Sair");

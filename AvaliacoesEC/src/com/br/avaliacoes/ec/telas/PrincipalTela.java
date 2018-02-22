@@ -162,10 +162,8 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		ImageIcon icone3 =new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png"));
 		Imagem3.setBounds(10, 328, 300, 300);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
-		
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		frmTorneioVirtualDe.getContentPane().add(Imagem3);
-		ImageIcon icone2 =new ImageIcon(PrincipalTela.class.getResource("/img/Rodape.png"));
 		
 		
 		

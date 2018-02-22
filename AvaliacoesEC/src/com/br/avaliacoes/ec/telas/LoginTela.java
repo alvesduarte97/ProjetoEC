@@ -66,10 +66,9 @@ public class LoginTela extends JPanel {
 		add(separator_2);
 		
 		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\login.png");
-		Imagem2.setBounds(411, 265, 63, 51);
+		ImageIcon icone1 =new ImageIcon(LoginTela.class.getResource("/img/login.png"));
+		Imagem2.setBounds(411, 266, 63, 51);
 		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
-		
 		Imagem2.setIcon(new ImageIcon(imagi));
 		add(Imagem2);
 		
@@ -113,10 +112,9 @@ public class LoginTela extends JPanel {
 		add(btnConfirmarLogin);
 		
 		JLabel Imagem1 = new JLabel("New label");
-		ImageIcon icone2 =new ImageIcon("C:\\Users\\PC\\eclipse-workspace\\ProjectEC1.1\\src\\Img\\key.png");
+		ImageIcon icone2 =new ImageIcon(LoginTela.class.getResource("/img/key.png"));
 		Imagem1.setBounds(411, 340, 63, 51);
 		Image imagi2 = icone2.getImage().getScaledInstance(Imagem1.getWidth(),Imagem1.getHeight(), Image.SCALE_SMOOTH);
-		
 		Imagem1.setIcon(new ImageIcon(imagi2));
 		add(Imagem1);
 		
