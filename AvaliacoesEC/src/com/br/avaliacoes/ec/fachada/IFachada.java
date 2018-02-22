@@ -16,6 +16,7 @@ public interface IFachada {
     void atualizarPessoa(Pessoa pessoa) throws BancoException;
 	void removerPessoa(String login) throws BancoException;
 	List<Pessoa> listaPessoas(TipoPessoa tipoPessoa);
+	Desafios desafioAtivo();
 	
 	void inserirDesafios(Desafios desafio) throws BancoException;
     Desafios procurarDesafios(String nome) throws BancoException;
@@ -33,4 +34,5 @@ public interface IFachada {
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException;
     void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	void removerAvaliacoes(Integer idAvaliacao) throws BancoException;
+	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa);
 }

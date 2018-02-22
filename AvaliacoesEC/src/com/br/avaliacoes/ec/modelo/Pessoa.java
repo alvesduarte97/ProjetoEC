@@ -30,6 +30,9 @@ public class Pessoa extends BancoEntity<String>{
 	@Enumerated(EnumType.STRING)
 	private TipoPessoa tipo;
 	
+	private String serie;
+	private String desafioAvaliado;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -70,6 +73,18 @@ public class Pessoa extends BancoEntity<String>{
 	}
 	public void setArea(AreaAtuacao area) {
 		this.area = area;
+	}
+	public String getSerie() {
+		return serie;
+	}
+	public void setSerie(String serie) {
+		this.serie = serie;
+	}
+	public String getDesafioAvaliado() {
+		return desafioAvaliado;
+	}
+	public void setDesafioAvaliado(String desafioAvaliado) {
+		this.desafioAvaliado = desafioAvaliado;
 	}
 
 	

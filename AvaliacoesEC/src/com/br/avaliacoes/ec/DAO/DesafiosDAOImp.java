@@ -3,12 +3,13 @@ package com.br.avaliacoes.ec.DAO;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Desafios;
+import com.br.avaliacoes.ec.modelo.StatusDesafio;
 
 public class DesafiosDAOImp implements IDesafiosDAO {
 
@@ -70,6 +71,16 @@ public class DesafiosDAOImp implements IDesafiosDAO {
 		session.close();
 		
 		return lista;
+	}
+
+	@Override
+	public Desafios desafioAtivo() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Desafios.class);
+		criteria.add(Restrictions.eq("status", StatusDesafio.ATIVO));
+		List<Desafios> desafio = criteria.list();
+		session.close();
+		return desafio.get(0);
 	}
 
 }

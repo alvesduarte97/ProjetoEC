@@ -149,4 +149,16 @@ public class FachadaImp implements IFachada{
 		return negocioDesafio.listaDesafios();
 	}
 
+	@Override
+	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) {
+		// TODO Auto-generated method stub
+		return negocioAvaliacao.listaAvaliacoesPorAvaliador(pessoa);
+	}
+
+	@Override
+	public Desafios desafioAtivo() {
+		// TODO Auto-generated method stub
+		return negocioDesafio.desafioAtivo();
+	}
+
 }

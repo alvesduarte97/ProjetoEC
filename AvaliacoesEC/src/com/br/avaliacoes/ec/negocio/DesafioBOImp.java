@@ -58,4 +58,9 @@ public class DesafioBOImp implements IDesafioBO {
 		return repositorio.listaDesafios();
 	}
 
+	@Override
+	public Desafios desafioAtivo() {
+		return repositorio.desafioAtivo();
+	}
+
 }

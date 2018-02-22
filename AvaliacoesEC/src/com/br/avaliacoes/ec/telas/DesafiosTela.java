@@ -153,7 +153,12 @@ public class DesafiosTela extends BaseOrgTela {
 				try {
 					Desafios desafio =  FachadaImp.getInstanciaFachada().procurarDesafios(nomeDesafio);
 					desafio.setNome(txtRenomear.getText());
-					FachadaImp.getInstanciaFachada().atualizarDesafios(desafio);
+					FachadaImp.getInstanciaFachada().removerDesafios(nomeDesafio);
+					FachadaImp.getInstanciaFachada().inserirDesafios(desafio);
+					modelDesafios.removeElement(nomeDesafio);
+					modelDesafios.addElement(desafio.getNome());
+					txtRenomear.setText("");
+					
 				} catch (BancoException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -183,6 +188,8 @@ public class DesafiosTela extends BaseOrgTela {
 						desativar.setStatus(StatusDesafio.DESLIGADO);
 						desativar.setDataFim(dataFormatada);
 						FachadaImp.getInstanciaFachada().atualizarDesafios(desativar);
+						modelDesafios.addElement(desativar.getNome());
+						
 					}
 					
 					// capturando o desafio a ser ativado e atualizando ele no banco
@@ -192,9 +199,10 @@ public class DesafiosTela extends BaseOrgTela {
 					FachadaImp.getInstanciaFachada().atualizarDesafios(desafio);
 					desafioAtivo = desafio.getNome();
 
-					// Removendo o desafio da lista
+					// Atualizando jlist e txtDesafioAtivo
 					modelDesafios.removeElement(desafio.getNome());
-					desafios = FachadaImp.getInstanciaFachada().listaDesafios();
+					txtDesafioDoMomento.setText(desafioAtivo);
+					//desafios = FachadaImp.getInstanciaFachada().listaDesafios();
 					JOptionPane.showMessageDialog(null, "Desafio ativado");
 				} catch (BancoException e) {
 					e.printStackTrace();
@@ -239,9 +247,10 @@ public class DesafiosTela extends BaseOrgTela {
 				String desafio = (String) listDesafios.getSelectedValue();
 				try {
 					int resposta = JOptionPane.showConfirmDialog
-						(null, "Tem certeza que deseja remover?", "Confirmaï¿½ï¿½o", JOptionPane.YES_NO_OPTION);
+						(null, "Tem certeza que deseja remover?", "Confirmação", JOptionPane.YES_NO_OPTION);
 					if(resposta == JOptionPane.YES_OPTION) {
 						FachadaImp.getInstanciaFachada().removerDesafios(desafio);
+						modelDesafios.removeElement(desafio);
 						JOptionPane.showMessageDialog(null, "Desafio removido");
 					}
 				} catch (BancoException e1) {

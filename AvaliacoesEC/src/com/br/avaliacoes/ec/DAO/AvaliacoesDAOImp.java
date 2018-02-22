@@ -1,10 +1,16 @@
 package com.br.avaliacoes.ec.DAO;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
+import com.br.avaliacoes.ec.modelo.Pessoa;
 
 public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 
@@ -55,6 +61,17 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 		session.flush();
 		session.close();
 
+	}
+
+	@Override
+	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Avaliacoes.class);
+		criteria.add(Restrictions.eq("avaliador", pessoa));
+		criteria.addOrder(Order.asc("idAvaliacao"));
+		List<Avaliacoes> lista = criteria.list();
+		session.close();
+		return lista;
 	}
 
 }
