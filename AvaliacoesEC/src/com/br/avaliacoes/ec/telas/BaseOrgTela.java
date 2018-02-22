@@ -22,7 +22,7 @@ public class BaseOrgTela extends JPanel {
 	private JMenuItem mntmTelaPrincipal;
 	public BaseOrgTela() {
 		setLayout(null);
-		setSize(741,668);
+		setSize(741,685);
 		
 		
 		menuBar = new JMenuBar();
@@ -98,7 +98,7 @@ public class BaseOrgTela extends JPanel {
 		mnAvaliao.add(mntmGerarPdf);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(-3, 593, 790, 2);
+		separator.setBounds(0, 605, 790, 2);
 		add(separator);
 		
 		JButton btnSair = new JButton("Sair");
@@ -111,9 +111,15 @@ public class BaseOrgTela extends JPanel {
 		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 15));
 		//btnSair.setBounds(7, 601, 80, 56);
-		btnSair.setBounds(10, 601, 80, 56);
+		btnSair.setBounds(10, 618, 80, 56);
 		add(btnSair);
 		
+		JLabel Imagem3 = new JLabel("");
+		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
+		Imagem3.setBounds(0, 21, 741, 668);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		add(Imagem3);
 		
 	}
 }

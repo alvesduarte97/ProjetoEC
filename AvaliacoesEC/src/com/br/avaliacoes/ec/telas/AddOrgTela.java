@@ -147,14 +147,6 @@ public class AddOrgTela extends BaseOrgTela {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(-17, 383, 796, 2);
 		add(separator);
-
-		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
-		Imagem2.setBounds(0, 21, 741, 647);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
-		
-		Imagem2.setIcon(new ImageIcon(imagi));
-		add(Imagem2);
 		
 		
 		

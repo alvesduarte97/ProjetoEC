@@ -64,7 +64,7 @@ public class PrincipalTela {
 	 * Create the application.
 	 */
 	public PrincipalTela() {
-		HibernateUtil.getSessionFactory();
+		//HibernateUtil.getSessionFactory();
 		initialize();
 	}
 
@@ -78,7 +78,7 @@ public class PrincipalTela {
 		frmTorneioVirtualDe.setResizable(false);
 		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
-		frmTorneioVirtualDe.setBounds(100, 100, 1073, 758);
+		frmTorneioVirtualDe.setBounds(100, 100, 1060, 687);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTorneioVirtualDe.getContentPane().setLayout(null);
 		
@@ -141,8 +141,8 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		internalFrame.setEnabled(false);
 		internalFrame.getContentPane().setEnabled(false);
 		internalFrame.getContentPane().setLayout(null);
-		internalFrame.setBorder(null);
-		internalFrame.setBounds(316, -24, 741, 713);
+		internalFrame.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		internalFrame.setBounds(316, -24, 741, 685);
 		internalFrame.setVisible(true);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);
 		
@@ -158,28 +158,19 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		panel.add(scrollPane_2);					
 	
 		
-		
-		
-		
-		
-		
-		
 		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 =new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png"));
-		Imagem3.setBounds(0, 324, 177, 99);
+		Imagem3.setBounds(10, 328, 300, 300);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		
 		Imagem3.setIcon(new ImageIcon(imagi3));
-		//Imagem3.setIcon(new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png")));
 		frmTorneioVirtualDe.getContentPane().add(Imagem3);
-		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png")));
-		lblNewLabel.setBounds(44, 456, 143, 179);
-		frmTorneioVirtualDe.getContentPane().add(lblNewLabel);
+		ImageIcon icone2 =new ImageIcon(PrincipalTela.class.getResource("/img/Rodape.png"));
 		
 		
 		
 		
+		//Imagem3.setIcon(new ImageIcon(imagi2));
 		
 	}
 }

@@ -42,7 +42,7 @@ public class DesafiosTela extends BaseOrgTela {
 	 * Create the panel.
 	 */
 	public DesafiosTela() {
-		setSize(741, 668);
+		
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(-25, 167, 796, 2);
@@ -205,14 +205,7 @@ public class DesafiosTela extends BaseOrgTela {
 		btnAdicionar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAdicionar.setBounds(209, 497, 310, 25);
 		add(btnAdicionar);
-
-		JLabel Imagem2 = new JLabel("New label");
 		ImageIcon icone1 = new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
-		Imagem2.setBounds(0, 31, 741, 647);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(), Imagem2.getHeight(), Image.SCALE_SMOOTH);
-
-		Imagem2.setIcon(new ImageIcon(imagi));
-		add(Imagem2);
 		
 		btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
