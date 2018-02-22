@@ -144,4 +144,9 @@ public class FachadaImp implements IFachada{
 		return negocioGrupo.listaGrupos();
 	}
 
+	@Override
+	public List<Desafios> listaDesafios() {
+		return negocioDesafio.listaDesafios();
+	}
+
 }

@@ -1,5 +1,9 @@
 package com.br.avaliacoes.ec.DAO;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -56,6 +60,16 @@ public class DesafiosDAOImp implements IDesafiosDAO {
 		tx.commit();
 		session.flush();
 		session.close();
+	}
+
+	@Override
+	public List<Desafios> listaDesafios() {
+		Session session =  HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Desafios.class);
+		List<Desafios> lista = criteria.list();
+		session.close();
+		
+		return lista;
 	}
 
 }

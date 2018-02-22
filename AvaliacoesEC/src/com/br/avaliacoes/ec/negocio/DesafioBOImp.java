@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.negocio;
 
+import java.util.List;
+
 import com.br.avaliacoes.ec.DAO.IDesafiosDAO;
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Desafios;
@@ -49,6 +51,11 @@ public class DesafioBOImp implements IDesafioBO {
 			throw new BancoException("Desafio não encontrado");
 		}
 		repositorio.remover(chave);
+	}
+
+	@Override
+	public List<Desafios> listaDesafios() {
+		return repositorio.listaDesafios();
 	}
 
 }

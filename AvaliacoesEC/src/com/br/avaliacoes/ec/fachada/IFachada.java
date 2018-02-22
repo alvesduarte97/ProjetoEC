@@ -21,6 +21,7 @@ public interface IFachada {
     Desafios procurarDesafios(String nome) throws BancoException;
     void atualizarDesafios(Desafios desafio) throws BancoException;
 	void removerDesafios(String nome) throws BancoException;
+	List<Desafios> listaDesafios();
 	
 	void inserirGrupo(Grupo grupo) throws BancoException;
 	Grupo procurarGrupo(Integer idGrupo) throws BancoException;
