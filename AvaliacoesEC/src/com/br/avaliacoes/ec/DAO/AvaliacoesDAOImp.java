@@ -64,7 +64,7 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 	}
 
 	@Override
-	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) {
+	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Avaliacoes.class);
 		criteria.add(Restrictions.eq("avaliador", pessoa));

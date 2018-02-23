@@ -29,11 +29,11 @@ public interface IFachada {
     void atualizarGrupo(Grupo grupo) throws BancoException;
 	void removerGrupo(Integer idGrupo) throws BancoException;
 	List<Grupo> listaGrupos();
-	List<Grupo> listaGruposPorSerie(String serie);
+	List<Grupo> listaGruposPorSerie(String serie) throws BancoException;
 	
 	void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException;
     void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	void removerAvaliacoes(Integer idAvaliacao) throws BancoException;
-	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa);
+	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
 }

@@ -36,12 +36,12 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	
 	private String comentario;
 	
-	public int getIdavaliacao() {
-		return idAvaliacao;
-	}
-	public void setIdavaliacao(int idavaliacao) {
-		this.idAvaliacao = idavaliacao;
-	}
+//	public int getIdavaliacao() {
+//		return idAvaliacao;
+//	}
+//	public void setIdavaliacao(int idavaliacao) {
+//		this.idAvaliacao = idavaliacao;
+//	}
 
 	
 	@Override

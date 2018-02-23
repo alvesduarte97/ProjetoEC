@@ -88,7 +88,7 @@ public class LoginTela extends JPanel {
 					} else {
 						PrincipalTela.pessoa = pessoa;
 						String desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo().getNome();
-						if (pessoa.getDesafioAvaliado() == null || !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
+						if (pessoa.getDesafioAvaliado() == null || pessoa.getSerie() == null|| !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
 
 							JDialog.setDefaultLookAndFeelDecorated(true);
 							String[] selectionValues = { "1ª Serie", "2ª Serie", "3ª Serie", "4ª Serie", "5ª Serie" };
@@ -112,7 +112,7 @@ public class LoginTela extends JPanel {
 							PrincipalTela.internalFrame.setContentPane(telaOrg);
 							PrincipalTela.internalFrame.revalidate();
 						} else {
-							AvaliacaoTela telaAva = new AvaliacaoTela();
+							AvaliacaoTela telaAva = new AvaliacaoTela(0);
 							PrincipalTela.internalFrame.setContentPane(telaAva);
 							PrincipalTela.internalFrame.revalidate();
 

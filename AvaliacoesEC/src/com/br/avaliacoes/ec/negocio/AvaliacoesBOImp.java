@@ -36,7 +36,7 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 	}
 
 	@Override
-	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) {
+	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException{
 		return repositorio.listaAvaliacoesPorAvaliador(pessoa);
 	}
 

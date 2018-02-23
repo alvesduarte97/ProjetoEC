@@ -150,7 +150,7 @@ public class FachadaImp implements IFachada {
 	}
 
 	@Override
-	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) {
+	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException{
 		// TODO Auto-generated method stub
 		return negocioAvaliacao.listaAvaliacoesPorAvaliador(pessoa);
 	}
@@ -164,7 +164,7 @@ public class FachadaImp implements IFachada {
 	}
 
 	@Override
-	public List<Grupo> listaGruposPorSerie(String serie) {
+	public List<Grupo> listaGruposPorSerie(String serie) throws BancoException {
 		return negocioGrupo.listaGruposPorSerie(serie);
 	}
 
