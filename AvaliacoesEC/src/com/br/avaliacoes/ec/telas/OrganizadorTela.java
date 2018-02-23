@@ -33,14 +33,12 @@ public class OrganizadorTela extends BaseOrgTela {
 		add(separator_1);
 
 		
-		JLabel Imagem2 = new JLabel("New label");
-		ImageIcon icone1 =new ImageIcon("C:/Users/PC/git/ProjetoEC/AvaliacoesEC/src/img/Fundo2.jpg");
-		Imagem2.setBounds(0, 21, 741, 647);
-		Image imagi = icone1.getImage().getScaledInstance(Imagem2.getWidth(),Imagem2.getHeight(), Image.SCALE_SMOOTH);
-		
-		Imagem2.setIcon(new ImageIcon(imagi));
-		add(Imagem2);
-		
+		JLabel Imagem3 = new JLabel("");
+		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
+		Imagem3.setBounds(0, 17, 741, 668);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		Imagem3.setIcon(new ImageIcon(imagi3));
+		add(Imagem3);
 		
 		
 		

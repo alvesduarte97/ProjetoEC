@@ -29,6 +29,7 @@ public interface IFachada {
     void atualizarGrupo(Grupo grupo) throws BancoException;
 	void removerGrupo(Integer idGrupo) throws BancoException;
 	List<Grupo> listaGrupos();
+	List<Grupo> listaGruposPorSerie(String serie);
 	
 	void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException;

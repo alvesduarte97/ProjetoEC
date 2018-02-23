@@ -2,7 +2,6 @@ package com.br.avaliacoes.ec.telas;
 
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +19,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 
 import com.br.avaliacoes.ec.fachada.FachadaImp;
-import com.br.avaliacoes.ec.modelo.Desafios;
-import com.br.avaliacoes.ec.modelo.StatusDesafio;
+import com.br.avaliacoes.ec.modelo.Grupo;
 
 public class AvaliacaoTela extends JPanel {
 	private JTextArea txtComentario;
@@ -34,16 +32,16 @@ public class AvaliacaoTela extends JPanel {
 	private TextField txtEscola;
 	private TextField txtSerie;
 	private TextField txtDesafio;
-	private String desafioAtivo;
+	private String desafioAtivo = "";
+	private List<Grupo> grupos;
+	private int index = 0;
 
-	/**
-	 * Create the panel.
-	 */
 	public AvaliacaoTela() {
 		setLayout(null);
 		setSize(741, 668);
 
 		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo().getNome();
+		grupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie(PrincipalTela.pessoa.getSerie());
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(178, 527, 376, 63);
@@ -64,22 +62,22 @@ public class AvaliacaoTela extends JPanel {
 		add(lblNewLabel_1);
 
 		cbNota1 = new JComboBox();
-		cbNota1.setModel(new DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4" }));
+		cbNota1.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
 		cbNota1.setBounds(157, 449, 46, 20);
 		add(cbNota1);
 
 		cbNota2 = new JComboBox();
-		cbNota2.setModel(new DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4" }));
+		cbNota2.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
 		cbNota2.setBounds(255, 449, 46, 20);
 		add(cbNota2);
 
 		cbNota3 = new JComboBox();
-		cbNota3.setModel(new DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4" }));
+		cbNota3.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
 		cbNota3.setBounds(347, 449, 46, 20);
 		add(cbNota3);
 
 		cbNota4 = new JComboBox();
-		cbNota4.setModel(new DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4" }));
+		cbNota4.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
 		cbNota4.setBounds(438, 449, 46, 20);
 		add(cbNota4);
 
@@ -121,6 +119,8 @@ public class AvaliacaoTela extends JPanel {
 
 		txtEscola = new TextField();
 		txtEscola.setBounds(354, 382, 198, 22);
+		if (grupos.size() > 0)
+			txtEscola.setText(grupos.get(index).getEscola());
 		add(txtEscola);
 		txtEscola.setEditable(false);
 		txtEscola.setEnabled(false);
@@ -131,6 +131,8 @@ public class AvaliacaoTela extends JPanel {
 
 		txtSerie = new TextField();
 		txtSerie.setBounds(621, 382, 63, 22);
+		if (grupos.size() > 0)
+			txtSerie.setText(grupos.get(index).getSerie());
 		add(txtSerie);
 		txtSerie.setEditable(false);
 		txtSerie.setEnabled(false);
@@ -154,18 +156,19 @@ public class AvaliacaoTela extends JPanel {
 			}
 		});
 		button.setFont(new Font("Tahoma", Font.BOLD, 15));
-		button.setBounds(650, 601, 80, 56);
+		button.setBounds(10, 601, 80, 56);
 		add(button);
 
 		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
 		Imagem3.setBounds(0, 0, 741, 668);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
-		
+
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
 		comboBox.setBounds(520, 449, 46, 20);
 		add(comboBox);
-		
+
 		JLabel lblNota = new JLabel("Nota 5");
 		lblNota.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNota.setBounds(520, 424, 46, 14);

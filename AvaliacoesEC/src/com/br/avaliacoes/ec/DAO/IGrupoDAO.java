@@ -8,4 +8,6 @@ public interface IGrupoDAO extends ICrudDAO<Grupo,Integer>{
 
 	List<Grupo> listaGrupos();
 
+	List<Grupo> listaGruposPorSerie(String serie);
+
 }

@@ -28,11 +28,11 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	@JoinColumn(name = "nome")
 	private Desafios Desafio;
 	
-	private int nota1;
-	private int nota2;
-	private int nota3;
-	private int nota4;
-	private int nota5;
+	private double nota1;
+	private double nota2;
+	private double nota3;
+	private double nota4;
+	private double nota5;
 	
 	private String comentario;
 	
@@ -43,36 +43,7 @@ public class Avaliacoes extends BancoEntity<Integer>{
 		this.idAvaliacao = idavaliacao;
 	}
 
-	public int getNota1() {
-		return nota1;
-	}
-	public void setNota1(int nota1) {
-		this.nota1 = nota1;
-	}
-	public int getNota2() {
-		return nota2;
-	}
-	public void setNota2(int nota2) {
-		this.nota2 = nota2;
-	}
-	public int getNota3() {
-		return nota3;
-	}
-	public void setNota3(int nota3) {
-		this.nota3 = nota3;
-	}
-	public int getNota4() {
-		return nota4;
-	}
-	public void setNota4(int nota4) {
-		this.nota4 = nota4;
-	}
-	public int getNota5() {
-		return nota5;
-	}
-	public void setNota5(int nota5) {
-		this.nota5 = nota5;
-	}
+	
 	@Override
 	public Integer getChave() {
 		return this.idAvaliacao;
@@ -107,6 +78,36 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	}
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
+	}
+	public double getNota1() {
+		return nota1;
+	}
+	public void setNota1(double nota1) {
+		this.nota1 = nota1;
+	}
+	public double getNota2() {
+		return nota2;
+	}
+	public void setNota2(double nota2) {
+		this.nota2 = nota2;
+	}
+	public double getNota3() {
+		return nota3;
+	}
+	public void setNota3(double nota3) {
+		this.nota3 = nota3;
+	}
+	public double getNota4() {
+		return nota4;
+	}
+	public void setNota4(double nota4) {
+		this.nota4 = nota4;
+	}
+	public double getNota5() {
+		return nota5;
+	}
+	public void setNota5(double nota5) {
+		this.nota5 = nota5;
 	}
 
 

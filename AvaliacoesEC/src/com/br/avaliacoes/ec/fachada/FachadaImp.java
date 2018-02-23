@@ -25,33 +25,33 @@ import com.br.avaliacoes.ec.negocio.IGrupoBO;
 import com.br.avaliacoes.ec.negocio.IPessoaBO;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
 
-public class FachadaImp implements IFachada{
+public class FachadaImp implements IFachada {
 	private IPessoaBO negocioPessoa;
 	private IDesafioBO negocioDesafio;
 	private IGrupoBO negocioGrupo;
 	private IAvaliacoesBO negocioAvaliacao;
-	
+
 	private static FachadaImp instanciaFachada;
-	
+
 	public static FachadaImp getInstanciaFachada() {
-		if(instanciaFachada == null) {
+		if (instanciaFachada == null) {
 			instanciaFachada = new FachadaImp();
 		}
-		
+
 		return instanciaFachada;
 	}
-	
+
 	private FachadaImp() {
 		IPessoaDAO repositorioPessoa = new PessoaDAOImp();
 		IDesafiosDAO repositorioDesafio = new DesafiosDAOImp();
 		IGrupoDAO repositoriooGrupo = new GrupoDAOImp();
 		IAvaliacoesDAO repositorioAvaliacao = new AvaliacoesDAOImp();
-		
+
 		negocioPessoa = new PessoaBOImp(repositorioPessoa);
 		negocioGrupo = new GrupoBOImp(repositoriooGrupo);
 		negocioDesafio = new DesafioBOImp(repositorioDesafio);
 		negocioAvaliacao = new AvaliacoesBOImp(repositorioAvaliacao);
-	
+
 	}
 
 	@Override
@@ -157,8 +157,15 @@ public class FachadaImp implements IFachada{
 
 	@Override
 	public Desafios desafioAtivo() {
-		// TODO Auto-generated method stub
-		return negocioDesafio.desafioAtivo();
+		Desafios desafio = negocioDesafio.desafioAtivo();
+		if (desafio != null)
+			return desafio;
+		return null;
+	}
+
+	@Override
+	public List<Grupo> listaGruposPorSerie(String serie) {
+		return negocioGrupo.listaGruposPorSerie(serie);
 	}
 
 }

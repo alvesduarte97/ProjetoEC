@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
@@ -83,6 +84,16 @@ public class GrupoDAOImp implements IGrupoDAO {
 			}
 		}
 		System.out.println (finalStr);
+	}
+
+	@Override
+	public List<Grupo> listaGruposPorSerie(String serie) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Grupo.class);
+		criteria.add(Restrictions.eq("serie", serie));
+		criteria.addOrder(Order.asc("serie"));
+		List<Grupo> lista = criteria.list();
+		return lista;
 	}
 
 }

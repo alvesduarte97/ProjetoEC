@@ -8,4 +8,6 @@ public interface IGrupoBO extends ICrudBO<Grupo, Integer>{
 
 	List<Grupo> listaGrupos();
 
+	List<Grupo> listaGruposPorSerie(String serie);
+
 }

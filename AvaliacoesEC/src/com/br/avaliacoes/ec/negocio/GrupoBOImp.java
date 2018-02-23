@@ -59,4 +59,10 @@ public class GrupoBOImp implements IGrupoBO {
 		return repositorio.listaGrupos();
 	}
 
+	@Override
+	public List<Grupo> listaGruposPorSerie(String serie) {
+		// TODO Auto-generated method stub
+		return repositorio.listaGruposPorSerie(serie);
+	}
+
 }
