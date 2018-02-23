@@ -89,16 +89,23 @@ public class LoginTela extends JPanel {
 						PrincipalTela.pessoa = pessoa;
 						String desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo().getNome();
 						if (pessoa.getDesafioAvaliado() == null || !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
-						    JDialog.setDefaultLookAndFeelDecorated(true);
-						    Object[] selectionValues = { "1ª Serie", "2ª Serie", "3ª Serie", "4ª Serie", "5ª Serie" };
-						    String initialSelection = "1ª Serie";
-						    Object selection = JOptionPane.showInputDialog(null, "Selecione uma serie",
-						        "Series", JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
-						    
-						    pessoa.setSerie((String)selection);
-						    pessoa.setDesafioAvaliado(desafioAtivo);
-						    FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
-							
+
+							JDialog.setDefaultLookAndFeelDecorated(true);
+							String[] selectionValues = { "1ï¿½ Serie", "2ï¿½ Serie", "3ï¿½ Serie", "4ï¿½ Serie", "5ï¿½ Serie" };
+							String selection = null;
+							while (selection == null || selection.equals("")) {
+								String initialSelection = "1ï¿½ Serie";
+								selection = (String) JOptionPane.showInputDialog(null, "Selecione uma serie", "Series",
+										JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
+								if (selection == null || selection.equals("")) {
+									JOptionPane.showMessageDialog(null, "Escolha uma serie");
+									
+								}
+							}
+							pessoa.setSerie((String) selection);
+							pessoa.setDesafioAvaliado(desafioAtivo);
+							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+
 						}
 						if (pessoa.getTipo().equals(TipoPessoa.ORGANIZACAO)) {
 							OrganizadorTela telaOrg = new OrganizadorTela();

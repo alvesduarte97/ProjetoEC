@@ -79,6 +79,8 @@ public class DesafiosDAOImp implements IDesafiosDAO {
 		Criteria criteria = session.createCriteria(Desafios.class);
 		criteria.add(Restrictions.eq("status", StatusDesafio.ATIVO));
 		List<Desafios> desafio = criteria.list();
+		Desafios des = new Desafios();
+		desafio.add(des);
 		session.close();
 		return desafio.get(0);
 	}

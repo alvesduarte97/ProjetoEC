@@ -17,7 +17,7 @@ public class AvaOrganizadorTela extends AvaliacaoTela{
 	 */
 	public AvaOrganizadorTela() {
 		baseOrg = new BaseOrgTela();
-		baseOrg.setBounds(0, 0, 741, 667);
+		baseOrg.setBounds(12, 12, 741, 667);
 		add(baseOrg);
 
 	}
