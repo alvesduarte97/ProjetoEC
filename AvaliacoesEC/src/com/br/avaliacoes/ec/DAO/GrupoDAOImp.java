@@ -91,6 +91,7 @@ public class GrupoDAOImp implements IGrupoDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Grupo.class);
 		criteria.add(Restrictions.eq("serie", serie));
+		criteria.add(Restrictions.isEmpty("listaAvaliacoes"));
 		criteria.addOrder(Order.asc("serie"));
 		List<Grupo> lista = criteria.list();
 		return lista;

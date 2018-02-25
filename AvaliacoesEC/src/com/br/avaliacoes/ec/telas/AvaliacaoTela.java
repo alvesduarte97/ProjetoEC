@@ -41,18 +41,19 @@ public class AvaliacaoTela extends JPanel {
 	private int index;
 	private JComboBox cbNota5;
 
-	public AvaliacaoTela(int newIndex) {
+	public AvaliacaoTela(int newIndex, List<Grupo> listaGrupos) throws BancoException {
 		setLayout(null);
 		setSize(741, 668);
 		this.index = newIndex;
+		this.grupos = listaGrupos;
+		
+		if(newIndex >= listaGrupos.size()) {
+			LoginTela login = new LoginTela();
+			PrincipalTela.internalFrame.setContentPane(login);
+			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
+		}
 		
 		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
-		try {
-			grupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie(PrincipalTela.pessoa.getSerie());
-		} catch (BancoException e1) {
-			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-		}
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(178, 527, 376, 63);
@@ -239,12 +240,13 @@ public class AvaliacaoTela extends JPanel {
 				try {
 					FachadaImp.getInstanciaFachada().inserirAvaliacoes(avaliacao);
 					index = index + 1;
-					AvaliacaoTela proxTela = new AvaliacaoTela(index);
-					proxTela.setVisible(true);
-					add(proxTela);
+					
+					AvaliacaoTela proxTela = new AvaliacaoTela(index,listaGrupos);
+					
+					PrincipalTela.internalFrame.setContentPane(proxTela);
+					PrincipalTela.internalFrame.revalidate();
 					
 				} catch (BancoException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}

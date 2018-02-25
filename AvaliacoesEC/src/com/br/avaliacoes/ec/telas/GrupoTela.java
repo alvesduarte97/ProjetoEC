@@ -63,7 +63,7 @@ public class GrupoTela extends BaseOrgTela {
 		cbSerie = new JComboBox();
 		cbSerie.setBounds(380, 216, 132, 24);
 		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		cbSerie.addItem("Selecione");
+		//cbSerie.addItem("Selecione");
 		cbSerie.addItem("1ª Serie");
 		cbSerie.addItem("2ª Serie");
 		cbSerie.addItem("3ª Serie");

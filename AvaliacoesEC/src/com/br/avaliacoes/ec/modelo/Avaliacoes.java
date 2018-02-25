@@ -17,15 +17,15 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	private int idAvaliacao;
 	
 	@ManyToOne
-	@JoinColumn(name = "login")
+	@JoinColumn(name = "avaliador")
 	private Pessoa avaliador;
 	
 	@ManyToOne
-	@JoinColumn(name = "idGrupo")
+	@JoinColumn(name = "grupoavaliado")
 	private Grupo grupoAvaliado;
 	
 	@ManyToOne
-	@JoinColumn(name = "nome")
+	@JoinColumn(name = "desafio")
 	private Desafios Desafio;
 	
 	private double nota1;
@@ -35,13 +35,6 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	private double nota5;
 	
 	private String comentario;
-	
-//	public int getIdavaliacao() {
-//		return idAvaliacao;
-//	}
-//	public void setIdavaliacao(int idavaliacao) {
-//		this.idAvaliacao = idavaliacao;
-//	}
 
 	
 	@Override

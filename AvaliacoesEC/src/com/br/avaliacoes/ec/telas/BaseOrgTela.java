@@ -87,7 +87,7 @@ public class BaseOrgTela extends JPanel {
 		mntmAvaliar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				AvaOrganizadorTela telaAva = new AvaOrganizadorTela();
+				AvaOrgTela telaAva = new AvaOrgTela();
 				PrincipalTela.internalFrame.setContentPane(telaAva);
 				PrincipalTela.internalFrame.revalidate();
 			}

@@ -18,8 +18,8 @@ public class Grupo extends BancoEntity<Integer>{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idGrupo;
-	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy = "grupoAvaliado")
+	//fetch=FetchType.LAZY, (removi para poder puxar a lista de avaliações sobre esse grupo
+	@OneToMany(mappedBy = "grupoAvaliado")
 	Set<Avaliacoes> listaAvaliacoes;
 	
 	private String escola;

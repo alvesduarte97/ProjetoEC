@@ -4,11 +4,10 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +19,7 @@ import javax.swing.border.BevelBorder;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
@@ -112,7 +112,14 @@ public class LoginTela extends JPanel {
 							PrincipalTela.internalFrame.setContentPane(telaOrg);
 							PrincipalTela.internalFrame.revalidate();
 						} else {
-							AvaliacaoTela telaAva = new AvaliacaoTela(0);
+							List<Grupo> listaGrupos = null;
+							try {
+								listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie(PrincipalTela.pessoa.getSerie());
+							} catch (BancoException e1) {
+								e1.printStackTrace();
+								JOptionPane.showMessageDialog(null, e1.getMessage());
+							}
+							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos);
 							PrincipalTela.internalFrame.setContentPane(telaAva);
 							PrincipalTela.internalFrame.revalidate();
 
