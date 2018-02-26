@@ -92,7 +92,7 @@ public class GrupoDAOImp implements IGrupoDAO {
 		Criteria criteria = session.createCriteria(Grupo.class);
 		criteria.add(Restrictions.eq("serie", serie));
 		criteria.add(Restrictions.isEmpty("listaAvaliacoes"));
-		criteria.addOrder(Order.asc("serie"));
+		criteria.addOrder(Order.asc("escola"));
 		List<Grupo> lista = criteria.list();
 		return lista;
 	}
