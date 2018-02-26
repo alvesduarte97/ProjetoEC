@@ -40,4 +40,13 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 		return repositorio.listaAvaliacoesPorAvaliador(pessoa);
 	}
 
+	@Override
+	public void gerarExcelAvaliacoes() {
+		
+		List<Avaliacoes> lista = repositorio.listaAvaliacoes();
+		
+		
+		
+	}
+
 }

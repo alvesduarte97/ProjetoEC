@@ -36,4 +36,5 @@ public interface IFachada {
     void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	void removerAvaliacoes(Integer idAvaliacao) throws BancoException;
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
+	void gerarExcelAvaliacoes();
 }

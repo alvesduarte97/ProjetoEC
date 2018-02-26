@@ -9,5 +9,6 @@ import com.br.avaliacoes.ec.modelo.Pessoa;
 public interface IAvaliacoesDAO extends ICrudDAO<Avaliacoes, Integer>{
 
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
+	List<Avaliacoes> listaAvaliacoes();
 
 }

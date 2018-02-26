@@ -74,4 +74,15 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 		return lista;
 	}
 
+	@Override
+	public List<Avaliacoes> listaAvaliacoes() {
+
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Avaliacoes.class);
+		List<Avaliacoes> lista = criteria.list();
+		session.close();
+		return lista;
+	}
+	
+
 }
