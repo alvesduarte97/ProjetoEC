@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.fachada;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
@@ -7,6 +9,7 @@ import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.Regiao;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 public interface IFachada {
@@ -29,12 +32,12 @@ public interface IFachada {
     void atualizarGrupo(Grupo grupo) throws BancoException;
 	void removerGrupo(Integer idGrupo) throws BancoException;
 	List<Grupo> listaGrupos();
-	List<Grupo> listaGruposPorSerie(String serie) throws BancoException;
+	List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException;
 	
 	void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException;
     void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException;
 	void removerAvaliacoes(Integer idAvaliacao) throws BancoException;
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
-	void gerarExcelAvaliacoes();
+	void gerarExcelAvaliacoes(Desafios desafio) throws FileNotFoundException, IOException;
 }

@@ -20,5 +20,9 @@
 	<classpathentry kind="lib" path="C:/Users/Duarte/git/ProjetoEC/AvaliacoesEC/resources/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Duarte/git/ProjetoEC/AvaliacoesEC/resources/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Duarte/git/ProjetoEC/AvaliacoesEC/resources/postgresql-42.2.0.jar"/>
+	<classpathentry kind="lib" path="resources/poi-3.17.jar"/>
+	<classpathentry kind="lib" path="resources/poi-ooxml-3.17.jar"/>
+	<classpathentry kind="lib" path="resources/poi-ooxml-schemas-3.17.jar"/>
+	<classpathentry kind="lib" path="resources/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

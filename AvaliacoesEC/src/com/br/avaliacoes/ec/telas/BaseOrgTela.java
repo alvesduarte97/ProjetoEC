@@ -95,6 +95,14 @@ public class BaseOrgTela extends JPanel {
 		mnAvaliao.add(mntmAvaliar);
 		
 		JMenuItem mntmGerarPdf = new JMenuItem("Gerar PDF");
+		mntmGerarPdf.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				GerarExcelTela gerar = new GerarExcelTela();
+				PrincipalTela.internalFrame.setContentPane(gerar);
+				PrincipalTela.internalFrame.revalidate();
+			}
+		});
 		mnAvaliao.add(mntmGerarPdf);
 		
 		JSeparator separator = new JSeparator();

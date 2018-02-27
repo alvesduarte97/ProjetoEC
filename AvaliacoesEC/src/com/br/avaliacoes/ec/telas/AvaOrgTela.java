@@ -14,7 +14,8 @@ public class AvaOrgTela extends BaseOrgTela {
 	public AvaOrgTela() {
 		
 		try {
-			listaGrupo = FachadaImp.getInstanciaFachada().listaGruposPorSerie(PrincipalTela.pessoa.getSerie());
+			listaGrupo = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+					(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
 			telaAva = new AvaliacaoTela(0, listaGrupo);
 		} catch (BancoException e) {
 			e.printStackTrace();

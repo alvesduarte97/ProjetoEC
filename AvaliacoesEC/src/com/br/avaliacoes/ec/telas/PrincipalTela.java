@@ -21,6 +21,8 @@ import javax.swing.plaf.InternalFrameUI;
 import org.hibernate.Hibernate;
 
 import com.br.avaliacoes.ec.DAO.HibernateUtil;
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 
 import java.awt.event.ActionListener;
@@ -43,6 +45,7 @@ public class PrincipalTela {
 	private JPasswordField passwordField;
 	static JInternalFrame internalFrame;
 	static Pessoa pessoa;
+	static Desafios desafioAtivo;
 
 	/**
 	 * Launch the application.
@@ -60,18 +63,15 @@ public class PrincipalTela {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public PrincipalTela() {
 		HibernateUtil.getSessionFactory();
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
+		
+		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
+		
 		frmTorneioVirtualDe = new JFrame();
 		frmTorneioVirtualDe.getContentPane().setBackground(Color.WHITE);
 		frmTorneioVirtualDe.getContentPane().setEnabled(false);
@@ -168,7 +168,6 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		
 		
 		
-		//Imagem3.setIcon(new ImageIcon(imagi2));
 		
 	}
 }

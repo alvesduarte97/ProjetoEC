@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.DAO;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -10,7 +11,9 @@ import org.hibernate.criterion.Restrictions;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
+import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.Regiao;
 
 public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 
@@ -75,13 +78,30 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 	}
 
 	@Override
-	public List<Avaliacoes> listaAvaliacoes() {
-
+	public List<Avaliacoes> listaAvaliacoes(Regiao regiao, Desafios desafio) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Avaliacoes.class);
+		criteria.createAlias("grupoAvaliado", "grupo");
+		criteria.add(Restrictions.eq("grupo.regiao", regiao));
+		criteria.add(Restrictions.eq("Desafio", desafio));
+		criteria.addOrder(Order.asc("grupo.serie"));
 		List<Avaliacoes> lista = criteria.list();
 		session.close();
+		//Para ordenar pelas maiores pontuações
+		Collections.sort(lista);
 		return lista;
+	}
+	
+	public static void main(String[] args) {
+//		AvaliacoesDAOImp dao = new AvaliacoesDAOImp();
+//		
+//		List<Avaliacoes> lista = dao.listaAvaliacoes(Regiao.AGRESTE);
+//		Avaliacoes aaava = new Avaliacoes();
+//		lista.sort(aaava);
+//		for(Avaliacoes ava : lista) {
+//			System.out.println(ava.getGrupoAvaliado().getRegiao());
+//		}
+		
 	}
 	
 

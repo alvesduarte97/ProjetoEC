@@ -114,7 +114,8 @@ public class LoginTela extends JPanel {
 						} else {
 							List<Grupo> listaGrupos = null;
 							try {
-								listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie(PrincipalTela.pessoa.getSerie());
+								listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+										(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
 							} catch (BancoException e1) {
 								e1.printStackTrace();
 								JOptionPane.showMessageDialog(null, e1.getMessage());

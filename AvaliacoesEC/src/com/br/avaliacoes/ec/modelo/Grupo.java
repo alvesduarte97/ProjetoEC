@@ -64,5 +64,11 @@ public class Grupo extends BancoEntity<Integer>{
 		// TODO Auto-generated method stub
 		return this.idGrupo;
 	}
+	public Set<Avaliacoes> getListaAvaliacoes() {
+		return listaAvaliacoes;
+	}
+	public void setListaAvaliacoes(Set<Avaliacoes> listaAvaliacoes) {
+		this.listaAvaliacoes = listaAvaliacoes;
+	}
 
 }

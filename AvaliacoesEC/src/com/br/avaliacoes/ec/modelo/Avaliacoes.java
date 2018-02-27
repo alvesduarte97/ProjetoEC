@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.modelo;
 
+import java.util.Comparator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="avaliacoes")
-public class Avaliacoes extends BancoEntity<Integer>{
+public class Avaliacoes extends BancoEntity<Integer> implements Comparable<Avaliacoes>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -102,6 +104,28 @@ public class Avaliacoes extends BancoEntity<Integer>{
 	public void setNota5(double nota5) {
 		this.nota5 = nota5;
 	}
+	@Override
+	public int compareTo(Avaliacoes o1) {
+		int nota1 = 0;
+		int nota2 = 0;
+		nota1 += o1.getNota1()*10;
+		nota1 += o1.getNota2()*10;
+		nota1 += o1.getNota3()*10;
+		nota1 += o1.getNota4()*10;
+		nota1 += o1.getNota5()*10;
+		
+		nota2 += nota1*10;
+		nota2 += nota2*10;
+		nota2 += nota3*10;
+		nota2 += nota4*10;
+		nota2 += nota5*10;
+		
+		
+		
+		return nota2 - nota1;
+	}
+
+	
 
 
 	

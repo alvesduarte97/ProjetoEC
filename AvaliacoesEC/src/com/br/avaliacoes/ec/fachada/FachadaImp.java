@@ -1,5 +1,7 @@
 package com.br.avaliacoes.ec.fachada;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import com.br.avaliacoes.ec.DAO.AvaliacoesDAOImp;
@@ -15,6 +17,7 @@ import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.Regiao;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.AvaliacoesBOImp;
 import com.br.avaliacoes.ec.negocio.DesafioBOImp;
@@ -163,14 +166,13 @@ public class FachadaImp implements IFachada {
 	}
 
 	@Override
-	public List<Grupo> listaGruposPorSerie(String serie) throws BancoException {
-		return negocioGrupo.listaGruposPorSerie(serie);
+	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException {
+		return negocioGrupo.listaGruposPorSerie(serie, desafioAtivo);
 	}
 
 	@Override
-	public void gerarExcelAvaliacoes() {
-
-		negocioAvaliacao.gerarExcelAvaliacoes();
+	public void gerarExcelAvaliacoes(Desafios desafio) throws FileNotFoundException, IOException {
+		negocioAvaliacao.gerarExcelAvaliacoes(desafio);
 	}
 
 }
