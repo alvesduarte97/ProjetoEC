@@ -1,58 +1,56 @@
 package com.br.avaliacoes.ec.telas;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.List;
 
-import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
-import com.br.avaliacoes.ec.modelo.Desafios;
-
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
 import javax.swing.JList;
-import java.awt.Font;
+import javax.swing.JOptionPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-public class GerarExcelTela extends BaseOrgTela {
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Desafios;
 
+public class GerarExcelTela extends BaseOrgTela {
+	private JList list;
+	private List<Desafios> listaDesafios;
 	
 	public GerarExcelTela() {
 		
-		JButton btnGerar = new JButton("Gerar Lista");
+		JButton btnGerar = new JButton("Gerar Excel");
 		btnGerar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnGerar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String nomeDesafio = txtNomeDesafio.getText();
-				Desafios desafio;
+				int indexSec = list.getSelectedIndex();
+				Desafios desafio = listaDesafios.get(indexSec);
+				String nomeDesafio = (String) list.getSelectedValue();
+				
 				try {
-					desafio = FachadaImp.getInstanciaFachada().procurarDesafios(nomeDesafio);
 					FachadaImp.getInstanciaFachada().gerarExcelAvaliacoes(desafio);
-
-				} catch (BancoException e) {
-					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, e.getMessage());
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, e.getMessage());
+					JOptionPane.showMessageDialog(null, "Excel gerado com sucesso");
 				} catch (IOException e) {
 					e.printStackTrace();
-					JOptionPane.showMessageDialog(null, e.getMessage());
+					e.getMessage();
 				}
 				
 			}
 		});
 		
-		JList list = new JList();
-		list.setBounds(260, 186, 198, 203);
+		DefaultListModel modelDesafios = new DefaultListModel();
+		listaDesafios = FachadaImp.getInstanciaFachada().listaDesafios();
+		for(Desafios desafio : listaDesafios) {
+			modelDesafios.addElement(desafio.getNome());
+		}
+		list = new JList(modelDesafios);
+		list.setBounds(145, 186, 433, 203);
 		add(list);
 		
 		JSeparator separator_1 = new JSeparator();
