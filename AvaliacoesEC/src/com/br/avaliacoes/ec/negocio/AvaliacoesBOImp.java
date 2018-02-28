@@ -31,7 +31,7 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 	@Override
 	public void inserir(Avaliacoes entity) throws BancoException {
 		if(entity.getComentario().length() < 20)
-			throw new BancoException("Por favor insira um mentario maior");
+			throw new BancoException("Por favor insira um comentario maior");
 		repositorio.inserir(entity);
 	}
 

@@ -23,10 +23,13 @@ import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginTela extends JPanel {
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
+	private JButton btnConfirmarLogin;
 
 	/**
 	 * Create the panel.
@@ -46,16 +49,16 @@ public class LoginTela extends JPanel {
 		txtLogin.setBounds(247, 290, 154, 26);
 		add(txtLogin);
 		txtLogin.setColumns(10);
+		
+				txtSenha = new JPasswordField();
+				txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
+				txtSenha.setBounds(247, 365, 154, 26);
+				add(txtSenha);
 
 		JLabel lblNewLabel_1 = new JLabel("Us\u00FAario:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel_1.setBounds(247, 265, 86, 14);
 		add(lblNewLabel_1);
-
-		txtSenha = new JPasswordField();
-		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtSenha.setBounds(247, 365, 154, 26);
-		add(txtSenha);
 
 		JLabel lblNewLabel_2 = new JLabel("Senha:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -73,7 +76,7 @@ public class LoginTela extends JPanel {
 		Imagem2.setIcon(new ImageIcon(imagi));
 		add(Imagem2);
 
-		JButton btnConfirmarLogin = new JButton("Confirmar");
+		btnConfirmarLogin = new JButton("Confirmar");
 		btnConfirmarLogin.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -162,4 +165,6 @@ public class LoginTela extends JPanel {
 		add(Imagem3);
 
 	}
+	
+	
 }

@@ -7,16 +7,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
+import java.util.List;
 
 import javax.swing.SwingConstants;
+
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Avaliacoes;
+
 import javax.swing.JSeparator;
 import javax.swing.JScrollPane;
 
 public class OrganizadorTela extends BaseOrgTela {
 
-	/**
-	 * Create the panel.
-	 */
+		private List<Avaliacoes> listaUltimasAva;
+		String textoParaTextArea= "";
 	public OrganizadorTela() {
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -24,6 +28,13 @@ public class OrganizadorTela extends BaseOrgTela {
 		add(scrollPane);
 		
 		JTextArea textAreaAvaliacao = new JTextArea();
+		textAreaAvaliacao.setEditable(false);
+		listaUltimasAva = FachadaImp.getInstanciaFachada().listaAvaliacoesOrdemDct();
+		for(Avaliacoes ava : listaUltimasAva) {
+			textoParaTextArea += "                                "+ava.getDesafio().getNome()+"    "+ava.getAvaliador().getNome()+"    " + ava.getGrupoAvaliado().getEscola()+"    " + ava.getGrupoAvaliado().getSerie()+"    "+
+					ava.getNota1()+"   |   "+ava.getNota2()+"   |   "+ava.getNota3()+"   |   "+ava.getNota4()+"   |   "+ava.getNota5()+"\n\n";
+		}
+		textAreaAvaliacao.setText(textoParaTextArea);
 		
 		scrollPane.setViewportView(textAreaAvaliacao);
 		

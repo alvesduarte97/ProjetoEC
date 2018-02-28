@@ -109,7 +109,8 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Avaliacoes.class);
-		criteria.addOrder(Order.desc("idAvaliacao"));
+//		criteria.addOrder(Order.desc("idAvaliacao"));
+		criteria.setMaxResults(100);
 		List<Avaliacoes> lista = criteria.list();
 		return lista;
 	}
