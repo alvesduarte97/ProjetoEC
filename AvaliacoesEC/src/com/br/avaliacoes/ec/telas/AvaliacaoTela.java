@@ -224,8 +224,10 @@ public class AvaliacaoTela extends JPanel {
 				default:
 					break;
 				}
+				
 
 				String comentario = txtComentario.getText();
+				double notaFinal = nota1 + nota2 + nota3 + nota4 + nota5;
 				Avaliacoes avaliacao = new Avaliacoes();
 				
 				avaliacao.setComentario(comentario);
@@ -234,6 +236,7 @@ public class AvaliacaoTela extends JPanel {
 				avaliacao.setNota3(nota3);
 				avaliacao.setNota4(nota4);
 				avaliacao.setNota5(nota5);
+				avaliacao.setNotaFinal(notaFinal);
 				avaliacao.setAvaliador(PrincipalTela.pessoa);
 				avaliacao.setGrupoAvaliado(grupos.get(index));
 				avaliacao.setDesafio(desafioAtivo);
@@ -270,28 +273,26 @@ public class AvaliacaoTela extends JPanel {
 		add(separator_2);
 
 		JLabel lblEscola = new JLabel("Escola:");
-		lblEscola.setBounds(308, 385, 36, 14);
+		lblEscola.setBounds(308, 385, 54, 14);
 		add(lblEscola);
 
 		txtEscola = new TextField();
-		txtEscola.setBounds(354, 382, 198, 22);
+		txtEscola.setBounds(368, 382, 198, 22);
 		if (grupos.size() > 0)
 			txtEscola.setText(grupos.get(index).getEscola());
 		add(txtEscola);
 		txtEscola.setEditable(false);
-		txtEscola.setEnabled(false);
 
 		JLabel lblSerie = new JLabel("Serie:");
-		lblSerie.setBounds(579, 385, 36, 14);
+		lblSerie.setBounds(605, 385, 36, 14);
 		add(lblSerie);
 
 		txtSerie = new TextField();
-		txtSerie.setBounds(621, 382, 63, 22);
+		txtSerie.setBounds(647, 382, 63, 22);
 		if (grupos.size() > 0)
 			txtSerie.setText(grupos.get(index).getSerie());
 		add(txtSerie);
 		txtSerie.setEditable(false);
-		txtSerie.setEnabled(false);
 
 		JLabel lblDesafio = new JLabel("Desafio:");
 		lblDesafio.setBounds(50, 385, 46, 14);

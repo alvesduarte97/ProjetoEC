@@ -26,6 +26,7 @@ public interface IFachada {
     void atualizarDesafios(Desafios desafio) throws BancoException;
 	void removerDesafios(String nome) throws BancoException;
 	List<Desafios> listaDesafios();
+	List<Desafios> listaDesafiosAvaliados();
 	
 	void inserirGrupo(Grupo grupo) throws BancoException;
 	Grupo procurarGrupo(Integer idGrupo) throws BancoException;
@@ -40,4 +41,5 @@ public interface IFachada {
 	void removerAvaliacoes(Integer idAvaliacao) throws BancoException;
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
 	void gerarExcelAvaliacoes(Desafios desafio) throws FileNotFoundException, IOException;
+	List<Avaliacoes> listaAvaliacoesOrdemDct();
 }

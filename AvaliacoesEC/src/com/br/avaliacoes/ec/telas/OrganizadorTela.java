@@ -10,6 +10,7 @@ import java.awt.Image;
 
 import javax.swing.SwingConstants;
 import javax.swing.JSeparator;
+import javax.swing.JScrollPane;
 
 public class OrganizadorTela extends BaseOrgTela {
 
@@ -18,9 +19,13 @@ public class OrganizadorTela extends BaseOrgTela {
 	 */
 	public OrganizadorTela() {
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 120, 721, 457);
+		add(scrollPane);
+		
 		JTextArea textAreaAvaliacao = new JTextArea();
-		textAreaAvaliacao.setBounds(10, 120, 721, 457);
-		add(textAreaAvaliacao);
+		
+		scrollPane.setViewportView(textAreaAvaliacao);
 		
 		JLabel lblStatus = new JLabel("Ultimas Avalia\u00E7\u00F5es");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);

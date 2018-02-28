@@ -43,7 +43,11 @@ public class AddOrgTela extends BaseOrgTela {
 		DefaultListModel modelOrg =  new DefaultListModel();
 		List<Pessoa> listaOrg = FachadaImp.getInstanciaFachada().listaPessoas(TipoPessoa.ORGANIZACAO);
 		for(Pessoa pessoa : listaOrg) {
-			modelOrg.addElement(pessoa.getNome());
+			if(pessoa.getNome().equals("adm") || pessoa.getNome().equals("ADM" ) || pessoa.getLogin().equals("adm" )|| pessoa.getLogin().equals("ADM")) {
+				
+			}else {
+				modelOrg.addElement(pessoa.getNome());
+			}
 		}
 		
 		JList listOrganizadores = new JList(modelOrg);

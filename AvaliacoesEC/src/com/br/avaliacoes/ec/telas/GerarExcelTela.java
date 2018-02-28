@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Desafios;
+import javax.swing.JScrollPane;
 
 public class GerarExcelTela extends BaseOrgTela {
 	private JList list;
@@ -49,9 +50,12 @@ public class GerarExcelTela extends BaseOrgTela {
 		for(Desafios desafio : listaDesafios) {
 			modelDesafios.addElement(desafio.getNome());
 		}
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(145, 186, 433, 203);
+		add(scrollPane);
 		list = new JList(modelDesafios);
-		list.setBounds(145, 186, 433, 203);
-		add(list);
+		scrollPane.setViewportView(list);
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setBounds(-68, 469, 877, 2);

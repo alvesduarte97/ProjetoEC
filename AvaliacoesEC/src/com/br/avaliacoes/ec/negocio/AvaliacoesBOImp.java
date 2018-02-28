@@ -30,6 +30,8 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 	
 	@Override
 	public void inserir(Avaliacoes entity) throws BancoException {
+		if(entity.getComentario().length() < 20)
+			throw new BancoException("Por favor insira um mentario maior");
 		repositorio.inserir(entity);
 	}
 
@@ -97,7 +99,7 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 		int i = 1;
 		for(Avaliacoes ava : lista) {
 			HSSFRow Row = firsSheet.createRow(i);
-			double notaFinal = ava.getNota1() + ava.getNota2() + ava.getNota3() + ava.getNota4()+ ava.getNota5();
+//			double notaFinal = ava.getNota1() + ava.getNota2() + ava.getNota3() + ava.getNota4()+ ava.getNota5();
 			Row.createCell(1).setCellValue(ava.getGrupoAvaliado().getSerie());
 			Row.createCell(2).setCellValue(ava.getGrupoAvaliado().getEscola());
 			Row.createCell(3).setCellValue(ava.getDesafio().getNome());
@@ -106,11 +108,16 @@ public class AvaliacoesBOImp implements IAvaliacoesBO {
 			Row.createCell(6).setCellValue(ava.getNota3());
 			Row.createCell(7).setCellValue(ava.getNota4());
 			Row.createCell(8).setCellValue(ava.getNota5());
-			Row.createCell(9).setCellValue(notaFinal);
+			Row.createCell(9).setCellValue(ava.getNotaFinal());
 			Row.createCell(10).setCellValue(ava.getComentario());
 			i++;
 			
 		}
+	}
+
+	@Override
+	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
+		return repositorio.listaAvaliacoesOrdemDct();
 	}
 
 }

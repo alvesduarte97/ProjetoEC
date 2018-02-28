@@ -10,4 +10,6 @@ public interface IDesafioBO extends ICrudBO<Desafios, String> {
 
 	Desafios desafioAtivo();
 
+	List<Desafios> listaDesafiosAvaliados();
+
 }

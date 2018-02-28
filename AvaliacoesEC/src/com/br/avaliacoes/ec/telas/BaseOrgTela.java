@@ -94,8 +94,8 @@ public class BaseOrgTela extends JPanel {
 		});
 		mnAvaliao.add(mntmAvaliar);
 		
-		JMenuItem mntmGerarPdf = new JMenuItem("Gerar PDF");
-		mntmGerarPdf.addActionListener(new ActionListener() {
+		JMenuItem mntmGerarExcel = new JMenuItem("Gerar Excel");
+		mntmGerarExcel.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				GerarExcelTela gerar = new GerarExcelTela();
@@ -103,7 +103,7 @@ public class BaseOrgTela extends JPanel {
 				PrincipalTela.internalFrame.revalidate();
 			}
 		});
-		mnAvaliao.add(mntmGerarPdf);
+		mnAvaliao.add(mntmGerarExcel);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(0, 605, 790, 2);

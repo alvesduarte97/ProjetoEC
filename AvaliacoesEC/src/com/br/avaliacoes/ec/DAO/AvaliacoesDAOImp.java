@@ -85,10 +85,11 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 		criteria.add(Restrictions.eq("grupo.regiao", regiao));
 		criteria.add(Restrictions.eq("Desafio", desafio));
 		criteria.addOrder(Order.asc("grupo.serie"));
+		criteria.addOrder(Order.desc("notaFinal"));
 		List<Avaliacoes> lista = criteria.list();
 		session.close();
 		//Para ordenar pelas maiores pontuações
-		Collections.sort(lista);
+		//Collections.sort(lista);
 		return lista;
 	}
 	
@@ -102,6 +103,15 @@ public class AvaliacoesDAOImp implements IAvaliacoesDAO {
 //			System.out.println(ava.getGrupoAvaliado().getRegiao());
 //		}
 		
+	}
+
+	@Override
+	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Avaliacoes.class);
+		criteria.addOrder(Order.desc("idAvaliacao"));
+		List<Avaliacoes> lista = criteria.list();
+		return lista;
 	}
 	
 

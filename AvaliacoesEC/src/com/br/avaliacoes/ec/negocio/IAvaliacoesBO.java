@@ -14,5 +14,6 @@ public interface IAvaliacoesBO extends ICrudBO<Avaliacoes, Integer>{
 
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
 	void gerarExcelAvaliacoes(Desafios desafio) throws FileNotFoundException, IOException;
+	List<Avaliacoes> listaAvaliacoesOrdemDct();
 
 }

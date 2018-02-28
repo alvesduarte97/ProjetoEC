@@ -82,6 +82,14 @@ public class PessoaDAOImp implements IPessoaDAO {
 		return lista;
 	}
 	
+	public Pessoa buscarPessoaNome(String nome) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Pessoa.class);
+		criteria.add(Restrictions.eq("nome", nome));
+		Pessoa pessoa = (Pessoa) criteria.uniqueResult();
+		return pessoa;
+		
+	}
 	public static void main(String[] args) {
 		PessoaDAOImp dao = new PessoaDAOImp();
 			List<Pessoa> lista = dao.listaPessoas(TipoPessoa.ORGANIZACAO);

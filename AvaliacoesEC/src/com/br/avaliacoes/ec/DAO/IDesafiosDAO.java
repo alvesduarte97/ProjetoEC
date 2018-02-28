@@ -10,4 +10,6 @@ public interface IDesafiosDAO extends ICrudDAO<Desafios, String>{
 
 	Desafios desafioAtivo();
 
+	List<Desafios> listaDesafiosAvaliados();
+
 }

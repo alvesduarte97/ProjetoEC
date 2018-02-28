@@ -25,7 +25,6 @@ public class Desafios extends BancoEntity<String> {
 	@Enumerated(EnumType.STRING)
 	private StatusDesafio status;
 	
-	
 	public String getNome() {
 		return nome;
 	}

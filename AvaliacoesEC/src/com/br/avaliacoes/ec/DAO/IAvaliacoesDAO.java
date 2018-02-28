@@ -12,5 +12,6 @@ public interface IAvaliacoesDAO extends ICrudDAO<Avaliacoes, Integer>{
 
 	List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException;
 	List<Avaliacoes> listaAvaliacoes(Regiao regiao, Desafios desafio);
+	List<Avaliacoes> listaAvaliacoesOrdemDct();
 
 }

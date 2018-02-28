@@ -175,4 +175,14 @@ public class FachadaImp implements IFachada {
 		negocioAvaliacao.gerarExcelAvaliacoes(desafio);
 	}
 
+	@Override
+	public List<Desafios> listaDesafiosAvaliados() {
+		return negocioDesafio.listaDesafiosAvaliados();
+	}
+
+	@Override
+	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
+		return negocioAvaliacao.listaAvaliacoesOrdemDct();
+	}
+
 }

@@ -85,4 +85,14 @@ public class DesafiosDAOImp implements IDesafiosDAO {
 		return desafio.get(0);
 	}
 
+	@Override
+	public List<Desafios> listaDesafiosAvaliados() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Desafios.class);
+		criteria.add(Restrictions.not(Restrictions.eq("dataInicio", null)));
+		List<Desafios> lista = criteria.list();
+		session.close();
+		return lista;
+	}
+
 }

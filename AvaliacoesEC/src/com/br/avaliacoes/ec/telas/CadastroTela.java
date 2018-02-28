@@ -150,9 +150,9 @@ public class CadastroTela extends JPanel {
 					}
 
 					limparCampos();
-					JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 					try {
 						FachadaImp.getInstanciaFachada().inserirPessoa(avaliador);
+						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 					} catch (BancoException e1) {
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, e1.getMessage());

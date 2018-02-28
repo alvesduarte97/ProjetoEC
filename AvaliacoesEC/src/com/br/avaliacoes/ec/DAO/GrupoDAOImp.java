@@ -81,11 +81,7 @@ public class GrupoDAOImp implements IGrupoDAO {
 	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Grupo.class);
-		//criteria.createAlias("listaAvaliacoes", "avaliacoes");
-		//criteria.createAlias("avaliacoes.Desafio", "desafio");
 		criteria.add(Restrictions.eq("serie", serie));
-//		criteria.add(Restrictions.eq("avaliacoes.Desafio", null));
-		//criteria.add(Restrictions.not(Restrictions.eq("desafio.nome", desafioAtivo)));
 		criteria.addOrder(Order.asc("escola"));
 		List<Grupo> lista = criteria.list();
 		List<Grupo> listaFinal = new ArrayList<>();
@@ -101,6 +97,17 @@ public class GrupoDAOImp implements IGrupoDAO {
 				listaFinal.add(grupo);
 		}
 		return listaFinal;
+	}
+	
+	public Grupo procurarGrupo(String escola, String serie) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Grupo.class);
+		criteria.add(Restrictions.eq("escola", escola));
+		criteria.add(Restrictions.eq("serie", serie));
+		Grupo grupo = (Grupo) criteria.uniqueResult();
+		session.close();
+		return grupo;
+		
 	}
 	
 	 public static void main(String[] args) {

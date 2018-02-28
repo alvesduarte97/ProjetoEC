@@ -18,16 +18,24 @@ public class GrupoBOImp implements IGrupoBO {
 	@Override
 	public void inserir(Grupo entity) throws BancoException {
 		Grupo grupo = repositorio.procurar(entity.getChave());
-		List<Grupo> listaGrupos = repositorio.listaGrupos();
+		Grupo grupoRepetido = repositorio.procurarGrupo(entity.getEscola(), entity.getSerie());
+		//List<Grupo> listaGrupos = repositorio.listaGrupos();
 		
 		if(grupo != null) {
-			throw new BancoException("Este grupo já esta cadastrado.");
+			throw new BancoException("Este grupo já esta cadastrado");
+		}else if(grupoRepetido != null) {
+			throw new BancoException("Este grupo já esta cadastrado");
+		}else if(entity.getEscola() == null) {
+			throw new BancoException("Preencha o nome da escola");
+		}else if(entity.getProfessor() == null) {
+			throw new BancoException("Preencha o professor orientador");
 		}
-		for(Grupo g : listaGrupos) {
-			if(g.getEscola().equals(entity.getEscola()) && g.getSerie().equals(entity.getSerie())) {
-				throw new BancoException("Este grupo já esta cadastrado.");
-			}
-		}
+		
+//		for(Grupo g : listaGrupos) {
+//			if(g.getEscola().equals(entity.getEscola()) && g.getSerie().equals(entity.getSerie())) {
+//				throw new BancoException("Este grupo já esta cadastrado.");
+//			}
+//		}
 		repositorio.inserir(entity);
 	}
 

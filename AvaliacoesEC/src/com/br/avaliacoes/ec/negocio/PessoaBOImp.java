@@ -18,17 +18,29 @@ public class PessoaBOImp implements IPessoaBO {
 	
 	@Override
 	public void inserir(Pessoa entity) throws BancoException {
+		String nome = entity.getNome();
+		entity.setSenha(criptografar(entity.getSenha()));
+		Pessoa pessoaBusca = repositorio.procurar(entity.getChave());
+		Pessoa nomePessoa = repositorio.buscarPessoaNome(entity.getNome());
+		
+		
 		if(entity == null) {
 			throw new BancoException("É preciso preencher os campos");
-		}
-
-		entity.setSenha(criptografar(entity.getSenha()));
-		
-		Pessoa pessoaBusca = repositorio.procurar(entity.getChave());
-		if(pessoaBusca == null) {
-			repositorio.inserir(entity);
-		}else {
+		}else if(nome == null || nome == "" || nome.equals(null) || nome.equals("")) {
+			throw new BancoException("Preencha o nome");
+		}else if(nomePessoa != null) {
+			throw new BancoException("Existe alguem cadastradocom este nome. para facilitar a administração \n "
+					+ "                por favor coloque um diferencial em seu nome");
+		}else if(pessoaBusca != null) {
 			throw new BancoException("Login ja utilizado");
+		}else if(entity.getArea() == null) {
+			throw new BancoException("Selecione uma area de atuação");
+		}else if(entity.getSenha() == null) {
+			throw new BancoException("Preencha a senha");
+		}else if(entity.getSenha().length() < 6) {
+			throw new BancoException("Senha precisa ter no minimo 6 caracteres");
+		}else {
+			repositorio.inserir(entity);
 		}
 	       
 	}
