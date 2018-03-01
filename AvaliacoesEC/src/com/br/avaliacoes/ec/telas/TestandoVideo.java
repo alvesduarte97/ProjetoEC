@@ -16,11 +16,13 @@ import javafx.scene.Scene;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class TestandoVideo {
 
 	private JFrame frame;
 	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -55,31 +57,45 @@ public class TestandoVideo {
 		frame.getContentPane().setLayout(null);
 		
 		textField = new JTextField();
-		textField.setBounds(30, 69, 335, 20);
+		textField.setBounds(128, 64, 306, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Reproduzir");
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				String diretorio = textField.getText();
+				int index = new Integer(textField_1.getText());
 				   SwingUtilities.invokeLater(new Runnable() {
 					      @Override public void run() {
-					        initAndShowGUI(diretorio);
+					        initAndShowGUI(diretorio, index);
 					      }
 					    });				
 			}
 		});
 		btnNewButton.setBounds(94, 149, 89, 23);
 		frame.getContentPane().add(btnNewButton);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(128, 97, 86, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		JLabel lblDiretorio = new JLabel("Diretorio:");
+		lblDiretorio.setBounds(10, 70, 46, 14);
+		frame.getContentPane().add(lblDiretorio);
+		
+		JLabel lblPosioDoVideo = new JLabel("Posi\u00E7\u00E3o do video");
+		lblPosioDoVideo.setBounds(10, 103, 108, 14);
+		frame.getContentPane().add(lblPosioDoVideo);
 	}
 	
-	  private static void initAndShowGUI(String diretorio) {
+	  private static void initAndShowGUI(String diretorio, int index) {
 		    // This method is invoked on Swing thread
 		    JFrame frame = new JFrame("FX");
 		    final JFXPanel fxPanel = new JFXPanel();
-		    frame.add(fxPanel);
+		    frame.getContentPane().add(fxPanel);
 		    frame.setBounds(200, 100, 800, 250);
 		    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		    frame.setVisible(true);
@@ -87,15 +103,14 @@ public class TestandoVideo {
 
 		    Platform.runLater(new Runnable() {
 		      @Override public void run() {
-		        initFX(fxPanel, diretorio);        
+		        initFX(fxPanel, diretorio, index);        
 		      }
 		    });
 		  }
 	
-	  private static void initFX(JFXPanel fxPanel, String diretorio) {
+	  private static void initFX(JFXPanel fxPanel, String diretorio, int index) {
 		    // This method is invoked on JavaFX thread
-		    Scene scene = new SceneGenerator(diretorio).createScene();
+		    Scene scene = new SceneGenerator(diretorio, index).createScene();
 		    fxPanel.setScene(scene);
 		  }
-	
 }

@@ -30,24 +30,41 @@ public class SceneGenerator {
 	  final ProgressBar progress = new ProgressBar();
 	  private ChangeListener<Duration> progressChangeListener;
 	  String diretorio;
-	  public SceneGenerator(String diretorio) {
+	  int index;
+	  public SceneGenerator(String diretorio, int index) {
 		  this.diretorio = diretorio;
+		  this.index = index;
 	  }
 
 	  public Scene createScene() {
 	    final StackPane layout = new StackPane();
 
 	    // determine the source directory for the playlist
-	    //"C:\\Users\\Duarte\\Desktop\\video"
 	    final File dir = new File(diretorio);
 	    if (!dir.exists() || !dir.isDirectory()) {
 	      System.out.println("Cannot find video source directory: " + dir);
 	      Platform.exit();
 	      return null;
 	    }
-
+	    
+	    
+	    //Varre a pasta para adicionar os diretorios dos videos a uma lista de players
 	    // create some media players.
 	    final List<MediaPlayer> players = new ArrayList<MediaPlayer>();
+	    List<String> videos = new ArrayList<>();
+//	    for (String file : dir.list(new FilenameFilter() {
+//	      @Override public boolean accept(File dir, String name) {
+//	        return name.endsWith(".mp4");
+//	      }
+//	    })) players.add(createPlayer("file:///" + (dir + "\\" + file).replace("\\", "/").replaceAll(" ", "%20")));
+//	    if (players.isEmpty()) {
+//	      System.out.println("No audio found in " + dir);
+//	      Platform.exit();
+//	      return null;
+//	    }else {
+//	    	System.out.println(players.size()+" foram encontrados");
+//	    }
+	    
 	    for (String file : dir.list(new FilenameFilter() {
 	      @Override public boolean accept(File dir, String name) {
 	        return name.endsWith(".mp4");
@@ -57,7 +74,9 @@ public class SceneGenerator {
 	      System.out.println("No audio found in " + dir);
 	      Platform.exit();
 	      return null;
-	    }    
+	    }else {
+	    	System.out.println(players.size()+" foram encontrados");
+	    }
 
 	    // create a view to show the mediaplayers.
 	    final MediaView mediaView = new MediaView(players.get(0));
@@ -65,17 +84,17 @@ public class SceneGenerator {
 	    final Button play = new Button("Pause");
 
 	    // play each audio file in turn.
-	    for (int i = 0; i < players.size(); i++) {
-	      final MediaPlayer player     = players.get(i);
-	      final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
-	      player.setOnEndOfMedia(new Runnable() {
-	        @Override public void run() {
-	          player.currentTimeProperty().removeListener(progressChangeListener);
-	          mediaView.setMediaPlayer(nextPlayer);
-	          nextPlayer.play();
-	        }
-	      });
-	    }
+//	    for (int i = 0; i < players.size(); i++) {
+//	      final MediaPlayer player     = players.get(i);
+//	      final MediaPlayer nextPlayer = players.get((i + 1) % players.size());
+//	      player.setOnEndOfMedia(new Runnable() {
+//	        @Override public void run() {
+//	          player.currentTimeProperty().removeListener(progressChangeListener);
+//	          mediaView.setMediaPlayer(nextPlayer);
+//	          nextPlayer.play();
+//	        }
+//	      });
+//	    }
 
 	    // allow the user to skip a track.
 	    skip.setOnAction(new EventHandler<ActionEvent>() {
@@ -110,9 +129,12 @@ public class SceneGenerator {
 	    });
 
 	    // start playing the first track.
-	    mediaView.setMediaPlayer(players.get(0));
+	    mediaView.setMediaPlayer(players.get(index));
 	    mediaView.getMediaPlayer().play();
 	    setCurrentlyPlaying(mediaView.getMediaPlayer());
+//	    mediaView.setMediaPlayer(video);
+//	    mediaView.getMediaPlayer().play();
+//	    setCurrentlyPlaying(mediaView.getMediaPlayer());
 
 	    // silly invisible button used as a template to get the actual preferred size of the Pause button.
 	    Button invisiblePause = new Button("Pause");
