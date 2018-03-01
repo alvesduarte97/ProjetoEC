@@ -48,7 +48,7 @@ public class GrupoTela extends BaseOrgTela {
 		lblNewLabel_2.setBounds(219, 214, 46, 24);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_2);
-		
+		 
 		JLabel lblNewLabel_3 = new JLabel("Regi\u00E3o:");
 		lblNewLabel_3.setBounds(219, 179, 73, 24);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));

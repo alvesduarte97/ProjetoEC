@@ -46,25 +46,11 @@ public class SceneGenerator {
 	      Platform.exit();
 	      return null;
 	    }
-	    
+	     
 	    
 	    //Varre a pasta para adicionar os diretorios dos videos a uma lista de players
 	    // create some media players.
 	    final List<MediaPlayer> players = new ArrayList<MediaPlayer>();
-	    List<String> videos = new ArrayList<>();
-//	    for (String file : dir.list(new FilenameFilter() {
-//	      @Override public boolean accept(File dir, String name) {
-//	        return name.endsWith(".mp4");
-//	      }
-//	    })) players.add(createPlayer("file:///" + (dir + "\\" + file).replace("\\", "/").replaceAll(" ", "%20")));
-//	    if (players.isEmpty()) {
-//	      System.out.println("No audio found in " + dir);
-//	      Platform.exit();
-//	      return null;
-//	    }else {
-//	    	System.out.println(players.size()+" foram encontrados");
-//	    }
-	    
 	    for (String file : dir.list(new FilenameFilter() {
 	      @Override public boolean accept(File dir, String name) {
 	        return name.endsWith(".mp4");
@@ -132,9 +118,6 @@ public class SceneGenerator {
 	    mediaView.setMediaPlayer(players.get(index));
 	    mediaView.getMediaPlayer().play();
 	    setCurrentlyPlaying(mediaView.getMediaPlayer());
-//	    mediaView.setMediaPlayer(video);
-//	    mediaView.getMediaPlayer().play();
-//	    setCurrentlyPlaying(mediaView.getMediaPlayer());
 
 	    // silly invisible button used as a template to get the actual preferred size of the Pause button.
 	    Button invisiblePause = new Button("Pause");
@@ -154,7 +137,8 @@ public class SceneGenerator {
 	    );
 	    progress.setMaxWidth(Double.MAX_VALUE);
 	    HBox.setHgrow(progress, Priority.ALWAYS);
-	    return new Scene(layout, 800, 600);
+	    return new Scene(layout,800, 800);
+	    //800,600
 	  }
 
 	  /** sets the currently playing label to the label of the new media player and updates the progress monitor. */
@@ -184,5 +168,6 @@ public class SceneGenerator {
 	    });
 	    return player;
 	  }
+	  
 
 }

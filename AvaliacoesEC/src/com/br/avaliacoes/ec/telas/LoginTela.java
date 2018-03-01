@@ -102,7 +102,7 @@ public class LoginTela extends JPanel {
 										JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
 								if (selection == null || selection.equals("")) {
 									JOptionPane.showMessageDialog(null, "Escolha uma serie");
-									
+									 
 								}
 							}
 							pessoa.setSerie((String) selection);
@@ -123,6 +123,9 @@ public class LoginTela extends JPanel {
 								e1.printStackTrace();
 								JOptionPane.showMessageDialog(null, e1.getMessage());
 							}
+							
+							
+							
 							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos);
 							PrincipalTela.internalFrame.setContentPane(telaAva);
 							PrincipalTela.internalFrame.revalidate();

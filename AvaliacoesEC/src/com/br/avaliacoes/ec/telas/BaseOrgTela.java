@@ -31,7 +31,7 @@ public class BaseOrgTela extends JPanel {
 		
 		JMenu mnOrganizador = new JMenu("Organizador");
 		menuBar.add(mnOrganizador);
-		
+		 
 		mntmAddRemovOrg = new JMenuItem("Adicionar/Remover");
 		mntmAddRemovOrg.addActionListener(new ActionListener() {
 			

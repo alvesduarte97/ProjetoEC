@@ -11,6 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,12 +19,19 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
+import com.br.avaliacoes.ec.telas.classFX.SceneGenerator;
+
+import javafx.application.Platform;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Scene;
 
 public class AvaliacaoTela extends JPanel {
 	private JTextArea txtComentario;
@@ -32,7 +40,6 @@ public class AvaliacaoTela extends JPanel {
 	private JComboBox cbNota2;
 	private JComboBox cbNota3;
 	private JComboBox cbNota4;
-	private JInternalFrame frameVideo;
 	private TextField txtEscola;
 	private TextField txtSerie;
 	private TextField txtDesafio;
@@ -40,6 +47,10 @@ public class AvaliacaoTela extends JPanel {
 	private List<Grupo> grupos;
 	private int index;
 	private JComboBox cbNota5;
+	private static JFrame frame;
+    static JFXPanel fxPanel;
+    static Scene scene;
+    private static JInternalFrame frameVideo;
 
 	public AvaliacaoTela(int newIndex, List<Grupo> listaGrupos) throws BancoException {
 		setLayout(null);
@@ -52,6 +63,13 @@ public class AvaliacaoTela extends JPanel {
 			PrincipalTela.internalFrame.setContentPane(login);
 			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
 		}
+		
+//		SwingUtilities.invokeLater(new Runnable() {
+//		      @Override public void run() {
+//		        initAndShowGUI("C:\\Users\\Duarte\\Desktop\\video", index);
+//		      }
+//		    });
+		
 		
 		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
 
@@ -243,9 +261,7 @@ public class AvaliacaoTela extends JPanel {
 				try {
 					FachadaImp.getInstanciaFachada().inserirAvaliacoes(avaliacao);
 					index = index + 1;
-					
 					AvaliacaoTela proxTela = new AvaliacaoTela(index,listaGrupos);
-					
 					PrincipalTela.internalFrame.setContentPane(proxTela);
 					PrincipalTela.internalFrame.revalidate();
 					
@@ -315,11 +331,7 @@ public class AvaliacaoTela extends JPanel {
 		button.setFont(new Font("Tahoma", Font.BOLD, 15));
 		button.setBounds(10, 601, 80, 56);
 		add(button);
-
-		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
-		Imagem3.setBounds(0, 0, 741, 668);
-		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
 
 		cbNota5 = new JComboBox();
 		cbNota5.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
@@ -330,9 +342,18 @@ public class AvaliacaoTela extends JPanel {
 		lblNota.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNota.setBounds(520, 424, 46, 14);
 		add(lblNota);
-		Imagem3.setIcon(new ImageIcon(imagi3));
-		add(Imagem3);
-
+		
+		frameVideo = new JInternalFrame("New JInternalFrame");
+		frameVideo.setBounds(10, 11, 721, 363);
+		add(frameVideo);
+		frameVideo.setVisible(true);
+		
+		SwingUtilities.invokeLater(new Runnable() {
+		      @Override public void run() {
+		        initAndShowGUI("C:\\Users\\Duarte\\Desktop\\video", index);
+		        System.out.println("executou essa mzra");
+		      }
+		    });
 	}
 	
 		private void limparCampos() {
@@ -342,4 +363,26 @@ public class AvaliacaoTela extends JPanel {
 		cbNota3.setSelectedIndex(0);
 		cbNota4.setSelectedIndex(0);
 		}
+		
+		//Metodos para chamar video
+		  private static void initAndShowGUI(String diretorio, int index) {
+			    // Este metodo chama uma swing thread
+			    fxPanel = new JFXPanel();
+			    frameVideo.getContentPane().add(fxPanel);
+			    frameVideo.setBounds(10, 11, 721, 363);
+			    frameVideo.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			    frameVideo.setVisible(true);
+
+			    Platform.runLater(new Runnable() {
+			      @Override public void run() {
+			        initFX(fxPanel, diretorio, index);        
+			      }
+			    });
+			  }
+		
+		  private static void initFX(JFXPanel fxPanel, String diretorio, int index) {
+			    // Este metodo chama uma JavaFX thread
+			    scene = new SceneGenerator(diretorio, index).createScene();
+			    fxPanel.setScene(scene);
+}
 }

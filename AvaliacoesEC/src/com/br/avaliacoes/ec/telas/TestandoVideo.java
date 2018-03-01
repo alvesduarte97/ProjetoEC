@@ -66,10 +66,10 @@ public class TestandoVideo {
 			
 			public void actionPerformed(ActionEvent arg0) {
 				String diretorio = textField.getText();
-				int index = new Integer(textField_1.getText());
+				//int index = new Integer(textField_1.getText());
 				   SwingUtilities.invokeLater(new Runnable() {
 					      @Override public void run() {
-					        initAndShowGUI(diretorio, index);
+					        initAndShowGUI("C:\\Users\\Duarte\\Desktop\\video", 0);
 					      }
 					    });				
 			}
@@ -96,10 +96,10 @@ public class TestandoVideo {
 		    JFrame frame = new JFrame("FX");
 		    final JFXPanel fxPanel = new JFXPanel();
 		    frame.getContentPane().add(fxPanel);
-		    frame.setBounds(200, 100, 800, 250);
+		    frame.setBounds(10, 11, 721, 363);
 		    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		    frame.setVisible(true);
-		    
+		    //200, 100, 800, 250
 
 		    Platform.runLater(new Runnable() {
 		      @Override public void run() {
