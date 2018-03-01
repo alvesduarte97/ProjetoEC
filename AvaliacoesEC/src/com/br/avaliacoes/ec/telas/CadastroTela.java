@@ -45,7 +45,7 @@ public class CadastroTela extends JPanel {
 	public CadastroTela() {
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
-		setSize(741, 668);
+		setSize(741, 695);
 
 		JLabel label = new JLabel("\u00C1rea de atua\u00E7\u00E3o:");
 		label.setBounds(229, 367, 126, 14);
@@ -116,7 +116,7 @@ public class CadastroTela extends JPanel {
 					avaliador.setLogin(login);
 					avaliador.setNome(nome);
 					avaliador.setSenha(senha);
-					avaliador.setTipo(TipoPessoa.AVALIADOR);
+					avaliador.setTipo(TipoPessoa.ORGANIZACAO);
 					avaliador.setDesafioAvaliado(FachadaImp.getInstanciaFachada().desafioAtivo().getNome());
 					switch (indexArea) {
 					case 0:
@@ -222,8 +222,8 @@ public class CadastroTela extends JPanel {
 		add(Imagem5);
 
 		JLabel Imagem3 = new JLabel("");
-		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
-		Imagem3.setBounds(0, 0, 741, 668);
+		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/imgfundo.jpg"));
+		Imagem3.setBounds(0, 0, 741, 695);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		add(Imagem3);

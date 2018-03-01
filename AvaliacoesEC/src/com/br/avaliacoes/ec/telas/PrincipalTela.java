@@ -78,7 +78,7 @@ public class PrincipalTela {
 		frmTorneioVirtualDe.setResizable(false);
 		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
-		frmTorneioVirtualDe.setBounds(100, 100, 1060, 698);
+		frmTorneioVirtualDe.setBounds(100, 100, 1060, 720);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTorneioVirtualDe.getContentPane().setLayout(null);
 		
@@ -142,7 +142,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		internalFrame.getContentPane().setEnabled(false);
 		internalFrame.getContentPane().setLayout(null);
 		internalFrame.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		internalFrame.setBounds(316, -24, 741, 693);
+		internalFrame.setBounds(316, -24, 741, 716);
 		internalFrame.setVisible(true);
 		frmTorneioVirtualDe.getContentPane().add(internalFrame);
 		

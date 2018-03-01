@@ -35,7 +35,7 @@ public class LoginTela extends JPanel {
 	 * Create the panel.
 	 */
 	public LoginTela() {
-		setSize(741, 668);
+		setSize(741, 695);
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
 
@@ -161,8 +161,8 @@ public class LoginTela extends JPanel {
 		add(separator_1);
 
 		JLabel Imagem3 = new JLabel("");
-		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
-		Imagem3.setBounds(0, 0, 741, 668);
+		ImageIcon icone3 = new ImageIcon(LoginTela.class.getResource("/imgfundo.jpg"));
+		Imagem3.setBounds(0, 0, 741, 695);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		add(Imagem3);

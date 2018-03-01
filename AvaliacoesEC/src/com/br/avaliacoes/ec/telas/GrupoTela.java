@@ -138,31 +138,17 @@ public class GrupoTela extends BaseOrgTela {
 		btnCadastroGrupo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnCadastroGrupo);
 		
-		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(-42, 94, 796, 2);
-		add(separator_1);
-		
 		JLabel lblNewLabel_6 = new JLabel("Cadastro Grupo");
 		lblNewLabel_6.setBounds(-4, 67, 751, 24);
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.BOLD, 20));
 		add(lblNewLabel_6);
 		
-		JSeparator separator = new JSeparator();
-		separator.setBounds(-27, 313, 796, 2);
-		add(separator);
-		
 		JLabel lblRemoverEscola = new JLabel("Remover Grupo");
 		lblRemoverEscola.setBounds(-4, 326, 751, 24);
 		lblRemoverEscola.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRemoverEscola.setFont(new Font("Tahoma", Font.BOLD, 20));
 		add(lblRemoverEscola);
-		
-		JLabel lblEscolasCadastradas = new JLabel("Grupos cadastradas");
-		lblEscolasCadastradas.setBounds(-4, 361, 741, 24);
-		lblEscolasCadastradas.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEscolasCadastradas.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		add(lblEscolasCadastradas);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(223, 385, 293, 133);
@@ -202,18 +188,26 @@ public class GrupoTela extends BaseOrgTela {
 				
 			}
 		});
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(0, 91, 741, 2);
+		add(separator_2);
 		btnRemovEscola.setBounds(219, 553, 293, 25);
 		btnRemovEscola.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(btnRemovEscola);
 		
-		JSeparator separator_2 = new JSeparator();
-		separator_2.setBounds(-27, 361, 796, 2);
-		add(separator_2);
-		
 		JLabel Imagem3 = new JLabel("");
-		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
-		Imagem3.setBounds(-4, 16, 741, 668);
+		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/imgfundo.jpg"));
+		Imagem3.setBounds(0, 16, 741, 678);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(-4, 313, 772, 2);
+		add(separator_1);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(0, 372, 741, 2);
+		add(separator);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		add(Imagem3);
 

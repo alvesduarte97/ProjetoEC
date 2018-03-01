@@ -155,7 +155,7 @@ public class AddOrgTela extends BaseOrgTela {
 		
 		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
-		Imagem3.setBounds(0, 17, 741, 668);
+		Imagem3.setBounds(0, 17, 741, 678);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		add(Imagem3);
