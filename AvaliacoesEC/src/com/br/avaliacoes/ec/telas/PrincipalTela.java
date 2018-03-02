@@ -37,7 +37,7 @@ import java.awt.Color;
 
 public class PrincipalTela {
 
-	private JFrame frmTorneioVirtualDe;
+	static JFrame frmTorneioVirtualDe;
 	private Button btnLogin;
 	private Button btnCadastroAvaliador;
 	private Label label;
@@ -81,7 +81,6 @@ public class PrincipalTela {
 		frmTorneioVirtualDe.setBounds(100, 100, 1060, 720);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmTorneioVirtualDe.getContentPane().setLayout(null);
-		
 		ScrollPane scrollPane = new ScrollPane();
 		scrollPane.setFont(null);
 		

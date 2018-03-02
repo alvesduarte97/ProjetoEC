@@ -126,9 +126,12 @@ public class LoginTela extends JPanel {
 							
 							
 							
-							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos);
-							PrincipalTela.internalFrame.setContentPane(telaAva);
-							PrincipalTela.internalFrame.revalidate();
+							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null);
+							PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);
+							PrincipalTela.frmTorneioVirtualDe.revalidate();
+							
+//							PrincipalTela.internalFrame.setContentPane(telaAva);
+//							PrincipalTela.internalFrame.revalidate();
 
 						}
 

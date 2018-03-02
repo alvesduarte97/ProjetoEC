@@ -2,6 +2,7 @@ package com.br.avaliacoes.ec.telas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,6 +12,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+
+import com.br.avaliacoes.ec.excecoes.BancoException;
+import com.br.avaliacoes.ec.fachada.FachadaImp;
+import com.br.avaliacoes.ec.modelo.Grupo;
+
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Panel;
@@ -87,9 +93,21 @@ public class BaseOrgTela extends JPanel {
 		mntmAvaliar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				AvaOrgTela telaAva = new AvaOrgTela();
-				PrincipalTela.internalFrame.setContentPane(telaAva);
-				PrincipalTela.internalFrame.revalidate();
+				List<Grupo> listaGrupos = null;
+				try {
+					listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+							(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
+					AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null);
+					PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);
+					PrincipalTela.frmTorneioVirtualDe.revalidate();
+				} catch (BancoException e1) {
+					e1.printStackTrace();
+				}
+				
+				
+//				AvaOrgTela telaAva = new AvaOrgTela();
+//				PrincipalTela.internalFrame.setContentPane(telaAva);
+//				PrincipalTela.internalFrame.revalidate();
 			}
 		});
 		mnAvaliao.add(mntmAvaliar);

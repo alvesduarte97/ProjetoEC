@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
@@ -14,7 +15,7 @@ import com.br.avaliacoes.ec.modelo.Grupo;
 import javafx.application.Platform;
 import javafx.scene.media.MediaPlayer;
 
-public class AvaOrgTela extends BaseOrgTela {
+public class AvaOrgTela extends JPanel {
 	List<Grupo> listaGrupo;
 	AvaliacaoTela telaAva;
 	public AvaOrgTela() {
@@ -22,7 +23,7 @@ public class AvaOrgTela extends BaseOrgTela {
 		try {
 			listaGrupo = FachadaImp.getInstanciaFachada().listaGruposPorSerie
 					(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
-			telaAva = new AvaliacaoTela(0, listaGrupo);
+			telaAva = new AvaliacaoTela(0, listaGrupo,null);
 		} catch (BancoException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage());
