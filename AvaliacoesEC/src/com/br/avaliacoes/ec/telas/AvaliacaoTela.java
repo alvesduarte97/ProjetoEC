@@ -5,7 +5,6 @@ import java.awt.Image;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyVetoException;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -66,7 +65,7 @@ public class AvaliacaoTela extends JPanel {
 			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
 		}
 
-		diretorio = "C:\\Users\\CliCidadão\\Desktop\\video";
+		diretorio = "C:\\Users\\Duarte\\Desktop\\video";
 
 		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
 
@@ -86,18 +85,18 @@ public class AvaliacaoTela extends JPanel {
 		txtSerie.setBounds(771, 403, 63, 22);
 		add(txtSerie);
 		txtSerie.setEditable(false);
-		
+
 		if (grupos.size() > 0) {
 			txtEscola.setText(grupos.get(index).getEscola());
 			txtSerie.setText(grupos.get(index).getSerie());
 		}
-		
+
 		nome = txtEscola.getText() + txtSerie.getText();
 		cs = new CreateScene(diretorio, nome);
 		SwingUtilities.invokeLater(() -> {
 			ShowGUI(diretorio, nome);
 		});
-		
+
 		JLabel lblNewLabel = new JLabel("Comentario:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(302, 521, 86, 14);
@@ -277,13 +276,20 @@ public class AvaliacaoTela extends JPanel {
 				try {
 					FachadaImp.getInstanciaFachada().inserirAvaliacoes(avaliacao);
 					index = index + 1;
+					if (index >= listaGrupos.size()) {
+						JOptionPane.showMessageDialog(null, "Não existem mais grupos para serem avaliados por você.");
+						System.exit(0);
+						
+					}
 					oldName = nome;
 					txtEscola.setText(grupos.get(index).getEscola());
 					txtSerie.setText(grupos.get(index).getSerie());
 					txtComentario.setText("");
 					nome = txtEscola.getText() + txtSerie.getText();
 					
-					cs.stopVideo();
+					if(cs.mediaPlayer != null)
+						cs.stopVideo();
+					
 					cs = null;
 					CreateScene newCs = new CreateScene(diretorio, nome);
 					cs = newCs;
@@ -314,7 +320,6 @@ public class AvaliacaoTela extends JPanel {
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setBounds(-27, 428, 1200, 2);
 		add(separator_2);
-		
 
 		JLabel lblEscola = new JLabel("Escola:");
 		lblEscola.setBounds(432, 406, 54, 14);
@@ -323,21 +328,18 @@ public class AvaliacaoTela extends JPanel {
 		JLabel lblSerie = new JLabel("Serie:");
 		lblSerie.setBounds(729, 406, 36, 14);
 		add(lblSerie);
-		
-
 
 		JLabel lblDesafio = new JLabel("Desafio:");
 		lblDesafio.setBounds(174, 406, 46, 14);
 		add(lblDesafio);
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(302, 541, 376, 66);
 		add(scrollPane);
-		
-				txtComentario = new JTextArea();
-				txtComentario.setLineWrap(true);
-				scrollPane.setViewportView(txtComentario);
+
+		txtComentario = new JTextArea();
+		txtComentario.setLineWrap(true);
+		scrollPane.setViewportView(txtComentario);
 
 		txtDesafio = new TextField();
 		txtDesafio.setEditable(false);
@@ -356,9 +358,9 @@ public class AvaliacaoTela extends JPanel {
 		add(lblNota);
 
 		JLabel Imagem3 = new JLabel("");
-		ImageIcon icone3 =new ImageIcon(PrincipalTela.class.getResource("/imgfundo.jpg"));
+		ImageIcon icone3 = new ImageIcon(PrincipalTela.class.getResource("/imgfundo.jpg"));
 		Imagem3.setBounds(0, 0, 1062, 722);
-		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
+		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		add(Imagem3);
 

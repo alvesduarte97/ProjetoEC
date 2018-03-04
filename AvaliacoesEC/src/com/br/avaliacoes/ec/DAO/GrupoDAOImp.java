@@ -2,6 +2,7 @@ package com.br.avaliacoes.ec.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,6 +16,7 @@ import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
+import com.br.avaliacoes.ec.modelo.Regiao;
 
 public class GrupoDAOImp implements IGrupoDAO {
 
@@ -85,20 +87,20 @@ public class GrupoDAOImp implements IGrupoDAO {
 		criteria.addOrder(Order.asc("escola"));
 		List<Grupo> lista = criteria.list();
 		List<Grupo> listaFinal = new ArrayList<>();
-		for(Grupo grupo : lista) {
+		for (Grupo grupo : lista) {
 			boolean contem = false;
-			for(Avaliacoes ava : grupo.getListaAvaliacoes()) {
-				if(ava.getDesafio().getNome().equals(desafioAtivo)) {
+			for (Avaliacoes ava : grupo.getListaAvaliacoes()) {
+				if (ava.getDesafio().getNome().equals(desafioAtivo)) {
 					contem = true;
 					break;
 				}
 			}
-			if(!contem)
+			if (!contem)
 				listaFinal.add(grupo);
 		}
 		return listaFinal;
 	}
-	
+
 	public Grupo procurarGrupo(String escola, String serie) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Grupo.class);
@@ -107,21 +109,77 @@ public class GrupoDAOImp implements IGrupoDAO {
 		Grupo grupo = (Grupo) criteria.uniqueResult();
 		session.close();
 		return grupo;
-		
+
 	}
-	
-	 public static void main(String[] args) {
+
+	public static void main(String[] args) {
 		GrupoDAOImp dao = new GrupoDAOImp();
-		List<Grupo> lista = dao.listaGruposPorSerie("1ª Serie", "Aguas Profundas");
-		String finalStr = "";
-		for (Grupo str : lista) {
-			if (finalStr.trim().isEmpty()) {
-				finalStr = str.getEscola();
-			} else {
-				finalStr = finalStr + "," + str.getEscola();
+//		List<Grupo> lista = dao.listaGruposPorSerie("1ª Serie", "Aguas Profundas");
+//		String finalStr = "";
+//		for (Grupo str : lista) {
+//			if (finalStr.trim().isEmpty()) {
+//				finalStr = str.getEscola();
+//			} else {
+//				finalStr = finalStr + "," + str.getEscola();
+//			}
+//		}
+//		System.out.println (finalStr);
+		for(Integer ii = 0; ii <70; ii++) {
+			String i = ii.toString();
+			Random r = new Random();
+			
+			Grupo g = new Grupo();
+			g.setEscola(i);
+			g.setProfessor(i);
+			
+			//Para adc as regiões aleatoriamente
+			switch (r.nextInt(4)) {
+			case 0:
+				g.setRegiao(Regiao.AGRESTE);
+				break;
+			case 1:
+				g.setRegiao(Regiao.METROPOLITANA);
+				break;
+			case 2:
+				g.setRegiao(Regiao.SERTAO);
+				break;
+			case 3:
+				g.setRegiao(Regiao.ZONADAMATA);
+				break;
+			default:
+				g.setRegiao(Regiao.METROPOLITANA);
+				break;
 			}
-		}
-		System.out.println (finalStr);
+			//Para adc as series aleatoriamente
+			switch (r.nextInt(5)) {
+			case 0:
+				g.setSerie("1ª Serie");
+				break;
+			case 1:
+				g.setSerie("2ª Serie");
+				break;
+			case 2:
+				g.setSerie("3ª Serie");
+				break;
+			case 3:
+				g.setSerie("4ª Serie");
+				break;
+			case 4:
+				g.setSerie("5ª Serie");
+				break;
+			default:
+				g.setSerie("5ª Serie");
+				break;
+			}
+			
+			try {
+				dao.inserir(g);
+			} catch (BancoException e) {
+				e.printStackTrace();
+			}
+			
+		}// Fim do for
+		System.out.println("Todos os grupos foram adicionados");
 	}
 
 }

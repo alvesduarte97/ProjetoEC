@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
@@ -102,6 +103,7 @@ public class BaseOrgTela extends JPanel {
 					PrincipalTela.frmTorneioVirtualDe.revalidate();
 				} catch (BancoException e1) {
 					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
 				
 				

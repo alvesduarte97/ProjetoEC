@@ -6,6 +6,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
 
 
 public class CreateScene {
@@ -15,7 +16,7 @@ public class CreateScene {
 //            "file:///C:/Users/Duarte/Desktop/video/lala.mp4").toString();
 	private String videoURL;
 	private String nomeVideo;
-	static MediaPlayer mediaPlayer;
+	public static MediaPlayer mediaPlayer;
 	
 	public CreateScene(String diretorio, String nomeVideo) {
 		this.nomeVideo = nomeVideo;
@@ -25,7 +26,6 @@ public class CreateScene {
     public void initFX(JFXPanel fxPanel) {
         Media media = new Media(videoURL);
         mediaPlayer = new MediaPlayer(media);
-//        MediaView mediaView = new MediaView(mediaPlayer);
         MediaControl mediaControl = new MediaControl(mediaPlayer);
 
         StackPane raiz = new StackPane();
