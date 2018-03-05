@@ -27,162 +27,193 @@ import com.br.avaliacoes.ec.negocio.IDesafioBO;
 import com.br.avaliacoes.ec.negocio.IGrupoBO;
 import com.br.avaliacoes.ec.negocio.IPessoaBO;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
+import com.br.avaliacoes.ec.servidor.IServidor;
+import com.br.avaliacoes.ec.servidor.ServidorImp;
 
 public class FachadaImp implements IFachada {
-	private IPessoaBO negocioPessoa;
-	private IDesafioBO negocioDesafio;
-	private IGrupoBO negocioGrupo;
-	private IAvaliacoesBO negocioAvaliacao;
+//	private IPessoaBO negocioPessoa;
+//	private IDesafioBO negocioDesafio;
+//	private IGrupoBO negocioGrupo;
+//	private IAvaliacoesBO negocioAvaliacao;
+	IServidor server;
 
 	private static FachadaImp instanciaFachada;
 
-	public static FachadaImp getInstanciaFachada() {
+	public static FachadaImp getInstanciaFachada(IServidor meuServidor) {
+		
 		if (instanciaFachada == null) {
-			instanciaFachada = new FachadaImp();
+			instanciaFachada = new FachadaImp(meuServidor);
 		}
 
 		return instanciaFachada;
 	}
 
-	private FachadaImp() {
-		IPessoaDAO repositorioPessoa = new PessoaDAOImp();
-		IDesafiosDAO repositorioDesafio = new DesafiosDAOImp();
-		IGrupoDAO repositoriooGrupo = new GrupoDAOImp();
-		IAvaliacoesDAO repositorioAvaliacao = new AvaliacoesDAOImp();
-
-		negocioPessoa = new PessoaBOImp(repositorioPessoa);
-		negocioGrupo = new GrupoBOImp(repositoriooGrupo);
-		negocioDesafio = new DesafioBOImp(repositorioDesafio);
-		negocioAvaliacao = new AvaliacoesBOImp(repositorioAvaliacao);
+	private FachadaImp(IServidor meuServidor) {
+//		IPessoaDAO repositorioPessoa = new PessoaDAOImp();
+//		IDesafiosDAO repositorioDesafio = new DesafiosDAOImp();
+//		IGrupoDAO repositoriooGrupo = new GrupoDAOImp();
+//		IAvaliacoesDAO repositorioAvaliacao = new AvaliacoesDAOImp();
+//
+//		negocioPessoa = new PessoaBOImp(repositorioPessoa);
+//		negocioGrupo = new GrupoBOImp(repositoriooGrupo);
+//		negocioDesafio = new DesafioBOImp(repositorioDesafio);
+//		negocioAvaliacao = new AvaliacoesBOImp(repositorioAvaliacao);
+		server = meuServidor;
 
 	}
 
 	@Override
 	public void inserirPessoa(Pessoa pessoa) throws BancoException {
-		negocioPessoa.inserir(pessoa);
+//		negocioPessoa.inserir(pessoa);
+		server.inserirPessoa(pessoa);
+		
 	}
 
 	@Override
 	public Pessoa procurarPessoa(String login) throws BancoException {
-		return negocioPessoa.procurar(login);
+//		return negocioPessoa.procurar(login);
+		return server.procurarPessoa(login);
 	}
 
 	@Override
 	public void atualizarPessoa(Pessoa pessoa) throws BancoException {
-		negocioPessoa.atualizar(pessoa);
+//		negocioPessoa.atualizar(pessoa);
+		server.atualizarPessoa(pessoa);
 	}
 
 	@Override
 	public void removerPessoa(String login) throws BancoException {
-		negocioPessoa.remover(login);
+//		negocioPessoa.remover(login);
+		server.removerPessoa(login);
 	}
 
 	@Override
 	public void inserirDesafios(Desafios desafio) throws BancoException {
-		negocioDesafio.inserir(desafio);
+//		negocioDesafio.inserir(desafio);
+		server.inserirDesafios(desafio);
 	}
 
 	@Override
 	public Desafios procurarDesafios(String nome) throws BancoException {
-		return negocioDesafio.procurar(nome);
+//		return negocioDesafio.procurar(nome);
+		return server.procurarDesafios(nome);
 	}
 
 	@Override
 	public void atualizarDesafios(Desafios desafio) throws BancoException {
-		negocioDesafio.atualizar(desafio);
+//		negocioDesafio.atualizar(desafio);
+		server.atualizarDesafios(desafio);
 	}
 
 	@Override
 	public void removerDesafios(String nome) throws BancoException {
-		negocioDesafio.remover(nome);
+//		negocioDesafio.remover(nome);
+		server.removerDesafios(nome);
 	}
 
 	@Override
 	public void inserirGrupo(Grupo grupo) throws BancoException {
-		negocioGrupo.inserir(grupo);
+//		negocioGrupo.inserir(grupo);
+		server.inserirGrupo(grupo);
 	}
 
 	@Override
 	public Grupo procurarGrupo(Integer idGrupo) throws BancoException {
-		return negocioGrupo.procurar(idGrupo);
+//		return negocioGrupo.procurar(idGrupo);
+		return server.procurarGrupo(idGrupo);
 	}
 
 	@Override
 	public void atualizarGrupo(Grupo grupo) throws BancoException {
-		negocioGrupo.atualizar(grupo);
+//		negocioGrupo.atualizar(grupo);
+		server.atualizarGrupo(grupo);
 	}
 
 	@Override
 	public void removerGrupo(Integer idGrupo) throws BancoException {
-		negocioGrupo.remover(idGrupo);
+//		negocioGrupo.remover(idGrupo);
+		server.removerGrupo(idGrupo);
 	}
 
 	@Override
 	public void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException {
-		negocioAvaliacao.inserir(avaliacao);
+//		negocioAvaliacao.inserir(avaliacao);
+		server.atualizarAvaliacoes(avaliacao);
 	}
 
 	@Override
 	public Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException {
-		return negocioAvaliacao.procurar(idAvaliacao);
+//		return negocioAvaliacao.procurar(idAvaliacao);
+		return server.procurarAvaliacoes(idAvaliacao);
 	}
 
 	@Override
 	public void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException {
-		negocioAvaliacao.atualizar(avaliacao);
+//		negocioAvaliacao.atualizar(avaliacao);
+		server.atualizarAvaliacoes(avaliacao);
 	}
 
 	@Override
 	public void removerAvaliacoes(Integer idAvaliacao) throws BancoException {
-		negocioAvaliacao.remover(idAvaliacao);
+//		negocioAvaliacao.remover(idAvaliacao);
+		server.removerAvaliacoes(idAvaliacao);
 	}
 
 	@Override
 	public List<Pessoa> listaPessoas(TipoPessoa tipoPessoa) {
-		return negocioPessoa.listaPessoa(tipoPessoa);
+//		return negocioPessoa.listaPessoa(tipoPessoa);
+		return server.listaPessoas(tipoPessoa);
 	}
 
 	@Override
 	public List<Grupo> listaGrupos() {
-		return negocioGrupo.listaGrupos();
+//		return negocioGrupo.listaGrupos();
+		return server.listaGrupos();
 	}
 
 	@Override
 	public List<Desafios> listaDesafios() {
-		return negocioDesafio.listaDesafios();
+//		return negocioDesafio.listaDesafios();
+		return server.listaDesafios();
 	}
 
 	@Override
 	public List<Avaliacoes> listaAvaliacoesPorAvaliador(Pessoa pessoa) throws BancoException{
-		return negocioAvaliacao.listaAvaliacoesPorAvaliador(pessoa);
+//		return negocioAvaliacao.listaAvaliacoesPorAvaliador(pessoa);
+		return server.listaAvaliacoesPorAvaliador(pessoa);
 	}
 
 	@Override
 	public Desafios desafioAtivo() {
-		Desafios desafio = negocioDesafio.desafioAtivo();
-		if (desafio != null)
-			return desafio;
-		return null;
+//		Desafios desafio = negocioDesafio.desafioAtivo();
+//		if (desafio != null)
+//			return desafio;
+//		return null;
+		return server.desafioAtivo();
 	}
 
 	@Override
 	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException {
-		return negocioGrupo.listaGruposPorSerie(serie, desafioAtivo);
+//		return negocioGrupo.listaGruposPorSerie(serie, desafioAtivo);
+		return server.listaGruposPorSerie(serie, desafioAtivo);
 	}
 
 	@Override
 	public void gerarExcelAvaliacoes(Desafios desafio) throws FileNotFoundException, IOException {
-		negocioAvaliacao.gerarExcelAvaliacoes(desafio);
+//		negocioAvaliacao.gerarExcelAvaliacoes(desafio);
+		server.gerarExcelAvaliacoes(desafio);
 	}
 
 	@Override
 	public List<Desafios> listaDesafiosAvaliados() {
-		return negocioDesafio.listaDesafiosAvaliados();
+//		return negocioDesafio.listaDesafiosAvaliados();
+		return server.listaDesafios();
 	}
 
 	@Override
 	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
-		return negocioAvaliacao.listaAvaliacoesOrdemDct();
+//		return negocioAvaliacao.listaAvaliacoesOrdemDct();
+		return server.listaAvaliacoesOrdemDct();
 	}
 
 }

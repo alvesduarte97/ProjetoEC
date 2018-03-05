@@ -65,7 +65,7 @@ public class AvaliacaoTela extends JPanel {
 			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
 		}
 
-		diretorio = "C:\\Users\\Duarte\\Desktop\\video";
+		diretorio = "C:\\Users\\CliCidadão\\Desktop\\video";
 
 		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
 

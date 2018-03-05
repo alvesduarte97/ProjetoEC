@@ -23,6 +23,8 @@ import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
+import com.br.avaliacoes.ec.servidor.IServidor;
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -30,11 +32,13 @@ public class LoginTela extends JPanel {
 	private JTextField txtLogin;
 	private JPasswordField txtSenha;
 	private JButton btnConfirmarLogin;
+	private IServidor meuServidor;
 
 	/**
 	 * Create the panel.
 	 */
-	public LoginTela() {
+	public LoginTela(IServidor servidor) {
+		this.meuServidor = servidor;
 		setSize(741, 695);
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
@@ -84,13 +88,13 @@ public class LoginTela extends JPanel {
 				String senha = new String(txtSenha.getPassword());
 				String senhaCrip = PessoaBOImp.criptografar(senha);
 				try {
-					Pessoa pessoa = FachadaImp.getInstanciaFachada().procurarPessoa(login);
+					Pessoa pessoa = FachadaImp.getInstanciaFachada(servidor).procurarPessoa(login);
 					if (!pessoa.getSenha().equals(senhaCrip)) {
 						txtSenha.setText("");
 						JOptionPane.showMessageDialog(null, "Senha incorreta");
 					} else {
 						PrincipalTela.pessoa = pessoa;
-						String desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo().getNome();
+						String desafioAtivo = FachadaImp.getInstanciaFachada(servidor).desafioAtivo().getNome();
 						if (pessoa.getDesafioAvaliado() == null || pessoa.getSerie() == null|| !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
 
 							JDialog.setDefaultLookAndFeelDecorated(true);
@@ -107,17 +111,17 @@ public class LoginTela extends JPanel {
 							}
 							pessoa.setSerie((String) selection);
 							pessoa.setDesafioAvaliado(desafioAtivo);
-							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+							FachadaImp.getInstanciaFachada(servidor).atualizarPessoa(pessoa);
 
 						}
 						if (pessoa.getTipo().equals(TipoPessoa.ORGANIZACAO)) {
-							OrganizadorTela telaOrg = new OrganizadorTela();
+							OrganizadorTela telaOrg = new OrganizadorTela(servidor);
 							PrincipalTela.internalFrame.setContentPane(telaOrg);
 							PrincipalTela.internalFrame.revalidate();
 						} else {
 							List<Grupo> listaGrupos = null;
 							try {
-								listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+								listaGrupos = FachadaImp.getInstanciaFachada(servidor).listaGruposPorSerie
 										(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
 							} catch (BancoException e1) {
 								e1.printStackTrace();

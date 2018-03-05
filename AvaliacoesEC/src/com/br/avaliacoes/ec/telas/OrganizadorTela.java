@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 
 import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 import javax.swing.JSeparator;
 import javax.swing.JScrollPane;
@@ -21,7 +22,7 @@ public class OrganizadorTela extends BaseOrgTela {
 
 		private List<Avaliacoes> listaUltimasAva;
 		String textoParaTextArea= "";
-	public OrganizadorTela() {
+	public OrganizadorTela(IServidor servidor) {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 120, 721, 457);
@@ -29,7 +30,7 @@ public class OrganizadorTela extends BaseOrgTela {
 		
 		JTextArea textAreaAvaliacao = new JTextArea();
 		textAreaAvaliacao.setEditable(false);
-		listaUltimasAva = FachadaImp.getInstanciaFachada().listaAvaliacoesOrdemDct();
+		listaUltimasAva = FachadaImp.getInstanciaFachada(servidor).listaAvaliacoesOrdemDct();
 		for(Avaliacoes ava : listaUltimasAva) {
 			textoParaTextArea += "                                "+ava.getDesafio().getNome()+"    "+ava.getAvaliador().getNome()+"    " + ava.getGrupoAvaliado().getEscola()+"    " + ava.getGrupoAvaliado().getSerie()+"    "+
 					ava.getNota1()+"   |   "+ava.getNota2()+"   |   "+ava.getNota3()+"   |   "+ava.getNota4()+"   |   "+ava.getNota5()+"\n\n";

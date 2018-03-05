@@ -1,13 +1,22 @@
 package com.br.avaliacoes.ec.telas;
 
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Label;
 import java.awt.ScrollPane;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.InputStream;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.Properties;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -16,24 +25,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
-import javax.swing.plaf.InternalFrameUI;
-
-import org.hibernate.Hibernate;
 
 import com.br.avaliacoes.ec.DAO.HibernateUtil;
 import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Pessoa;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
-import javax.swing.JDesktopPane;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.ImageIcon;
-import java.awt.Color;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class PrincipalTela {
 
@@ -43,19 +40,64 @@ public class PrincipalTela {
 	private Label label;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private IServidor meuServidor;
 	static JInternalFrame internalFrame;
 	static Pessoa pessoa;
 	static Desafios desafioAtivo;
+	
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PrincipalTela window = new PrincipalTela();
-					window.frmTorneioVirtualDe.setVisible(true);
+//					PrincipalTela window = new PrincipalTela();
+//					window.frmTorneioVirtualDe.setVisible(true);
+					
+					
+					
+					
+					EventQueue.invokeLater(new Runnable() {
+						public void run() {
+							try {
+
+								File policyFile = new File("security/security.policy");
+
+								InputStream fis = PrincipalTela.class.getClassLoader()
+										.getResourceAsStream("serverconfig.properties");
+								Properties prop = new Properties();
+								prop.load(fis);
+
+								String ipServer = prop.getProperty("server_ip");
+
+								System.out.println(ipServer);
+								String porta = prop.getProperty("server_port");
+
+								System.setProperty("java.security.policy",
+										policyFile.getCanonicalPath());
+
+								System.setSecurityManager(new SecurityManager());
+								System.setProperty("java.rmi.server.hostname", ipServer);
+
+								Registry r = LocateRegistry.getRegistry(ipServer,
+										Integer.parseInt(porta));
+								final IServidor meuServidor = (IServidor) r
+										.lookup("meuServidor");
+								
+								//Iniciando a tela cliente
+								PrincipalTela window = new PrincipalTela(meuServidor);
+								window.frmTorneioVirtualDe.setVisible(true);
+								
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+					});
+					
+					
+					
+					
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -63,14 +105,15 @@ public class PrincipalTela {
 		});
 	}
 
-	public PrincipalTela() {
+	public PrincipalTela(IServidor meuServidor) {
+		this.meuServidor = meuServidor;
 		HibernateUtil.getSessionFactory();
 		initialize();
 	}
 
 	private void initialize() {
 		
-		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
+		desafioAtivo = FachadaImp.getInstanciaFachada(meuServidor).desafioAtivo();
 		
 		frmTorneioVirtualDe = new JFrame();
 		frmTorneioVirtualDe.getContentPane().setBackground(Color.WHITE);
@@ -120,7 +163,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 			
 			
 			public void actionPerformed(ActionEvent arg0) {
-				LoginTela telaLogin = new LoginTela();
+				LoginTela telaLogin = new LoginTela(meuServidor);
 				internalFrame.setContentPane(telaLogin);
 				internalFrame.revalidate();
 				
