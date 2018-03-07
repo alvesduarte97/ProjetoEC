@@ -238,6 +238,7 @@ public class DesafiosTela extends BaseOrgTela {
 		add(btnAtualizar);
 		
 		JLabel lblDesafioDoMomento = new JLabel("Desafio do momento:");
+		lblDesafioDoMomento.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblDesafioDoMomento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDesafioDoMomento.setBounds(209, 49, 321, 14);
 		add(lblDesafioDoMomento);
@@ -251,7 +252,7 @@ public class DesafiosTela extends BaseOrgTela {
 		add(txtDesafioDoMomento);
 		
 		btnRemover = new JButton("Remover");
-		btnRemover.setFont(new Font("Dialog", Font.PLAIN, 12));
+		btnRemover.setFont(new Font("Dialog", Font.PLAIN, 15));
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String desafio = (String) listDesafios.getSelectedValue();

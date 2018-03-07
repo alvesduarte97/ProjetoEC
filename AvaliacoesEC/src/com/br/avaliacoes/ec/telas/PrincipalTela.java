@@ -125,7 +125,7 @@ public class PrincipalTela {
 		frmTorneioVirtualDe.getContentPane().setBackground(Color.WHITE);
 		frmTorneioVirtualDe.getContentPane().setEnabled(false);
 		frmTorneioVirtualDe.setResizable(false);
-		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\PC\\Desktop\\interfaceec\\TVC LOGO E TIMBRADOS\\LOGO TVC DEZEMBRO 2017.png"));
+		frmTorneioVirtualDe.setIconImage(Toolkit.getDefaultToolkit().getImage(PrincipalTela.class.getResource("/img/LogoTVC.png")));
 		frmTorneioVirtualDe.setTitle("Torneio virtual de ci\u00EAncia");
 		frmTorneioVirtualDe.setBounds(100, 100, 1060, 720);
 		frmTorneioVirtualDe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -189,6 +189,13 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		internalFrame.setEnabled(false);
 		internalFrame.getContentPane().setEnabled(false);
 		internalFrame.getContentPane().setLayout(null);
+		
+		JLabel Imagem4 = new JLabel("");
+		ImageIcon icone4 =new ImageIcon(PrincipalTela.class.getResource("/gif3.gif"));
+		Imagem4.setBounds(200, 167, 350, 350);
+		internalFrame.getContentPane().add(Imagem4);
+		Image imagi4 = icone4.getImage().getScaledInstance(Imagem4.getWidth(),Imagem4.getHeight(), Image.SCALE_SMOOTH);
+		Imagem4.setIcon(new ImageIcon(imagi4));
 		internalFrame.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		internalFrame.setBounds(316, -24, 741, 716);
 		internalFrame.setVisible(true);
@@ -212,6 +219,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		Imagem3.setIcon(new ImageIcon(imagi3));
 		frmTorneioVirtualDe.getContentPane().add(Imagem3);
+		ImageIcon icone4 =new ImageIcon(PrincipalTela.class.getResource("/img/LogoTVC.png"));
 		
 		
 		

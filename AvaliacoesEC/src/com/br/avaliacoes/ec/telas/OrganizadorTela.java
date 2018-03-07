@@ -46,7 +46,7 @@ public class OrganizadorTela extends BaseOrgTela {
 
 		scrollPane.setViewportView(textAreaAvaliacao);
 
-		JLabel lblStatus = new JLabel("Ultimas Avalia\u00E7\u00F5es");
+		JLabel lblStatus = new JLabel("\u00DAltimas Avalia\u00E7\u00F5es");
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
 		lblStatus.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblStatus.setBounds(0, 52, 741, 24);

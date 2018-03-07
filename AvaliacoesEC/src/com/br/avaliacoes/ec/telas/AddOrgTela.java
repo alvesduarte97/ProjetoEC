@@ -92,7 +92,7 @@ public class AddOrgTela extends BaseOrgTela {
 		JLabel label_1 = new JLabel("Avaliadores");
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_1.setBounds(139, 233, 168, 24);
+		label_1.setBounds(116, 233, 191, 24);
 		add(label_1);
 		
 		JLabel lblConfigurao = new JLabel("Reger Organizador");

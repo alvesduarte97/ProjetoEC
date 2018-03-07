@@ -171,20 +171,17 @@ public class CadastroTela extends JPanel {
 
 		cbArea = new JComboBox();
 		cbArea.setBounds(229, 392, 299, 20);
-		// cbArea.setModel(new DefaultComboBoxModel(new String[] {"Biologia",
-		// "Cordena\u00E7\u00E3o", "F\u00EDsica", "Geografia", "Histor\u00EDa",
-		// "Matem\u00E1tica", "Qu\u00EDmica", "Recep\u00E7\u00E3o", "Rob\u00F3tica"}));
 		cbArea.setMaximumRowCount(5);
 		cbArea.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		cbArea.addItem("Selecionar area");
-		cbArea.addItem("Coordenaï¿½ï¿½o");
+		cbArea.addItem("Selecionar área");
+		cbArea.addItem("Coordenação");
 		cbArea.addItem("Biologia");
-		cbArea.addItem("Historia");
+		cbArea.addItem("Historía");
 		cbArea.addItem("Geografia");
-		cbArea.addItem("Quimica");
-		cbArea.addItem("Fisica");
-		cbArea.addItem("Robotica");
-		cbArea.addItem("Apoio Cord");
+		cbArea.addItem("Química");
+		cbArea.addItem("Física");
+		cbArea.addItem("Robótica");
+		cbArea.addItem("Apoio Cordenação");
 		add(cbArea);
 
 		JSeparator separator = new JSeparator();

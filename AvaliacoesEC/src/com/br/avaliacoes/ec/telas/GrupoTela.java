@@ -49,7 +49,7 @@ public class GrupoTela extends BaseOrgTela {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Serie:");
+		JLabel lblNewLabel_2 = new JLabel("S\u00E9rie:");
 		lblNewLabel_2.setBounds(219, 214, 46, 24);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_2);
@@ -69,11 +69,11 @@ public class GrupoTela extends BaseOrgTela {
 		cbSerie.setBounds(380, 216, 132, 24);
 		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		//cbSerie.addItem("Selecione");
-		cbSerie.addItem("1ª Serie");
-		cbSerie.addItem("2ª Serie");
-		cbSerie.addItem("3ª Serie");
-		cbSerie.addItem("4ª Serie");
-		cbSerie.addItem("5ª Serie");
+		cbSerie.addItem("1ª Série");
+		cbSerie.addItem("2ª Série");
+		cbSerie.addItem("3ª Série");
+		cbSerie.addItem("4ª Série");
+		cbSerie.addItem("5ª Série");
 		add(cbSerie);
 		
 		JLabel lblNewLabel_4 = new JLabel("Professor orientador:");
@@ -215,7 +215,7 @@ public class GrupoTela extends BaseOrgTela {
 		
 		JLabel Imagem3 = new JLabel("");
 		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/imgfundo.jpg"));
-		Imagem3.setBounds(0, 16, 741, 678);
+		Imagem3.setBounds(0, 17, 741, 678);
 		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(),Imagem3.getHeight(), Image.SCALE_SMOOTH);
 		
 		JSeparator separator_1 = new JSeparator();
