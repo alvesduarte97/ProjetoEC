@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import com.br.avaliacoes.ec.DAO.AvaliacoesDAOImp;
 import com.br.avaliacoes.ec.DAO.DesafiosDAOImp;
 import com.br.avaliacoes.ec.DAO.GrupoDAOImp;
+import com.br.avaliacoes.ec.DAO.HibernateUtil;
 import com.br.avaliacoes.ec.DAO.IAvaliacoesDAO;
 import com.br.avaliacoes.ec.DAO.IDesafiosDAO;
 import com.br.avaliacoes.ec.DAO.IGrupoDAO;
@@ -45,6 +46,8 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 	private JFrame frame;
 	private JTextArea textArea;
 	
+	private String diretorioVideo;
+	
 	//Propriedades para comunicação 
 	private IPessoaBO negocioPessoa;
 	private IDesafioBO negocioDesafio;
@@ -67,6 +70,8 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 						String ipServer = prop.getProperty("server_ip");
 						System.out.println(ipServer);
 						String porta = prop.getProperty("server_port");
+						
+						instanciaServidor.setDiretorioVideo(prop.getProperty("diretorio_video"));
 						
 						System.setProperty("java.security.policy", policyFile.getCanonicalPath());
 						
@@ -96,6 +101,7 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 		negocioGrupo = new GrupoBOImp(repositoriooGrupo);
 		negocioDesafio = new DesafioBOImp(repositorioDesafio);
 		negocioAvaliacao = new AvaliacoesBOImp(repositorioAvaliacao);
+		HibernateUtil.getSessionFactory();
 		
 			initialize();
 		
@@ -242,6 +248,15 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 	@Override
 	public List<Avaliacoes> listaAvaliacoesOrdemDct() {
 		return negocioAvaliacao.listaAvaliacoesOrdemDct();
+	}
+
+
+	public String getDiretorioVideo() {
+		return diretorioVideo;
+	}
+
+	public void setDiretorioVideo(String diretorioVideo) {
+		this.diretorioVideo = diretorioVideo;
 	}
 
 

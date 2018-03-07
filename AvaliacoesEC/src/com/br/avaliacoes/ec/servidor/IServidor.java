@@ -15,6 +15,9 @@ import com.br.avaliacoes.ec.modelo.TipoPessoa;
 
 public interface IServidor extends Remote {
 	
+	
+	public String getDiretorioVideo() throws RemoteException;
+	
 	void inserirPessoa(Pessoa pessoa) throws BancoException, RemoteException;
 	Pessoa procurarPessoa(String login) throws BancoException,RemoteException;
     void atualizarPessoa(Pessoa pessoa) throws BancoException,RemoteException;

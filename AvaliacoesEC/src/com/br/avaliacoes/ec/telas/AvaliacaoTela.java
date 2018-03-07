@@ -68,7 +68,12 @@ public class AvaliacaoTela extends JPanel {
 			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
 		}
 
-		diretorio = "C:\\Users\\CliCidadão\\Desktop\\video";
+		try {
+			diretorio = servidor.getDiretorioVideo();
+		} catch (RemoteException e2) {
+			e2.printStackTrace();
+			JOptionPane.showMessageDialog(null, e2.getMessage());
+		}
 
 		try {
 			desafioAtivo = servidor.desafioAtivo();
