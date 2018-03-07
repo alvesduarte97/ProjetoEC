@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.InputStream;
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Properties;
@@ -27,7 +28,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.CompoundBorder;
 
 import com.br.avaliacoes.ec.DAO.HibernateUtil;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.servidor.IServidor;
@@ -40,7 +40,9 @@ public class PrincipalTela {
 	private Label label;
 	private JTextField textField;
 	private JPasswordField passwordField;
+	
 	private IServidor meuServidor;
+	
 	static JInternalFrame internalFrame;
 	static Pessoa pessoa;
 	static Desafios desafioAtivo;
@@ -113,7 +115,11 @@ public class PrincipalTela {
 
 	private void initialize() {
 		
-		desafioAtivo = FachadaImp.getInstanciaFachada(meuServidor).desafioAtivo();
+		try {
+			desafioAtivo = meuServidor.desafioAtivo();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+		}
 		
 		frmTorneioVirtualDe = new JFrame();
 		frmTorneioVirtualDe.getContentPane().setBackground(Color.WHITE);
@@ -145,7 +151,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		btnCadastroAvaliador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				CadastroTela telaCadastro = new CadastroTela();
+				CadastroTela telaCadastro = new CadastroTela(meuServidor);
 				internalFrame.setContentPane(telaCadastro);
 				internalFrame.revalidate();
 			}

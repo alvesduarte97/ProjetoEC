@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import com.br.avaliacoes.ec.DAO.AvaliacoesDAOImp;
@@ -74,7 +75,7 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 						
 						LocateRegistry.createRegistry(2120);
 						Naming.rebind("//"+ipServer+":"+porta+"/meuServidor", instanciaServidor);
-//						window.frame.setVisible(true);
+						instanciaServidor.frame.setVisible(true);
 				
 
 					
@@ -85,7 +86,7 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 		});
 	}
 
-	public ServidorImp() throws RemoteException {
+	public ServidorImp() throws RemoteException{
 		IPessoaDAO repositorioPessoa = new PessoaDAOImp();
 		IDesafiosDAO repositorioDesafio = new DesafiosDAOImp();
 		IGrupoDAO repositoriooGrupo = new GrupoDAOImp();
@@ -96,47 +97,49 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 		negocioDesafio = new DesafioBOImp(repositorioDesafio);
 		negocioAvaliacao = new AvaliacoesBOImp(repositorioAvaliacao);
 		
-		//initialize();
+			initialize();
+		
+		
 	}
 	
 
-//	private void initialize() {
-//		frame = new JFrame();
-//		frame.setBounds(100, 100, 450, 300);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().setLayout(null);
-//
-//		JScrollPane scrollPane = new JScrollPane();
-//		scrollPane.setBounds(10, 11, 414, 240);
-//		frame.getContentPane().add(scrollPane);
-//
-//		textArea = new JTextArea();
-//		textArea.setEditable(false);
-//		scrollPane.setViewportView(textArea);
-//	}
+	private void initialize(){
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 414, 240);
+		frame.getContentPane().add(scrollPane);
+
+		textArea = new JTextArea();
+		textArea.setEditable(false);
+		scrollPane.setViewportView(textArea);
+	}
 
 	@Override
-	public void inserirPessoa(Pessoa pessoa) throws BancoException {
+	public void inserirPessoa(Pessoa pessoa) throws BancoException,RemoteException {
 		negocioPessoa.inserir(pessoa);
 	}
 
 	@Override
-	public Pessoa procurarPessoa(String login) throws BancoException {
+	public Pessoa procurarPessoa(String login) throws BancoException, RemoteException {
 		return negocioPessoa.procurar(login);
 	}
 
 	@Override
-	public void atualizarPessoa(Pessoa pessoa) throws BancoException {
+	public void atualizarPessoa(Pessoa pessoa) throws BancoException , RemoteException{
 		negocioPessoa.atualizar(pessoa);
 	}
 
 	@Override
-	public void removerPessoa(String login) throws BancoException {
+	public void removerPessoa(String login) throws BancoException , RemoteException{
 		negocioPessoa.remover(login);
 	}
 
 	@Override
-	public void inserirDesafios(Desafios desafio) throws BancoException {
+	public void inserirDesafios(Desafios desafio) throws BancoException, RemoteException {
 		negocioDesafio.inserir(desafio);
 	}
 
@@ -218,9 +221,7 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 	@Override
 	public Desafios desafioAtivo() {
 		Desafios desafio = negocioDesafio.desafioAtivo();
-		if (desafio != null)
-			return desafio;
-		return null;
+		return desafio;
 	}
 
 	@Override

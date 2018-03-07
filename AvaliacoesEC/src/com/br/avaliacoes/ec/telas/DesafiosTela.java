@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,13 +23,10 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-import org.hibernate.type.YesNoType;
-
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.StatusDesafio;
-import java.awt.TextField;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class DesafiosTela extends BaseOrgTela {
 	private JTextField txtNomeDesafio;
@@ -41,8 +39,8 @@ public class DesafiosTela extends BaseOrgTela {
 	/**
 	 * Create the panel.
 	 */
-	public DesafiosTela() {
-		
+	public DesafiosTela(IServidor servidor) {
+		super(servidor);
 
 		JSeparator separator = new JSeparator();
 		separator.setBounds(-25, 167, 796, 2);
@@ -81,11 +79,13 @@ public class DesafiosTela extends BaseOrgTela {
 				desafio.setStatus(StatusDesafio.DESLIGADO);
 
 				try {
-					FachadaImp.getInstanciaFachada().inserirDesafios(desafio);
+					servidor.inserirDesafios(desafio);
 					txtNomeDesafio.setText("");
 					JOptionPane.showMessageDialog(null, "Desafio adicionado com sucesso");
 				} catch (BancoException e) {
-					// TODO Auto-generated catch block
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				} catch (RemoteException e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
@@ -121,7 +121,12 @@ public class DesafiosTela extends BaseOrgTela {
 		add(scrollPane);
 
 		DefaultListModel modelDesafios = new DefaultListModel();
-		desafios = FachadaImp.getInstanciaFachada().listaDesafios();
+		try {
+			desafios = servidor.listaDesafios();
+		} catch (RemoteException e2) {
+			e2.printStackTrace();
+			JOptionPane.showMessageDialog(null, e2.getMessage());
+		}
 
 		for (Desafios desafio : desafios) {
 			if (desafio.getStatus().equals(StatusDesafio.DESLIGADO)) {
@@ -151,16 +156,18 @@ public class DesafiosTela extends BaseOrgTela {
 			public void actionPerformed(ActionEvent e) {
 				String nomeDesafio = (String) listDesafios.getSelectedValue();
 				try {
-					Desafios desafio =  FachadaImp.getInstanciaFachada().procurarDesafios(nomeDesafio);
+					Desafios desafio =  servidor.procurarDesafios(nomeDesafio);
 					desafio.setNome(txtRenomear.getText());
-					FachadaImp.getInstanciaFachada().removerDesafios(nomeDesafio);
-					FachadaImp.getInstanciaFachada().inserirDesafios(desafio);
+					servidor.removerDesafios(nomeDesafio);
+					servidor.inserirDesafios(desafio);
 					modelDesafios.removeElement(nomeDesafio);
 					modelDesafios.addElement(desafio.getNome());
 					txtRenomear.setText("");
 					
 				} catch (BancoException e1) {
-					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				} catch (RemoteException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -184,19 +191,19 @@ public class DesafiosTela extends BaseOrgTela {
 
 					// Capturando o desafio a ser desligado e atualizando ele no banco
 					if (desafioAtivo != null) {
-						Desafios desativar = FachadaImp.getInstanciaFachada().procurarDesafios(desafioAtivo);
+						Desafios desativar = servidor.procurarDesafios(desafioAtivo);
 						desativar.setStatus(StatusDesafio.DESLIGADO);
 						desativar.setDataFim(dataFormatada);
-						FachadaImp.getInstanciaFachada().atualizarDesafios(desativar);
+						servidor.atualizarDesafios(desativar);
 						modelDesafios.addElement(desativar.getNome());
 						
 					}
 					
 					// capturando o desafio a ser ativado e atualizando ele no banco
-					Desafios desafio = FachadaImp.getInstanciaFachada().procurarDesafios(nome);
+					Desafios desafio = servidor.procurarDesafios(nome);
 					desafio.setStatus(StatusDesafio.ATIVO);
 					desafio.setDataInicio(dataFormatada);
-					FachadaImp.getInstanciaFachada().atualizarDesafios(desafio);
+					servidor.atualizarDesafios(desafio);
 					desafioAtivo = desafio.getNome();
 
 					// Atualizando jlist e txtDesafioAtivo
@@ -205,6 +212,9 @@ public class DesafiosTela extends BaseOrgTela {
 					//desafios = FachadaImp.getInstanciaFachada().listaDesafios();
 					JOptionPane.showMessageDialog(null, "Desafio ativado");
 				} catch (BancoException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				} catch (RemoteException e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}
@@ -219,7 +229,7 @@ public class DesafiosTela extends BaseOrgTela {
 		btnAtualizar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				DesafiosTela desTela = new DesafiosTela();
+				DesafiosTela desTela = new DesafiosTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(desTela);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -249,11 +259,14 @@ public class DesafiosTela extends BaseOrgTela {
 					int resposta = JOptionPane.showConfirmDialog
 						(null, "Tem certeza que deseja remover?", "Confirmação", JOptionPane.YES_NO_OPTION);
 					if(resposta == JOptionPane.YES_OPTION) {
-						FachadaImp.getInstanciaFachada().removerDesafios(desafio);
+						servidor.removerDesafios(desafio);
 						modelDesafios.removeElement(desafio);
 						JOptionPane.showMessageDialog(null, "Desafio removido");
 					}
 				} catch (BancoException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				} catch (RemoteException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}

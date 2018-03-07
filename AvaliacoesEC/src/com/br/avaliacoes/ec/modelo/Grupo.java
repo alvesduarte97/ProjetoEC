@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.modelo;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "grupo")
-public class Grupo extends BancoEntity<Integer>{
+public class Grupo extends BancoEntity<Integer>implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idGrupo;

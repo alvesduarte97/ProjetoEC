@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -18,15 +19,11 @@ import javax.swing.JTextField;
 import javax.swing.border.BevelBorder;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
 import com.br.avaliacoes.ec.negocio.PessoaBOImp;
 import com.br.avaliacoes.ec.servidor.IServidor;
-
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class LoginTela extends JPanel {
 	private JTextField txtLogin;
@@ -88,13 +85,13 @@ public class LoginTela extends JPanel {
 				String senha = new String(txtSenha.getPassword());
 				String senhaCrip = PessoaBOImp.criptografar(senha);
 				try {
-					Pessoa pessoa = FachadaImp.getInstanciaFachada(servidor).procurarPessoa(login);
+					Pessoa pessoa = servidor.procurarPessoa(login);
 					if (!pessoa.getSenha().equals(senhaCrip)) {
 						txtSenha.setText("");
 						JOptionPane.showMessageDialog(null, "Senha incorreta");
 					} else {
 						PrincipalTela.pessoa = pessoa;
-						String desafioAtivo = FachadaImp.getInstanciaFachada(servidor).desafioAtivo().getNome();
+						String desafioAtivo = servidor.desafioAtivo().getNome();
 						if (pessoa.getDesafioAvaliado() == null || pessoa.getSerie() == null|| !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
 
 							JDialog.setDefaultLookAndFeelDecorated(true);
@@ -111,7 +108,7 @@ public class LoginTela extends JPanel {
 							}
 							pessoa.setSerie((String) selection);
 							pessoa.setDesafioAvaliado(desafioAtivo);
-							FachadaImp.getInstanciaFachada(servidor).atualizarPessoa(pessoa);
+							servidor.atualizarPessoa(pessoa);
 
 						}
 						if (pessoa.getTipo().equals(TipoPessoa.ORGANIZACAO)) {
@@ -121,7 +118,7 @@ public class LoginTela extends JPanel {
 						} else {
 							List<Grupo> listaGrupos = null;
 							try {
-								listaGrupos = FachadaImp.getInstanciaFachada(servidor).listaGruposPorSerie
+								listaGrupos = servidor.listaGruposPorSerie
 										(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
 							} catch (BancoException e1) {
 								e1.printStackTrace();
@@ -130,7 +127,7 @@ public class LoginTela extends JPanel {
 							
 							
 							
-							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null);
+							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null,servidor);
 							PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);
 							PrincipalTela.frmTorneioVirtualDe.revalidate();
 							
@@ -143,6 +140,9 @@ public class LoginTela extends JPanel {
 				} catch (BancoException e) {
 					txtLogin.setText("");
 					txtSenha.setText("");
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				} catch (RemoteException e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}

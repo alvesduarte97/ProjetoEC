@@ -1,12 +1,13 @@
 package com.br.avaliacoes.ec.telas;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -15,19 +16,16 @@ import javax.swing.JPanel;
 import javax.swing.JSeparator;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Grupo;
-
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Panel;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class BaseOrgTela extends JPanel {
 
 	private JMenuBar menuBar;
 	private JMenuItem mntmAddRemovOrg;
 	private JMenuItem mntmTelaPrincipal;
-	public BaseOrgTela() {
+	
+	public BaseOrgTela(IServidor servidor) {
 		setLayout(null);
 		setSize(741,695);
 		
@@ -43,7 +41,7 @@ public class BaseOrgTela extends JPanel {
 		mntmAddRemovOrg.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				AddOrgTela addOrg = new AddOrgTela();
+				AddOrgTela addOrg = new AddOrgTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(addOrg);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -53,7 +51,7 @@ public class BaseOrgTela extends JPanel {
 		mntmTelaPrincipal.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				OrganizadorTela telaOrg = new OrganizadorTela();
+				OrganizadorTela telaOrg = new OrganizadorTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(telaOrg);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -67,7 +65,7 @@ public class BaseOrgTela extends JPanel {
 		JMenuItem mntmCadastRemovGrup = new JMenuItem("Cadastrar/Remover");
 		mntmCadastRemovGrup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				GrupoTela cadGru  = new GrupoTela();
+				GrupoTela cadGru  = new GrupoTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(cadGru);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -80,7 +78,7 @@ public class BaseOrgTela extends JPanel {
 		JMenuItem mntmCadastRemovDesafios = new JMenuItem("Cadastrar/Remover");
 		mntmCadastRemovDesafios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DesafiosTela desTela = new DesafiosTela();
+				DesafiosTela desTela = new DesafiosTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(desTela);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -96,12 +94,15 @@ public class BaseOrgTela extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				List<Grupo> listaGrupos = null;
 				try {
-					listaGrupos = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+					listaGrupos = servidor.listaGruposPorSerie
 							(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
-					AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null);
+					AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null,servidor);
 					PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);
 					PrincipalTela.frmTorneioVirtualDe.revalidate();
 				} catch (BancoException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				} catch (RemoteException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -118,7 +119,7 @@ public class BaseOrgTela extends JPanel {
 		mntmGerarExcel.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				GerarExcelTela gerar = new GerarExcelTela();
+				GerarExcelTela gerar = new GerarExcelTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(gerar);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -132,7 +133,7 @@ public class BaseOrgTela extends JPanel {
 		JButton btnSair = new JButton("Sair");
 		btnSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				LoginTela logTela = new LoginTela();
+				LoginTela logTela = new LoginTela(servidor);
 				PrincipalTela.internalFrame.setContentPane(logTela);
 				PrincipalTela.internalFrame.revalidate();
 			}
@@ -144,4 +145,6 @@ public class BaseOrgTela extends JPanel {
 		ImageIcon icone3 =new ImageIcon(LoginTela.class.getResource("/img/Fundo2.jpg"));
 		
 	}
+
+
 }

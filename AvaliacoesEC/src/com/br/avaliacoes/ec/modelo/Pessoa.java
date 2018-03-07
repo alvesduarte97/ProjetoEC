@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.modelo;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="pessoa")
-public class Pessoa extends BancoEntity<String>{
+public class Pessoa extends BancoEntity<String> implements Serializable{
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy = "avaliador")
 	Set<Avaliacoes> listaAvaliacoes;

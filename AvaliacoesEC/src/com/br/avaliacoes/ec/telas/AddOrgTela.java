@@ -1,39 +1,35 @@
 package com.br.avaliacoes.ec.telas;
 
-import javax.swing.JPanel;
-import javax.swing.JList;
-import javax.swing.JMenu;
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.List;
 
-import javax.swing.JButton;
-import javax.swing.JSeparator;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.AbstractListModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
-
-import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.border.BevelBorder;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class AddOrgTela extends BaseOrgTela {
 	private JButton btnAvaToOrg;
 	private JButton btnOrgToAva;
-	public AddOrgTela() {
+	private List<Pessoa> listaOrg;
+	List<Pessoa> listAva;
+	public AddOrgTela(IServidor servidor) {
+		super(servidor);
 		setLayout(null);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -41,7 +37,13 @@ public class AddOrgTela extends BaseOrgTela {
 		add(scrollPane_1);
 		
 		DefaultListModel modelOrg =  new DefaultListModel();
-		List<Pessoa> listaOrg = FachadaImp.getInstanciaFachada().listaPessoas(TipoPessoa.ORGANIZACAO);
+		listaOrg = null;
+		try {
+			listaOrg = servidor.listaPessoas(TipoPessoa.ORGANIZACAO);
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		}
 		for(Pessoa pessoa : listaOrg) {
 			if(pessoa.getNome().equals("adm") || pessoa.getNome().equals("ADM" ) || pessoa.getLogin().equals("adm" )|| pessoa.getLogin().equals("ADM")) {
 				
@@ -67,7 +69,14 @@ public class AddOrgTela extends BaseOrgTela {
 		add(scrollPane);
 		
 		DefaultListModel modelAva = new DefaultListModel();
-		List<Pessoa> listAva = FachadaImp.getInstanciaFachada().listaPessoas(TipoPessoa.AVALIADOR);
+		listAva = null;
+		try {
+			listAva = servidor.listaPessoas(TipoPessoa.AVALIADOR);
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+
+		}
 		for(Pessoa pessoa : listAva) {
 			modelAva.addElement(pessoa.getNome());
 		}
@@ -99,7 +108,7 @@ public class AddOrgTela extends BaseOrgTela {
 					if(pessoa.getNome().equals(nomeAva)) {
 						pessoa.setTipo(TipoPessoa.ORGANIZACAO);
 						try {
-							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+							servidor.atualizarPessoa(pessoa);
 							modelAva.removeElement(pessoa.getNome());
 							modelOrg.addElement(pessoa.getNome());
 							listAva.remove(pessoa);
@@ -108,6 +117,10 @@ public class AddOrgTela extends BaseOrgTela {
 						} catch (BancoException e) {
 							e.printStackTrace();
 							JOptionPane.showMessageDialog(null, e.getMessage());
+						} catch (RemoteException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+
 						}
 					}
 				}
@@ -126,7 +139,7 @@ public class AddOrgTela extends BaseOrgTela {
 					if(pessoa.getNome().equals(nomeOrg)) {
 						pessoa.setTipo(TipoPessoa.AVALIADOR);
 						try {
-							FachadaImp.getInstanciaFachada().atualizarPessoa(pessoa);
+							servidor.atualizarPessoa(pessoa);
 							modelOrg.removeElement(pessoa.getNome());
 							modelAva.addElement(pessoa.getNome());
 							listaOrg.remove(pessoa);
@@ -135,6 +148,10 @@ public class AddOrgTela extends BaseOrgTela {
 						} catch (BancoException e) {
 							e.printStackTrace();
 							JOptionPane.showMessageDialog(null, e.getMessage());
+						} catch (RemoteException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+
 						}
 					}
 				}

@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -13,19 +14,19 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Desafios;
-import javax.swing.JScrollPane;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class GerarExcelTela extends BaseOrgTela {
 	private JList list;
 	private List<Desafios> listaDesafios;
 	
-	public GerarExcelTela() {
-		
+	public GerarExcelTela(IServidor servidor) {
+		super(servidor);
 		JButton btnGerar = new JButton("Gerar Excel");
 		btnGerar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnGerar.addActionListener(new ActionListener() {
@@ -35,7 +36,7 @@ public class GerarExcelTela extends BaseOrgTela {
 				String nomeDesafio = (String) list.getSelectedValue();
 				
 				try {
-					FachadaImp.getInstanciaFachada().gerarExcelAvaliacoes(desafio);
+					servidor.gerarExcelAvaliacoes(desafio);
 					JOptionPane.showMessageDialog(null, "Excel gerado com sucesso");
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -46,7 +47,12 @@ public class GerarExcelTela extends BaseOrgTela {
 		});
 		
 		DefaultListModel modelDesafios = new DefaultListModel();
-		listaDesafios = FachadaImp.getInstanciaFachada().listaDesafios();
+		try {
+			listaDesafios = servidor.listaDesafios();
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 		for(Desafios desafio : listaDesafios) {
 			modelDesafios.addElement(desafio.getNome());
 		}

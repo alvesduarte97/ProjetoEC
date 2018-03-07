@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -19,7 +20,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Regiao;
 import com.br.avaliacoes.ec.servidor.IServidor;
@@ -29,12 +29,16 @@ public class GrupoTela extends BaseOrgTela {
 	private JTextField txtProfOrient;
 	private JComboBox cbRegiao;
 	private JComboBox cbSerie;
+	List<Grupo> listaGrupos;
 
 	/**
 	 * Create the panel.
 	 */
 	public GrupoTela(IServidor servidor) {
+		super(servidor);
 		setLayout(null);
+		
+		listaGrupos = null;
 		
 		JLabel label = new JLabel("");
 		label.setBounds(322, 5, 0, 0);
@@ -126,10 +130,13 @@ public class GrupoTela extends BaseOrgTela {
 			
 				try {
 					if(grupo.getRegiao() != null) {
-					FachadaImp.getInstanciaFachada(servidor).inserirGrupo(grupo);
+						servidor.inserirGrupo(grupo);
 					JOptionPane.showMessageDialog(null, "Escola cadastrada com sucesso");
 					}
 				} catch (BancoException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				} catch (RemoteException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
@@ -156,7 +163,13 @@ public class GrupoTela extends BaseOrgTela {
 		add(scrollPane);
 		
 		DefaultListModel modelGrupos = new DefaultListModel();
-		List<Grupo> listaGrupos = FachadaImp.getInstanciaFachada(servidor).listaGrupos();
+//		List<Grupo> listaGrupos = null;
+		try {
+			listaGrupos = servidor.listaGrupos();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		}
 		for(Grupo grupo : listaGrupos) {
 			modelGrupos.addElement(grupo.getEscola() +"   |   "+ grupo.getSerie());
 		}
@@ -177,10 +190,13 @@ public class GrupoTela extends BaseOrgTela {
 				for(Grupo grupo : listaGrupos) {
 					if(grupo.getEscola().equals(escola) && grupo.getSerie().equals(serie)) {
 						try {
-							FachadaImp.getInstanciaFachada(servidor).removerGrupo(grupo.getIdGrupo());
+							servidor.removerGrupo(grupo.getIdGrupo());
 							listaGrupos.remove(grupo);
 							modelGrupos.removeElement(selecao);
 						} catch (BancoException e) {
+							e.printStackTrace();
+							JOptionPane.showMessageDialog(null, e.getMessage());
+						} catch (RemoteException e) {
 							e.printStackTrace();
 							JOptionPane.showMessageDialog(null, e.getMessage());
 						}

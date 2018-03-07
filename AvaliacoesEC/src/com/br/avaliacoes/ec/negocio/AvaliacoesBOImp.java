@@ -1,6 +1,5 @@
 package com.br.avaliacoes.ec.negocio;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -14,7 +13,6 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import com.br.avaliacoes.ec.DAO.IAvaliacoesDAO;
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Pessoa;

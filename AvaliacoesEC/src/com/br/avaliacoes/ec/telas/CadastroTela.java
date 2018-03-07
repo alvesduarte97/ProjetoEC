@@ -1,35 +1,28 @@
 package com.br.avaliacoes.ec.telas;
 
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JSeparator;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.AreaAtuacao;
 import com.br.avaliacoes.ec.modelo.Pessoa;
 import com.br.avaliacoes.ec.modelo.TipoPessoa;
-
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Label;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JComboBox;
-import javax.swing.JSeparator;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.ScrollPane;
-import java.awt.Button;
-import java.awt.Panel;
-import java.awt.TextField;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class CadastroTela extends JPanel {
 	private JTextField txtNome;
@@ -42,7 +35,7 @@ public class CadastroTela extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public CadastroTela() {
+	public CadastroTela(IServidor servidor) {
 		setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		setLayout(null);
 		setSize(741, 695);
@@ -117,7 +110,12 @@ public class CadastroTela extends JPanel {
 					avaliador.setNome(nome);
 					avaliador.setSenha(senha);
 					avaliador.setTipo(TipoPessoa.ORGANIZACAO);
-					avaliador.setDesafioAvaliado(FachadaImp.getInstanciaFachada().desafioAtivo().getNome());
+					try {
+						avaliador.setDesafioAvaliado(servidor.desafioAtivo().getNome());
+					} catch (RemoteException e2) {
+						e2.printStackTrace();
+						JOptionPane.showMessageDialog(null, e2.getMessage());
+					}
 					switch (indexArea) {
 					case 0:
 						break;
@@ -151,9 +149,12 @@ public class CadastroTela extends JPanel {
 
 					limparCampos();
 					try {
-						FachadaImp.getInstanciaFachada().inserirPessoa(avaliador);
+						servidor.inserirPessoa(avaliador);
 						JOptionPane.showMessageDialog(null, "Cadastrado com sucesso");
 					} catch (BancoException e1) {
+						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					} catch (RemoteException e1) {
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}

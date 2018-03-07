@@ -1,29 +1,22 @@
 package com.br.avaliacoes.ec.telas;
 
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Grupo;
-
-import javafx.application.Platform;
-import javafx.scene.media.MediaPlayer;
+import com.br.avaliacoes.ec.servidor.IServidor;
 
 public class AvaOrgTela extends JPanel {
 	List<Grupo> listaGrupo;
 	AvaliacaoTela telaAva;
-	public AvaOrgTela() {
-	    
+	public AvaOrgTela(IServidor servidor) {
 		try {
-			listaGrupo = FachadaImp.getInstanciaFachada().listaGruposPorSerie
+			listaGrupo = servidor.listaGruposPorSerie
 					(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
-			telaAva = new AvaliacaoTela(0, listaGrupo,null);
+			telaAva = new AvaliacaoTela(0, listaGrupo,null, servidor);
 		} catch (BancoException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage());

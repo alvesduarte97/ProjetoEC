@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.modelo;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "avaliacoes")
-public class Avaliacoes extends BancoEntity<Integer> implements Comparable<Avaliacoes> {
+public class Avaliacoes extends BancoEntity<Integer> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -135,24 +136,6 @@ public class Avaliacoes extends BancoEntity<Integer> implements Comparable<Avali
 		this.notaFinal = notaFinal;
 	}
 	
-	@Override
-	public int compareTo(Avaliacoes o1) {
-		int nota1 = (int) (o1.notaFinal * 10);
-		int nota2 = (int) (notaFinal * 10);
-		// nota1 += o1.getNota1()*10;
-		// nota1 += o1.getNota2()*10;
-		// nota1 += o1.getNota3()*10;
-		// nota1 += o1.getNota4()*10;
-		// nota1 += o1.getNota5()*10;
-		//
-		// nota2 += this.nota1*10;
-		// nota2 += this.nota2*10;
-		// nota2 += nota3*10;
-		// nota2 += nota4*10;
-		// nota2 += nota5*10;
-
-		return nota1 - nota2;
-	}
 
 
 	

@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -22,10 +23,10 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
 import com.br.avaliacoes.ec.excecoes.BancoException;
-import com.br.avaliacoes.ec.fachada.FachadaImp;
 import com.br.avaliacoes.ec.modelo.Avaliacoes;
 import com.br.avaliacoes.ec.modelo.Desafios;
 import com.br.avaliacoes.ec.modelo.Grupo;
+import com.br.avaliacoes.ec.servidor.IServidor;
 import com.br.avaliacoes.ec.telas.classFX.CreateScene;
 
 import javafx.application.Platform;
@@ -53,21 +54,26 @@ public class AvaliacaoTela extends JPanel {
 	private static JInternalFrame internalFrame;
 	private JTextArea txtComentario;
 
-	public AvaliacaoTela(int newIndex, List<Grupo> listaGrupos, String velhoNome) throws BancoException {
+	public AvaliacaoTela(int newIndex, List<Grupo> listaGrupos, String velhoNome, IServidor servidor) throws BancoException {
 		setLayout(null);
 		setSize(1062, 722);
 		this.index = newIndex;
 		this.grupos = listaGrupos;
 
 		if (newIndex >= listaGrupos.size()) {
-			LoginTela login = new LoginTela();
+			LoginTela login = new LoginTela(servidor);
 			PrincipalTela.internalFrame.setContentPane(login);
 			throw new BancoException("Não existem mais grupos para serem avaliados por você.");
 		}
 
 		diretorio = "C:\\Users\\CliCidadão\\Desktop\\video";
 
-		desafioAtivo = FachadaImp.getInstanciaFachada().desafioAtivo();
+		try {
+			desafioAtivo = servidor.desafioAtivo();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage());
+		}
 
 		internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBorder(null);
@@ -274,7 +280,7 @@ public class AvaliacaoTela extends JPanel {
 				avaliacao.setGrupoAvaliado(grupos.get(index));
 				avaliacao.setDesafio(desafioAtivo);
 				try {
-					FachadaImp.getInstanciaFachada().inserirAvaliacoes(avaliacao);
+					servidor.inserirAvaliacoes(avaliacao);
 					index = index + 1;
 					if (index >= listaGrupos.size()) {
 						JOptionPane.showMessageDialog(null, "Não existem mais grupos para serem avaliados por você.");
@@ -299,6 +305,9 @@ public class AvaliacaoTela extends JPanel {
 					});
 
 				} catch (BancoException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				} catch (RemoteException e) {
 					e.printStackTrace();
 					JOptionPane.showMessageDialog(null, e.getMessage());
 				}

@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="desafios")
-public class Desafios extends BancoEntity<String> {
+public class Desafios extends BancoEntity<String> implements Serializable{
 	@Id
 	private String nome;
 	
