@@ -84,7 +84,7 @@ public class AvaliacaoTela extends JPanel {
 
 		internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		internalFrame.setBounds(121, -26, 831, 403);
+		internalFrame.setBounds(181, -29, 728, 408);
 		add(internalFrame);
 		internalFrame.getContentPane().setLayout(null);
 		internalFrame.setVisible(true);
@@ -115,9 +115,9 @@ public class AvaliacaoTela extends JPanel {
 		lblNewLabel.setBounds(338, 523, 86, 14);
 		add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Nota 1");
+		JLabel lblNewLabel_1 = new JLabel("Criatividade");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(320, 441, 46, 14);
+		lblNewLabel_1.setBounds(227, 441, 73, 14);
 		add(lblNewLabel_1);
 
 		cbNota1 = new JComboBox();
@@ -125,7 +125,7 @@ public class AvaliacaoTela extends JPanel {
 		cbNota1.addItem(0.2);
 		cbNota1.addItem(0.3);
 		cbNota1.addItem(0.4);
-		cbNota1.setBounds(320, 466, 46, 20);
+		cbNota1.setBounds(237, 466, 46, 20);
 		add(cbNota1);
 
 		cbNota2 = new JComboBox();
@@ -133,7 +133,7 @@ public class AvaliacaoTela extends JPanel {
 		cbNota2.addItem(0.2);
 		cbNota2.addItem(0.3);
 		cbNota2.addItem(0.4);
-		cbNota2.setBounds(418, 466, 46, 20);
+		cbNota2.setBounds(338, 466, 46, 20);
 		add(cbNota2);
 
 		cbNota3 = new JComboBox();
@@ -141,7 +141,7 @@ public class AvaliacaoTela extends JPanel {
 		cbNota3.addItem(0.2);
 		cbNota3.addItem(0.3);
 		cbNota3.addItem(0.4);
-		cbNota3.setBounds(510, 466, 46, 20);
+		cbNota3.setBounds(454, 466, 46, 20);
 		add(cbNota3);
 
 		cbNota4 = new JComboBox();
@@ -149,23 +149,23 @@ public class AvaliacaoTela extends JPanel {
 		cbNota4.addItem(0.2);
 		cbNota4.addItem(0.3);
 		cbNota4.addItem(0.4);
-		cbNota4.setBounds(601, 466, 46, 20);
+		cbNota4.setBounds(569, 466, 46, 20);
 		add(cbNota4);
 
-		JLabel label = new JLabel("Nota 2");
-		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label.setBounds(418, 441, 46, 14);
-		add(label);
+		JLabel lblTempo = new JLabel("Tempo");
+		lblTempo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTempo.setBounds(338, 441, 54, 14);
+		add(lblTempo);
 
-		JLabel label_1 = new JLabel("Nota 3");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_1.setBounds(510, 441, 46, 14);
-		add(label_1);
+		JLabel lblExplicaoNoVideo = new JLabel("Explica\u00E7\u00E3o no video");
+		lblExplicaoNoVideo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblExplicaoNoVideo.setBounds(423, 441, 136, 14);
+		add(lblExplicaoNoVideo);
 
-		JLabel label_3 = new JLabel("Nota 4");
-		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_3.setBounds(601, 441, 46, 14);
-		add(label_3);
+		JLabel lblDominoDoConteudo = new JLabel("Domino do conteudo");
+		lblDominoDoConteudo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDominoDoConteudo.setBounds(569, 441, 145, 14);
+		add(lblDominoDoConteudo);
 
 		btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
@@ -368,12 +368,12 @@ public class AvaliacaoTela extends JPanel {
 
 		cbNota5 = new JComboBox();
 		cbNota5.setModel(new DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4" }));
-		cbNota5.setBounds(683, 466, 46, 20);
+		cbNota5.setBounds(749, 466, 46, 20);
 		add(cbNota5);
 
-		JLabel lblNota = new JLabel("Nota 5");
+		JLabel lblNota = new JLabel("Audio e imagem");
 		lblNota.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNota.setBounds(683, 441, 46, 14);
+		lblNota.setBounds(769, 441, 112, 18);
 		add(lblNota);
 
 		JLabel Imagem3 = new JLabel("");

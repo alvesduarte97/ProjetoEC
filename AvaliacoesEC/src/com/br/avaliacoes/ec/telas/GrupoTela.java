@@ -69,11 +69,11 @@ public class GrupoTela extends BaseOrgTela {
 		cbSerie.setBounds(380, 216, 132, 24);
 		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		//cbSerie.addItem("Selecione");
-		cbSerie.addItem("1ª Série");
-		cbSerie.addItem("2ª Série");
-		cbSerie.addItem("3ª Série");
-		cbSerie.addItem("4ª Série");
-		cbSerie.addItem("5ª Série");
+		cbSerie.addItem("8ª Ano");
+		cbSerie.addItem("9ª Ano");
+		cbSerie.addItem("1ª Ano");
+		cbSerie.addItem("2ª Ano");
+		cbSerie.addItem("3ª Ano");
 		add(cbSerie);
 		
 		JLabel lblNewLabel_4 = new JLabel("Professor orientador:");

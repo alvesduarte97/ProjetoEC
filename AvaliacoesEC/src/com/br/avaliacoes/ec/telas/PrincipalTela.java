@@ -145,7 +145,7 @@ ScrollPane ScrollPane1 = new ScrollPane();
 		
 		
 		Button button_3;
-		btnCadastroAvaliador = new Button("Cadastro Avaliador");
+		btnCadastroAvaliador = new Button("Cadastro");
 		btnCadastroAvaliador.setBackground(Color.WHITE);
 		btnCadastroAvaliador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

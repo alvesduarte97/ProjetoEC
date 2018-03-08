@@ -109,7 +109,7 @@ public class CadastroTela extends JPanel {
 					avaliador.setLogin(login);
 					avaliador.setNome(nome);
 					avaliador.setSenha(senha);
-					avaliador.setTipo(TipoPessoa.ORGANIZACAO);
+					avaliador.setTipo(TipoPessoa.AVALIADOR);
 					try {
 						avaliador.setDesafioAvaliado(servidor.desafioAtivo().getNome());
 					} catch (RemoteException e2) {
