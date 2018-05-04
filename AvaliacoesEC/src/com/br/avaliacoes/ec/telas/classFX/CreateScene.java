@@ -22,6 +22,11 @@ public class CreateScene {
 		this.nomeVideo = nomeVideo;
 		this.videoURL ="file:///" + (diretorio + "\\" + nomeVideo+".mp4").replace("\\", "/").replaceAll(" ", "%20");
 	}
+	
+	public void NovoVideo(String diretorio, String nomeVideo) {
+		this.nomeVideo = nomeVideo;
+		this.videoURL ="file:///" + (diretorio + "\\" + nomeVideo+".mp4").replace("\\", "/").replaceAll(" ", "%20");
+	}
 
     public void initFX(JFXPanel fxPanel) {
         Media media = new Media(videoURL);

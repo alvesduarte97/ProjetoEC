@@ -124,7 +124,7 @@ public class GrupoDAOImp implements IGrupoDAO {
 //			}
 //		}
 //		System.out.println (finalStr);
-		for(Integer ii = 0; ii <70; ii++) {
+		for(Integer ii = 0; ii <200; ii++) {
 			String i = ii.toString();
 			Random r = new Random();
 			
@@ -153,22 +153,22 @@ public class GrupoDAOImp implements IGrupoDAO {
 			//Para adc as series aleatoriamente
 			switch (r.nextInt(5)) {
 			case 0:
-				g.setSerie("1ª Serie");
+				g.setSerie("8 Ano");
 				break;
 			case 1:
-				g.setSerie("2ª Serie");
+				g.setSerie("9 Ano");
 				break;
 			case 2:
-				g.setSerie("3ª Serie");
+				g.setSerie("1 Ano");
 				break;
 			case 3:
-				g.setSerie("4ª Serie");
+				g.setSerie("2 Ano");
 				break;
 			case 4:
-				g.setSerie("5ª Serie");
+				g.setSerie("3 Ano");
 				break;
 			default:
-				g.setSerie("5ª Serie");
+				g.setSerie("8 Ano");
 				break;
 			}
 			

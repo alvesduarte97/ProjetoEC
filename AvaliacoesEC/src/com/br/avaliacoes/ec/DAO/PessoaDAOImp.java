@@ -90,6 +90,17 @@ public class PessoaDAOImp implements IPessoaDAO {
 		return pessoa;
 		
 	}
+	
+	public List<Pessoa> listaDePessasNaSerie(String serie){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Criteria criteria = session.createCriteria(Pessoa.class);
+		criteria.add(Restrictions.eq("serie", serie));
+		List<Pessoa> lista  = criteria.list();
+		session.close();
+		return lista;
+	}
+	
+	
 	public static void main(String[] args) {
 		PessoaDAOImp dao = new PessoaDAOImp();
 			List<Pessoa> lista = dao.listaPessoas(TipoPessoa.ORGANIZACAO);

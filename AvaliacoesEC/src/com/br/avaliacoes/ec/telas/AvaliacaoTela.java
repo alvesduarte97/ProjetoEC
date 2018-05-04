@@ -162,7 +162,7 @@ public class AvaliacaoTela extends JPanel {
 		lblExplicaoNoVideo.setBounds(423, 441, 136, 14);
 		add(lblExplicaoNoVideo);
 
-		JLabel lblDominoDoConteudo = new JLabel("Domino do conteudo");
+		JLabel lblDominoDoConteudo = new JLabel("Dominio do conteudo");
 		lblDominoDoConteudo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDominoDoConteudo.setBounds(569, 441, 145, 14);
 		add(lblDominoDoConteudo);
@@ -291,22 +291,29 @@ public class AvaliacaoTela extends JPanel {
 					index = index + 1;
 					if (index >= listaGrupos.size()) {
 						JOptionPane.showMessageDialog(null, "Não existem mais grupos para serem avaliados por você.");
-						System.exit(0);
-						
+						System.exit(0);	
 					}
 					oldName = nome;
 					txtEscola.setText(grupos.get(index).getEscola());
 					txtSerie.setText(grupos.get(index).getSerie());
+					
 					txtComentario.setText("");
 					nome = txtEscola.getText() + txtSerie.getText();
+					 
+					 //cs.mediaPlayer.dispose();
 					
 					if(cs.mediaPlayer != null)
 						cs.stopVideo();
 					
+					 
+					
 					cs = null;
 					CreateScene newCs = new CreateScene(diretorio, nome);
+					System.gc();
 					cs = newCs;
 					newCs = null;
+					System.gc();
+					//cs.NovoVideo(diretorio, nome);
 					SwingUtilities.invokeLater(() -> {
 						ShowGUI(diretorio, nome);
 					});
@@ -393,6 +400,7 @@ public class AvaliacaoTela extends JPanel {
 		cbNota4.setSelectedIndex(0);
 	}
 
+	
 	private static void ShowGUI(String diretorio, String nomeVideo) {
 		fxPanel = new JFXPanel();
 		internalFrame.setContentPane(fxPanel);

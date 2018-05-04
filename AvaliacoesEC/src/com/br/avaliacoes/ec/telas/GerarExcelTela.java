@@ -40,7 +40,8 @@ public class GerarExcelTela extends BaseOrgTela {
 					JOptionPane.showMessageDialog(null, "Excel gerado com sucesso");
 				} catch (IOException e) {
 					e.printStackTrace();
-					e.getMessage();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					//e.getMessage();
 				}
 				
 			}

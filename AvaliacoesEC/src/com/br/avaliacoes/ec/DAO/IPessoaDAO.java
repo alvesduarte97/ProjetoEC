@@ -10,5 +10,6 @@ public interface IPessoaDAO extends ICrudDAO<Pessoa, String>{
 
 	List<Pessoa> listaPessoas(TipoPessoa tipoPessoa);
 	public Pessoa buscarPessoaNome(String nome);
+	public List<Pessoa> listaDePessasNaSerie(String serie);
 		
 }

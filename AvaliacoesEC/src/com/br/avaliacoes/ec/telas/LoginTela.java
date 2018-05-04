@@ -95,10 +95,10 @@ public class LoginTela extends JPanel {
 						if (pessoa.getDesafioAvaliado() == null || pessoa.getSerie() == null|| !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
 
 							JDialog.setDefaultLookAndFeelDecorated(true);
-							String[] selectionValues = { "8º Ano", "9ª Ano", "1ª Ano", "2ª Ano", "3ª Ano" };
+							String[] selectionValues = { "8 Ano", "9 Ano", "1 Ano", "2 Ano", "3 Ano" };
 							String selection = null;
 							while (selection == null || selection.equals("")) {
-								String initialSelection = "1ª Serie";
+								String initialSelection = "1 Serie";
 								selection = (String) JOptionPane.showInputDialog(null, "Selecione uma serie", "Series",
 										JOptionPane.QUESTION_MESSAGE, null, selectionValues, initialSelection);
 								if (selection == null || selection.equals("")) {
