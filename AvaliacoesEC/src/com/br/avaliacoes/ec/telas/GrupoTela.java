@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -11,6 +13,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import com.br.avaliacoes.ec.aleatorias.CopiarArquivos;
 import com.br.avaliacoes.ec.excecoes.BancoException;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Regiao;
@@ -30,6 +34,11 @@ public class GrupoTela extends BaseOrgTela {
 	private JComboBox cbRegiao;
 	private JComboBox cbSerie;
 	List<Grupo> listaGrupos;
+	private JButton btnSelecionarVideo;
+	private JButton btnDiretorio;
+	private File dirVideo;
+	private File destinoVideo;
+	private CopiarArquivos copiarVideo;
 
 	/**
 	 * Create the panel.
@@ -39,6 +48,10 @@ public class GrupoTela extends BaseOrgTela {
 		setLayout(null);
 		
 		listaGrupos = null;
+		
+//		dirVideo = new File("");
+//		
+//		destinoVideo = new File("");
 		
 		JLabel label = new JLabel("");
 		label.setBounds(322, 5, 0, 0);
@@ -80,6 +93,35 @@ public class GrupoTela extends BaseOrgTela {
 		lblNewLabel_4.setBounds(219, 142, 136, 24);
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		add(lblNewLabel_4);
+		
+		btnSelecionarVideo = new JButton("Selecionar video");
+		btnSelecionarVideo.addActionListener(new ActionListener() {
+			
+			
+			//Selecionando diretorio do video a ser copiado
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					//dirVideo = copiarVideo.pegarDiretorio();
+					
+					JFileChooser file = new JFileChooser();
+					file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					int i = file.showSaveDialog(null);
+					if(i==1) {
+						throw new BancoException("Selecione o diretorio");
+					}else {
+						dirVideo = file.getSelectedFile();
+					}
+					
+				} catch (BancoException e) {
+					e.printStackTrace();
+					JOptionPane.showMessageDialog(null, e.getMessage());
+				}				
+			}
+			
+			
+		});
+		btnSelecionarVideo.setBounds(565, 123, 148, 24);
+		add(btnSelecionarVideo);
 		
 		cbRegiao = new JComboBox();
 		cbRegiao.setBounds(380, 179, 132, 24);
@@ -131,6 +173,7 @@ public class GrupoTela extends BaseOrgTela {
 				try {
 					if(grupo.getRegiao() != null) {
 						servidor.inserirGrupo(grupo);
+						copiarVideo.copyFile(dirVideo, destinoVideo);
 					JOptionPane.showMessageDialog(null, "Escola cadastrada com sucesso");
 					}
 				} catch (BancoException e1) {
@@ -139,6 +182,8 @@ public class GrupoTela extends BaseOrgTela {
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 					JOptionPane.showMessageDialog(null, e1.getMessage());
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 				limparCamposEscola();
 			}
@@ -157,6 +202,31 @@ public class GrupoTela extends BaseOrgTela {
 		lblRemoverEscola.setHorizontalAlignment(SwingConstants.CENTER);
 		lblRemoverEscola.setFont(new Font("Tahoma", Font.BOLD, 20));
 		add(lblRemoverEscola);
+		
+		btnDiretorio = new JButton("Diretorio ");
+		btnDiretorio.addActionListener(new ActionListener() {
+			
+			//Lugar para enviar o aquivo
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+					JFileChooser file = new JFileChooser();
+					file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					int i = file.showSaveDialog(null);
+					if(i==1) {
+						throw new BancoException("Selecione o diretorio");
+					}else {
+						destinoVideo = file.getSelectedFile();
+					}
+					
+				} catch (BancoException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+				}
+			}
+		});
+		btnDiretorio.setBounds(565, 167, 148, 24);
+		add(btnDiretorio);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(223, 385, 293, 133);
@@ -236,6 +306,8 @@ public class GrupoTela extends BaseOrgTela {
 		txtProfOrient.setText("");
 		cbRegiao.setSelectedIndex(0);
 		cbSerie.setSelectedIndex(0);
+		dirVideo = null;
+		destinoVideo = null;
 		
 	}
 }

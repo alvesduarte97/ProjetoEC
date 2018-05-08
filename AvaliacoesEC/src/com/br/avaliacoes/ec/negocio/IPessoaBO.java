@@ -9,4 +9,6 @@ public interface IPessoaBO extends ICrudBO<Pessoa, String> {
 
 	List<Pessoa> listaPessoa(TipoPessoa tipoPessoa);
 
+	List<Pessoa> listaDePessasNaSerie(String serie);
+
 }

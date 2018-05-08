@@ -74,27 +74,7 @@ public class PessoaBOImp implements IPessoaBO {
 		repositorio.remover(chave);
 	}
 	
-	public static void main(String[] args) {
-		Pessoa pessoa = new Pessoa();
-		
-		pessoa.setLogin("aad");
-		pessoa.setNome("Anderson");
-		pessoa.setSenha("123NgmDescobre");
-		pessoa.setTipo(TipoPessoa.ORGANIZACAO);
-		
-		PessoaDAOImp rep = new PessoaDAOImp();
-		PessoaBOImp repBo = new PessoaBOImp(rep);
-		
-		try {
-			repBo.inserir(pessoa);
-		} catch (BancoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		
-	}
+
 	public static String criptografar(String senha) {
 		String texto = senha;
 		String alfabeto = " <ab@#$%&*(cdefÍÚÃÕ1234ghijklmnopqrstuvwx]}§[{ª!)yzçéáíúóãõABCDEFGHIJKLMNOPQRSTUVWXYZÇÁÉÓ567890.;:?,º_+-=\\/|\'\">";   
@@ -119,6 +99,29 @@ public class PessoaBOImp implements IPessoaBO {
 	@Override
 	public List<Pessoa> listaPessoa(TipoPessoa tipoPessoa) {
 		return repositorio.listaPessoas(tipoPessoa);
+	}
+
+	@Override
+	public List<Pessoa> listaDePessasNaSerie(String serie) {		
+		return repositorio.listaDePessasNaSerie(serie);
+	}
+	
+	
+	public static void main(String[] args) {
+		Pessoa pessoa = new Pessoa();
+		
+		PessoaDAOImp rep = new PessoaDAOImp();
+		PessoaBOImp repBo = new PessoaBOImp(rep);
+		
+		List<Pessoa> lista = repBo.listaDePessasNaSerie("9 Ano");
+			
+		System.out.println(lista.size());
+		
+		for(int i = 0; i<lista.size(); i++) {
+			pessoa = lista.get(i);	
+			System.out.println(pessoa.getNome()); 
+		}
+	
 	}
 
 }

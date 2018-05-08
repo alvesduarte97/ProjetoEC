@@ -93,9 +93,33 @@ public class LoginTela extends JPanel {
 						PrincipalTela.pessoa = pessoa;
 						String desafioAtivo = servidor.desafioAtivo().getNome();
 						if (pessoa.getDesafioAvaliado() == null || pessoa.getSerie() == null|| !pessoa.getDesafioAvaliado().equals(desafioAtivo)) {
-
+							
+							
 							JDialog.setDefaultLookAndFeelDecorated(true);
+							
 							String[] selectionValues = { "8 Ano", "9 Ano", "1 Ano", "2 Ano", "3 Ano" };
+							
+							//String selectionValues[] = new String[10];
+							
+//							for(int i = 0; i < 5; i++) {
+//								List<Pessoa> lista;
+//								int numSerie = i+1;
+//								
+//								if(numSerie<3) {
+//									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+//								}else if(numSerie == 3) {
+//									numSerie+= 5;
+//									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+//								}else {
+//									numSerie+= 5;
+//									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+//								}
+//								
+//								if(lista.size() >=2) {
+//									selectionValues[i] = "";
+//								}
+//							}
+							
 							String selection = null;
 							while (selection == null || selection.equals("")) {
 								String initialSelection = "1 Serie";

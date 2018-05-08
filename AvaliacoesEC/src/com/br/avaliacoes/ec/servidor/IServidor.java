@@ -23,6 +23,7 @@ public interface IServidor extends Remote {
     void atualizarPessoa(Pessoa pessoa) throws BancoException,RemoteException;
 	void removerPessoa(String login) throws BancoException,RemoteException;
 	List<Pessoa> listaPessoas(TipoPessoa tipoPessoa) throws RemoteException;
+	public List<Pessoa> listaDePessasNaSerie(String serie)throws RemoteException;
 	
 	
 	void inserirDesafios(Desafios desafio) throws BancoException, RemoteException;

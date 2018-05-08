@@ -259,5 +259,11 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 		this.diretorioVideo = diretorioVideo;
 	}
 
+	@Override
+	public List<Pessoa> listaDePessasNaSerie(String serie) {
+		
+		return (List<Pessoa>) negocioPessoa.listaDePessasNaSerie(serie);
+	}
+
 
 }
