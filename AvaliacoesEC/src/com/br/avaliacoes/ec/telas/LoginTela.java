@@ -97,28 +97,37 @@ public class LoginTela extends JPanel {
 							
 							JDialog.setDefaultLookAndFeelDecorated(true);
 							
-							String[] selectionValues = { "8 Ano", "9 Ano", "1 Ano", "2 Ano", "3 Ano" };
+							String[] selectionValues = {"1 Ano", "2 Ano", "3 Ano", "8 Ano", "9 Ano"};
 							
 							//String selectionValues[] = new String[10];
 							
-//							for(int i = 0; i < 5; i++) {
-//								List<Pessoa> lista;
-//								int numSerie = i+1;
-//								
-//								if(numSerie<3) {
+							for(int i = 0; i < 5; i++) {
+								List<Pessoa> lista;
+								int numSerie = i+1;
+								
+								if(numSerie<=3) {
+									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+									System.out.println("Serie: "+numSerie);
+									System.out.println("Tamanho lista: "+lista.size());
+								}else {
+									numSerie+= 4;
+									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+									System.out.println("Serie: "+numSerie);
+									System.out.println("Tamanho lista: "+lista.size());
+								}
+//								if(numSerie == 4)
+//								else if(numSerie == 5){
+//									numSerie+= 4;
 //									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
-//								}else if(numSerie == 3) {
-//									numSerie+= 5;
-//									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
-//								}else {
-//									numSerie+= 5;
-//									lista = servidor.listaDePessasNaSerie(numSerie+" Ano");
+//									System.out.println("Serie: "+numSerie);
+//									System.out.println("Tamanho lista: "+lista.size());
 //								}
-//								
-//								if(lista.size() >=2) {
-//									selectionValues[i] = "";
-//								}
-//							}
+								
+								if(lista.size() >=2) {
+									System.out.println("Serie removida: "+ numSerie);
+									selectionValues[i] = "";
+								}
+							}
 							
 							String selection = null;
 							while (selection == null || selection.equals("")) {

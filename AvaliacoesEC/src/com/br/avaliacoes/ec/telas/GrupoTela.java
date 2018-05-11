@@ -22,8 +22,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import com.br.avaliacoes.ec.aleatorias.CopiarArquivos;
 import com.br.avaliacoes.ec.excecoes.BancoException;
+import com.br.avaliacoes.ec.extras.ManipulaçãodeArquivos;
 import com.br.avaliacoes.ec.modelo.Grupo;
 import com.br.avaliacoes.ec.modelo.Regiao;
 import com.br.avaliacoes.ec.servidor.IServidor;
@@ -35,10 +35,10 @@ public class GrupoTela extends BaseOrgTela {
 	private JComboBox cbSerie;
 	List<Grupo> listaGrupos;
 	private JButton btnSelecionarVideo;
-	private JButton btnDiretorio;
 	private File dirVideo;
 	private File destinoVideo;
-	private CopiarArquivos copiarVideo;
+	private ManipulaçãodeArquivos copiarVideo;
+	JFileChooser file;
 
 	/**
 	 * Create the panel.
@@ -47,11 +47,7 @@ public class GrupoTela extends BaseOrgTela {
 		super(servidor);
 		setLayout(null);
 		
-		listaGrupos = null;
-		
-//		dirVideo = new File("");
-//		
-//		destinoVideo = new File("");
+		file = new JFileChooser();
 		
 		JLabel label = new JLabel("");
 		label.setBounds(322, 5, 0, 0);
@@ -81,7 +77,7 @@ public class GrupoTela extends BaseOrgTela {
 		cbSerie = new JComboBox();
 		cbSerie.setBounds(380, 216, 132, 24);
 		cbSerie.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		//cbSerie.addItem("Selecione");
+
 		cbSerie.addItem("8 Ano");
 		cbSerie.addItem("9 Ano");
 		cbSerie.addItem("1 Ano");
@@ -101,10 +97,10 @@ public class GrupoTela extends BaseOrgTela {
 			//Selecionando diretorio do video a ser copiado
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					//dirVideo = copiarVideo.pegarDiretorio();
 					
-					JFileChooser file = new JFileChooser();
+					//JFileChooser file = new JFileChooser();
 					file.setFileSelectionMode(JFileChooser.FILES_ONLY);
+					
 					int i = file.showSaveDialog(null);
 					if(i==1) {
 						throw new BancoException("Selecione o diretorio");
@@ -173,6 +169,13 @@ public class GrupoTela extends BaseOrgTela {
 				try {
 					if(grupo.getRegiao() != null) {
 						servidor.inserirGrupo(grupo);
+						//destinoVideo.set  = "\\" + txtNomeGrupo.getText() + cbSerie.getSelectedItem().toString();
+						//file.setCurrentDirectory(new File());
+						
+						//C:\\Users\\CliCidadão\\Desktop\\
+						//servidor.getDiretorioVideo()
+						destinoVideo = new File("\\"+servidor.getDiretorioVideo()+"\\" + txtNomeGrupo.getText() + cbSerie.getSelectedItem().toString()+".mp4");
+					
 						copiarVideo.copyFile(dirVideo, destinoVideo);
 					JOptionPane.showMessageDialog(null, "Escola cadastrada com sucesso");
 					}
@@ -203,37 +206,12 @@ public class GrupoTela extends BaseOrgTela {
 		lblRemoverEscola.setFont(new Font("Tahoma", Font.BOLD, 20));
 		add(lblRemoverEscola);
 		
-		btnDiretorio = new JButton("Diretorio ");
-		btnDiretorio.addActionListener(new ActionListener() {
-			
-			//Lugar para enviar o aquivo
-			public void actionPerformed(ActionEvent e) {
-				try {
-					
-					JFileChooser file = new JFileChooser();
-					file.setFileSelectionMode(JFileChooser.FILES_ONLY);
-					int i = file.showSaveDialog(null);
-					if(i==1) {
-						throw new BancoException("Selecione o diretorio");
-					}else {
-						destinoVideo = file.getSelectedFile();
-					}
-					
-				} catch (BancoException e1) {
-					e1.printStackTrace();
-					JOptionPane.showMessageDialog(null, e1.getMessage());
-				}
-			}
-		});
-		btnDiretorio.setBounds(565, 167, 148, 24);
-		add(btnDiretorio);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(223, 385, 293, 133);
 		add(scrollPane);
 		
 		DefaultListModel modelGrupos = new DefaultListModel();
-//		List<Grupo> listaGrupos = null;
+
 		try {
 			listaGrupos = servidor.listaGrupos();
 		} catch (RemoteException e1) {
