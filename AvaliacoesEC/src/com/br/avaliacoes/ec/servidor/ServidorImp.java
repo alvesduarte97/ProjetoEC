@@ -231,8 +231,8 @@ public class ServidorImp extends UnicastRemoteObject implements IServidor{
 	}
 
 	@Override
-	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException {
-		return negocioGrupo.listaGruposPorSerie(serie, desafioAtivo);
+	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo, String login) throws BancoException {
+		return negocioGrupo.listaGruposPorSerie(serie, desafioAtivo, login);
 	}
 
 	@Override

@@ -57,9 +57,9 @@ public class AvaOrganizadorTela extends JPanel{
 		mntmAddRemovOrg.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				AddOrgTela addOrg = new AddOrgTela();
-				PrincipalTela.internalFrame.setContentPane(addOrg);
-				PrincipalTela.internalFrame.revalidate();
+				//AddOrgTela addOrg = new AddOrgTela();
+//				PrincipalTela.internalFrame.setContentPane(addOrg);
+//				PrincipalTela.internalFrame.revalidate();
 			}
 		});
 		
@@ -67,9 +67,9 @@ public class AvaOrganizadorTela extends JPanel{
 		mntmTelaPrincipal.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				OrganizadorTela telaOrg = new OrganizadorTela();
-				PrincipalTela.internalFrame.setContentPane(telaOrg);
-				PrincipalTela.internalFrame.revalidate();
+				//OrganizadorTela telaOrg = new OrganizadorTela();
+//				PrincipalTela.internalFrame.setContentPane(telaOrg);
+//				PrincipalTela.internalFrame.revalidate();
 			}
 		});
 		mnOrganizador.add(mntmTelaPrincipal);

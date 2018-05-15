@@ -377,12 +377,12 @@ public class AvalicaoSV extends JPanel {
 		add(lblNota);
 		ImageIcon icone3 = new ImageIcon(PrincipalTela.class.getResource("/imgfundo.jpg"));
 		
-		JLabel Imagem3 = new JLabel("");
-		ImageIcon icone3 = new ImageIcon(PrincipalTela.class.getResource("/imgfundo.jpg"));
-		Imagem3.setBounds(-181, 0, 1062, 722);
-		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
-		Imagem3.setIcon(new ImageIcon(AvaliacaoTela.class.getResource("/imgfundo3.jpg")));
-		add(Imagem3);
+//		JLabel Imagem3 = new JLabel("");
+//		ImageIcon icone3 = new ImageIcon(PrincipalTela.class.getResource("/imgfundo.jpg"));
+//		Imagem3.setBounds(-181, 0, 1062, 722);
+//		Image imagi3 = icone3.getImage().getScaledInstance(Imagem3.getWidth(), Imagem3.getHeight(), Image.SCALE_SMOOTH);
+//		Imagem3.setIcon(new ImageIcon(AvaliacaoTela.class.getResource("/imgfundo3.jpg")));
+//		add(Imagem3);
 
 	}
 
@@ -397,7 +397,7 @@ public class AvalicaoSV extends JPanel {
 	
 	private static void ShowGUI(String diretorio, String nomeVideo) {
 		fxPanel = new JFXPanel();
-		internalFrame.setContentPane(fxPanel);
+//		internalFrame.setContentPane(fxPanel);
 
 		Platform.runLater(() -> {
 			cs.initFX(fxPanel);

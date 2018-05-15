@@ -80,17 +80,18 @@ public class GrupoDAOImp implements IGrupoDAO {
 	}
 
 	@Override
-	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) {
+	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo, String login) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Criteria criteria = session.createCriteria(Grupo.class);
 		criteria.add(Restrictions.eq("serie", serie));
 		criteria.addOrder(Order.asc("escola"));
+		
 		List<Grupo> lista = criteria.list();
 		List<Grupo> listaFinal = new ArrayList<>();
 		for (Grupo grupo : lista) {
 			boolean contem = false;
 			for (Avaliacoes ava : grupo.getListaAvaliacoes()) {
-				if (ava.getDesafio().getNome().equals(desafioAtivo)) {
+				if (ava.getDesafio().getNome().equals(desafioAtivo) && ava.getAvaliador().getLogin().equals(login)) {
 					contem = true;
 					break;
 				}

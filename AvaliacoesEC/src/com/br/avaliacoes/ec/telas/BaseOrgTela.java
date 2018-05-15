@@ -95,7 +95,7 @@ public class BaseOrgTela extends JPanel {
 				List<Grupo> listaGrupos = null;
 				try {
 					listaGrupos = servidor.listaGruposPorSerie
-							(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
+							(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome(), PrincipalTela.pessoa.getLogin());
 					AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null,servidor);
 					PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);
 					PrincipalTela.frmTorneioVirtualDe.revalidate();

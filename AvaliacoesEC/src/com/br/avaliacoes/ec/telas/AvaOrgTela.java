@@ -1,5 +1,6 @@
 package com.br.avaliacoes.ec.telas;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -15,11 +16,14 @@ public class AvaOrgTela extends JPanel {
 	public AvaOrgTela(IServidor servidor) {
 		try {
 			listaGrupo = servidor.listaGruposPorSerie
-					(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
+					(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome(), PrincipalTela.pessoa.getLogin());
 			telaAva = new AvaliacaoTela(0, listaGrupo,null, servidor);
 		} catch (BancoException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(null, e.getMessage());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		telaAva.setVisible(true);
 		add(telaAva);

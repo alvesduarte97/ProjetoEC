@@ -152,13 +152,11 @@ public class LoginTela extends JPanel {
 							List<Grupo> listaGrupos = null;
 							try {
 								listaGrupos = servidor.listaGruposPorSerie
-										(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome());
+										(PrincipalTela.pessoa.getSerie(), PrincipalTela.desafioAtivo.getNome(), PrincipalTela.pessoa.getLogin());
 							} catch (BancoException e1) {
 								e1.printStackTrace();
 								JOptionPane.showMessageDialog(null, e1.getMessage());
 							}
-							
-							
 							
 							AvaliacaoTela telaAva = new AvaliacaoTela(0, listaGrupos,null,servidor);
 							PrincipalTela.frmTorneioVirtualDe.setContentPane(telaAva);

@@ -18,6 +18,7 @@ public interface IServidor extends Remote {
 	
 	public String getDiretorioVideo() throws RemoteException;
 	
+	//Pessoa
 	void inserirPessoa(Pessoa pessoa) throws BancoException, RemoteException;
 	Pessoa procurarPessoa(String login) throws BancoException,RemoteException;
     void atualizarPessoa(Pessoa pessoa) throws BancoException,RemoteException;
@@ -25,7 +26,7 @@ public interface IServidor extends Remote {
 	List<Pessoa> listaPessoas(TipoPessoa tipoPessoa) throws RemoteException;
 	public List<Pessoa> listaDePessasNaSerie(String serie)throws RemoteException;
 	
-	
+	//Desafio
 	void inserirDesafios(Desafios desafio) throws BancoException, RemoteException;
     Desafios procurarDesafios(String nome) throws BancoException, RemoteException;
     void atualizarDesafios(Desafios desafio) throws BancoException, RemoteException;
@@ -34,13 +35,15 @@ public interface IServidor extends Remote {
 	List<Desafios> listaDesafiosAvaliados()throws RemoteException;
 	Desafios desafioAtivo()throws RemoteException;
 	
+	//Grupo
 	void inserirGrupo(Grupo grupo) throws BancoException, RemoteException;
 	Grupo procurarGrupo(Integer idGrupo) throws BancoException, RemoteException;
     void atualizarGrupo(Grupo grupo) throws BancoException, RemoteException;
 	void removerGrupo(Integer idGrupo) throws BancoException, RemoteException;
 	List<Grupo> listaGrupos()throws RemoteException;
-	List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException, RemoteException;
+	List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo, String login) throws BancoException, RemoteException;
 	
+	//Avaliacoes
 	void inserirAvaliacoes(Avaliacoes avaliacao) throws BancoException, RemoteException;
 	Avaliacoes procurarAvaliacoes(Integer idAvaliacao) throws BancoException, RemoteException;
     void atualizarAvaliacoes(Avaliacoes avaliacao) throws BancoException, RemoteException;

@@ -74,8 +74,8 @@ public class GrupoBOImp implements IGrupoBO {
 	}
 
 	@Override
-	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo) throws BancoException {
-		List<Grupo> lista = repositorio.listaGruposPorSerie(serie, desafioAtivo);
+	public List<Grupo> listaGruposPorSerie(String serie, String desafioAtivo, String login) throws BancoException {
+		List<Grupo> lista = repositorio.listaGruposPorSerie(serie, desafioAtivo, login);
 		
 		if(lista == null || lista.size() < 1) {
 			throw new BancoException("Não existem grupos da: "+serie+" para avaliar");
